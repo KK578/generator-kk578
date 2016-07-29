@@ -1,0 +1,9 @@
+{
+  "name": "generator-kk578",
+  "version": "0.0.0",
+  "description": "generator-kk578",
+  "main": "app.js",
+  "author": {
+    "name": "kk578"
+  }
+}
