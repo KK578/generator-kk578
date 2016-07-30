@@ -2,6 +2,7 @@
 
 function initTimeGrunt(grunt) {
 	const timeGrunt = require('time-grunt');
+
 	timeGrunt(grunt);
 }
 
@@ -18,4 +19,4 @@ function initLoadGruntConfig(grunt) {
 module.exports = function (grunt) {
 	initTimeGrunt(grunt);
 	initLoadGruntConfig(grunt);
-}
+};
