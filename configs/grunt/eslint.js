@@ -11,5 +11,18 @@
 				]
 			}
 		]
+	},
+	app: {
+		files: [
+			{ src: 'generators/app/index.js' },
+			{
+				expand: true,
+				cwd: 'generators/app/templates',
+				src: [
+					'gruntfile.js',
+					'configs/grunt/*.js'
+				]
+			}
+		]
 	}
 };
