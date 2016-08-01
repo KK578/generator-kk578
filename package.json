@@ -2,9 +2,17 @@
   "name": "generator-kk578",
   "version": "0.0.0",
   "description": "generator-kk578",
-  "main": "app.js",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "files": [
+    "generators/app"
+  ],
   "author": {
-    "name": "kk578"
+    "name": "Kevin Kwan"
+  },
+  "dependencies": {
+    "yeoman-generator": "^0.24.1"
   },
   "devDependencies": {
     "eslint-formatter-pretty": "^0.2.2",

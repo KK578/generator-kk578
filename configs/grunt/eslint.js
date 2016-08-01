@@ -4,7 +4,11 @@
 		files: [
 			{
 				expand: true,
-				src: ['*.js', 'configs/grunt/*.js']
+				src: [
+					'gruntfile.js',
+					'configs/grunt/*.js',
+					'test/**/*.js'
+				]
 			}
 		]
 	}
