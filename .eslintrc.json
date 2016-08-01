@@ -4,7 +4,8 @@
     "ecmaVersion": 6
   },
   "env": {
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "rules": {
     "block-scoped-var": "error",
@@ -14,8 +15,10 @@
     "eqeqeq": "error",
     "guard-for-in": "error",
     "no-caller": "error",
+    "no-console": "off",
     "no-empty-function": "warn",
     "no-multi-spaces": "error",
+    "no-unused-vars": "warn",
 
     // Styling
     "array-bracket-spacing": [ "error", "never" ],
