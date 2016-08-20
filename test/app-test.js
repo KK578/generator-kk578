@@ -6,8 +6,12 @@ describe('yo kk578 MyProject', () => {
 	before(() => {
 		return helpers.run(path.join(__dirname, '../generators/app'))
 			.inDir(path.join(__dirname, './tmp/app'))
-			.withArguments({ appName: 'MyProject' })
-			.withPrompts({ gitRemoteUrl: 'git@test.test:KK578/app.git' })
+			.withArguments('MyProject')
+			.withPrompts({
+				name: 'The Tester',
+				email: 'tester@test.test',
+				gitRemoteUrl: 'git@test.test:KK578/MyProject.git'
+			})
 			.toPromise();
 	});
 
@@ -18,7 +22,7 @@ describe('yo kk578 MyProject', () => {
 
 		it('should initialise a git repository', () => {
 			assert.file('.git/');
-			assert.fileContent('.git/config', /url = git@test.test:KK578\/app\.git/);
+			assert.fileContent('.git/config', /url = git@test.test:KK578\/MyProject\.git/m);
 		});
 	});
 
@@ -37,14 +41,17 @@ describe('yo kk578:node MyNodeProject', () => {
 		return helpers.run(path.join(__dirname, '../generators/node'))
 			.withGenerators(dummies)
 			.inDir(path.join(__dirname, './tmp/node'))
-			.withArguments({ appName: 'MyNodeProject' })
-			.withPrompts({ appName: 'MyNodeProject' })
+			.withArguments('MyNodeProject')
+			.withPrompts({
+				name: 'The Tester',
+				email: 'tester@test.test'
+			})
 			.toPromise();
 	});
 
 	it('should generate package.json with MyProject', () => {
 		assert.file('package.json');
-		assert.fileContent('package.json', /"name": "MyProject"/);
+		assert.fileContent('package.json', /"name": "MyNodeProject"/);
 	});
 
 	it('should generate grunt files', () => {
