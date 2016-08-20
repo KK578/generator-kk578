@@ -3,7 +3,7 @@
 		description: 'Run mocha test suite.',
 		tasks: [
 			'clean',
-			'mochaTest'
+			'mochaTest:all'
 		]
 	}
 };
