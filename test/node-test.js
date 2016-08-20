@@ -1,7 +1,6 @@
 ﻿const path = require('path');
 const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
-const fs = require('fs');
 
 describe('yo kk578:node MyNodeProject', () => {
 	const dummies = [
@@ -21,7 +20,7 @@ describe('yo kk578:node MyNodeProject', () => {
 			.toPromise();
 	});
 
-	it('should generate package.json with MyNodeProject', (done) => {
+	it('should generate package.json with MyNodeProject', () => {
 		assert.file('package.json');
 
 		assert.jsonFileContent('package.json', {
