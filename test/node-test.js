@@ -12,14 +12,10 @@ describe('yo kk578:node MyNodeProject', () => {
 			.withGenerators(dummies)
 			.inDir(path.join(__dirname, './tmp/node'))
 			.withArguments('MyNodeProject')
-			.withPrompts({
-				name: 'The Tester',
-				email: 'tester@test.test'
-			})
 			.toPromise();
 	});
 
-	it('should generate package.json with MyProject', () => {
+	it('should generate package.json with MyNodeProject', () => {
 		assert.file('package.json');
 		assert.fileContent('package.json', /"name": "MyNodeProject"/);
 	});
