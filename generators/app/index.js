@@ -1,7 +1,8 @@
 ﻿const generators = require('yeoman-generator');
 const spawn = require('child_process').spawn;
-const fs = require('fs');
 const path = require('path');
+
+const util = require('../util.js');
 
 const generator = generators.Base.extend({
 	// Cannot use arrow notation due to this object not referencing the correct object.
@@ -14,73 +15,46 @@ const generator = generators.Base.extend({
 			required: false,
 			optional: true
 		});
+
+		util.prompts.app.map(p => {
+			this.option(p.name);
+		});
 	},
 	initializing() {
 		// Check for git.
 		const done = this.async();
 
-		fs.access(path.join(process.cwd(), '.git'), fs.constants.F_OK, err => {
-			this.git = {
-				initialised: false,
-				remoteUrl: ''
-			};
-
-			if (err) {
-				// No git repository exists.
-				done();
-			}
-			else {
-				// Git repository exists, load the remote url for later use.
-				this.git.initialised = true;
-				const gitConfig = spawn('git', ['config', '--get', 'remote.origin.url']);
-
-				gitConfig.stdout.on('data', data => {
-					this.git.remoteUrl = data.toString('utf8').replace('\n', '');
-				});
-
-				gitConfig.on('close', () => {
-					done();
-				});
-			}
+		util.checkForGit(path.join(process.cwd(), '.git'), (git) => {
+			this.git = git;
+			done();
 		});
 	},
 	prompting() {
-		let prompts = [];
+		let requiredPrompts = [];
 
 		if (!this.appName) {
-			prompts.push({
-				type: 'input',
-				name: 'appName',
-				message: 'Your project name'
-			});
+			requiredPrompts.push(util.prompts.appName);
 		}
 
-		prompts.push(
-			{
-				type: 'input',
-				name: 'name',
-				message: 'Your name',
-				store: true
-			},
-			{
-				type: 'input',
-				name: 'email',
-				message: 'Your email address',
-				store: true
-			},
-			{
-				type: 'input',
-				name: 'gitRemoteUrl',
-				message: 'Remote Git repository URL',
-				default: this.git.remoteUrl,
-				optional: true
-			}
-		);
+		util.prompts.app.map(p => {
+			// Check that this hasn't been enabled already as an option.
+			if (!this.options[p.name]) {
+				// Bind the current git remote to default.
+				if (p.name == 'gitRemoteUrl') {
+					p.default = this.git.remoteUrl
+				}
 
-		return this.prompt(prompts)
+				requiredPrompts.push(p);
+			}
+		});
+
+		return this.prompt(requiredPrompts)
 			.then(answers => {
-				this.answers = answers;
-				answers.appName = this.appName;
+				this.options.appName = this.appName;
+
+				requiredPrompts.map(p => {
+					this.options[p.name] = answers[p.name];
+				});
 			});
 	},
 	gitInit() {
@@ -95,16 +69,16 @@ const generator = generators.Base.extend({
 		}
 	},
 	gitRemote() {
-		if (!this.answers.gitRemoteUrl) {
+		if (!this.options.gitRemoteUrl) {
 			return;
 		}
 
-		if (this.git.remoteUrl !== this.answers.gitRemoteUrl) {
+		if (this.git.remoteUrl !== this.options.gitRemoteUrl) {
 			const done = this.async();
-			const gitRemote = spawn('git', ['remote', 'add', 'origin', this.answers.gitRemoteUrl]);
+			const gitRemote = spawn('git', ['remote', 'add', 'origin', this.options.gitRemoteUrl]);
 
 			gitRemote.on('close', () => {
-				this.log(`Git remote url set to "${this.answers.gitRemoteUrl}"`);
+				this.log(`Git remote url set to "${this.options.gitRemoteUrl}"`);
 				done();
 			});
 		}
@@ -113,8 +87,8 @@ const generator = generators.Base.extend({
 		this.copy('.editorconfig');
 		this.copy('.gitattributes');
 		this.copy('.gitignore');
-		this.template('LICENSE.md', 'LICENSE.md', this.answers);
-		this.template('README.md', 'README.md', this.answers);
+		this.template('LICENSE.md', 'LICENSE.md', this.options);
+		this.template('README.md', 'README.md', this.options);
 	}
 });
 
