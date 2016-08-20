@@ -10,7 +10,11 @@ function initLoadGruntConfig(grunt) {
 	const loadGruntConfig = require('load-grunt-config');
 	const options = {
 		configPath: path.join(__dirname, 'configs/grunt'),
-		jitGrunt: true
+		jitGrunt: {
+			staticMappings: {
+				mochaTest: 'grunt-mocha-test'
+			}
+		}
 	};
 
 	loadGruntConfig(grunt, options);
