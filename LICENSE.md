@@ -1,6 +1,7 @@
 ﻿[BSD-2 License](http://opensource.org/licenses/bsd-license.php)
 
-Copyright (c) 2015, Kevin Kwan (KevinKwan95@googlemail.com).  
+generator-kk578
+Copyright (c) 2016, Kevin Kwan (KevinKwan95@googlemail.com).  
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted

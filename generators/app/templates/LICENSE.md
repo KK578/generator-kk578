@@ -1,6 +1,7 @@
 ﻿[BSD-2 License](http://opensource.org/licenses/bsd-license.php)
 
-Copyright (c) 2015, <%= name %> (<%= email %>).  
+<%= appName %>  
+Copyright (c) 2016, <%= name %> (<%= email %>).  
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted
