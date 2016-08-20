@@ -1,3 +1,13 @@
+###############
+### Project ###
+tmp/
+
+## Dependencies
+node_modules/
+bower_components/
+
+
+
 #######################
 ### Editor Specific ###
 ## Visual Studio
@@ -32,7 +42,6 @@ ehthumbs.db
 
 
 
-##################
-## Dependencies ##
-node_modules/
-bower_components/
+#############
+### Misc. ###
+.[tT][mM][pP]
