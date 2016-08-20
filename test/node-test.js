@@ -1,6 +1,7 @@
 ﻿const path = require('path');
 const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('yo kk578:node MyNodeProject', () => {
 	const dummies = [
@@ -12,12 +13,25 @@ describe('yo kk578:node MyNodeProject', () => {
 			.withGenerators(dummies)
 			.inDir(path.join(__dirname, './tmp/node'))
 			.withArguments('MyNodeProject')
+			.withPrompts({
+				name: 'The Tester',
+				email: 'tester@test.test',
+				gitRemoteUrl: 'git@test.test:KK578/MyNodeProject.git'
+			})
 			.toPromise();
 	});
 
-	it('should generate package.json with MyNodeProject', () => {
+	it('should generate package.json with MyNodeProject', (done) => {
 		assert.file('package.json');
-		assert.fileContent('package.json', /"name": "MyNodeProject"/);
+
+		assert.jsonFileContent('package.json', {
+			name: 'MyNodeProject',
+			email: 'tester@test.test',
+			repository: {
+				type: 'git',
+				url: 'git@test.test:KK578/MyNodeProject.git'
+			}
+		});
 	});
 
 	it('should generate grunt files', () => {
