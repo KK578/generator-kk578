@@ -80,6 +80,7 @@ const generator = generators.Base.extend({
 		return this.prompt(prompts)
 			.then(answers => {
 				this.answers = answers;
+				answers.appName = this.appName;
 			});
 	},
 	gitInit() {
@@ -93,7 +94,7 @@ const generator = generators.Base.extend({
 			});
 		}
 	},
-	gitRemote: function () {
+	gitRemote() {
 		if (!this.answers.gitRemoteUrl) {
 			return;
 		}
@@ -107,6 +108,13 @@ const generator = generators.Base.extend({
 				done();
 			});
 		}
+	},
+	writing() {
+		this.copy('.editorconfig');
+		this.copy('.gitattributes');
+		this.copy('.gitignore');
+		this.template('LICENSE.md', 'LICENSE.md', this.answers);
+		this.template('README.md', 'README.md', this.answers);
 	}
 });
 
