@@ -5,11 +5,19 @@
   "keywords": [
     "yeoman-generator"
   ],
+  "engines": {
+    "node": "<4"
+  },
   "files": [
     "generators/app"
   ],
   "author": {
-    "name": "Kevin Kwan"
+    "name": "Kevin Kwan",
+    "email": "KevinKwan95@googlemail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KK578/generator-kk578.git"
   },
   "dependencies": {
     "yeoman-generator": "^0.24.1"
