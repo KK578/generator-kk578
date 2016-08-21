@@ -59,11 +59,39 @@ const generator = generators.Base.extend({
 				this.composeWith('kk578:app', { options: this.options });
 			});
 	},
+	packageJson() {
+		const packageJson = {
+			name: this.options.appName,
+			version: '0.0.0',
+			author: {
+				name: this.options.name,
+				email: this.options.email
+			},
+			license: 'BSD-3-Clause',
+			devDependencies: {
+				'eslint-formatter-pretty': '^0.2.2',
+				'grunt': '^1.0.1',
+				'grunt-eslint': '^19.0.0',
+				'jit-grunt': '^0.10.0',
+				'load-grunt-config': '^0.19.2',
+				'time-grunt': '^1.4.0'
+			}
+		};
+
+		if (this.options.gitRemoteUrl) {
+			packageJson.repository = {
+				type: 'git',
+				url: this.options.gitRemoteUrl
+			};
+		}
+
+		this.options.packageJson = packageJson;
+	},
 	writing() {
 		this.copy('.eslintrc.json');
 		this.copy('gruntfile.js');
 		this.copy('grunt/eslint.js', 'configs/grunt/eslint.js');
-		this.template('package.json', 'package.json', this.options);
+		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
 	}
 });
 
