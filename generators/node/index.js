@@ -62,7 +62,7 @@ const generator = generators.Base.extend({
 	writing() {
 		this.copy('.eslintrc.json');
 		this.copy('gruntfile.js');
-		this.bulkDirectory('grunt/', 'configs/grunt/');
+		this.copy('grunt/eslint.js', 'configs/grunt/eslint.js');
 		this.template('package.json', 'package.json', this.options);
 	}
 });
