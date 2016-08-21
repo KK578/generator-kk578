@@ -54,6 +54,7 @@ const generator = generators.Base.extend({
 			});
 	},
 	composition() {
+		this.options.nodeServer = true;
 		this.composeWith('kk578:node', { options: this.options });
 	}
 });
