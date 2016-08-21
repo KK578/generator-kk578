@@ -40,4 +40,8 @@ describe('yo kk578:node MyNodeProject', () => {
 	it('should generate misc. config files', () => {
 		assert.file(['.eslintrc.json']);
 	});
+
+	it('should not copy files from development', () => {
+		assert.noFile('node_modules/']);
+	});
 });
