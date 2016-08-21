@@ -33,8 +33,7 @@ describe('yo kk578:node MyNodeProject', () => {
 	});
 
 	it('should generate grunt files', () => {
-		assert.file('gruntfile.js');
-		assert.file(['configs/grunt/']);
+		assert.file(['gruntfile.js', 'configs/grunt/eslint.js']);
 	});
 
 	it('should generate misc. config files', () => {
