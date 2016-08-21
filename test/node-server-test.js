@@ -21,9 +21,35 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 			.toPromise();
 	});
 
-	it('should add new dependencies to package.json', () => {
-		assert.fileContent('package.json', /browser-sync/);
-		assert.fileContent('package.json', /grunt-contrib-uglify/);
+	it('should generate extra dependencies to package.json', () => {
+		assert.fileContent('package.json', /"express"/);
+		assert.fileContent('package.json', /"browser-sync"/);
+		assert.fileContent('package.json', /"grunt-express-server"/);
+		assert.fileContent('package.json', /"grunt-contrib-watch"/);
+		assert.fileContent('package.json', /"grunt-contrib-uglify"/);
+	});
+
+	it('should generate grunt configs for dependencies', () => {
+		assert.file([
+			'configs/grunt/express.js',
+			'configs/grunt/watch.js',
+			'configs/grunt/uglify.js'
+		]);
+	});
+
+	it('should generate controller scripts for express', () => {
+		assert.file([
+			'server/development.js',
+			'server/production.js',
+			'server/server.js'
+		]);
+		assert.file([
+			'server/configs/browser-sync.js',
+			'server/configs/logs.js',
+			'server/configs/router.js',
+			'server/configs/setup.js'
+		]);
+		assert.file(['server/routes/static.js']);
 	});
 
 	it('should not copy files from development', () => {
