@@ -9,5 +9,13 @@
     "type": "git",
     "url": "<%= gitRemoteUrl %>"
   },<% } %>
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "eslint-formatter-pretty": "^0.2.2",
+    "grunt": "^1.0.1",
+    "grunt-eslint": "^19.0.0",
+    "jit-grunt": "^0.10.0",
+    "load-grunt-config": "^0.19.2",
+    "time-grunt": "^1.4.0"
+  }
 }
