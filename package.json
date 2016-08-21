@@ -6,7 +6,8 @@
     "yeoman-generator"
   ],
   "files": [
-    "generators/app"
+    "generators/app",
+    "generators/node"
   ],
   "author": {
     "name": "Kevin Kwan"
