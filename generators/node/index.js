@@ -68,6 +68,7 @@ const generator = generators.Base.extend({
 				email: this.options.email
 			},
 			license: 'BSD-3-Clause',
+			dependencies: {},
 			devDependencies: {
 				'eslint-formatter-pretty': '^0.2.2',
 				'grunt': '^1.0.1',
@@ -83,6 +84,17 @@ const generator = generators.Base.extend({
 				type: 'git',
 				url: this.options.gitRemoteUrl
 			};
+		}
+
+		if (this.options.nodeServer) {
+			Object.assign(packageJson.dependencies, { express: '4.14.0' });
+
+			Object.assign(packageJson.devDependencies, {
+				'browser-sync': '2.14.0',
+				'grunt-contrib-uglify': '^2.0.0',
+				'grunt-contrib-watch': '^1.0.0',
+				'grunt-express-server': '^0.5.3'
+			});
 		}
 
 		this.options.packageJson = packageJson;
