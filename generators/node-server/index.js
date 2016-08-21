@@ -34,13 +34,9 @@ const generator = generators.Base.extend({
 	prompting() {
 		let requiredPrompts = [];
 
-		if (!this.appName) {
-			requiredPrompts.push(util.prompts.appName);
-		}
-
 		util.prompts.node.map(p => {
 			// Check that this hasn't been enabled already as an option.
-			if (!this.options[p.name]) {
+			if (this.options[p.name] === undefined) {
 				// Bind the current git remote to default.
 				if (p.name === 'gitRemoteUrl') {
 					p.default = this.git.remoteUrl;
