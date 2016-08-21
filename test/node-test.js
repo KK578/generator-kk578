@@ -23,13 +23,12 @@ describe('yo kk578:node MyNodeProject', () => {
 	it('should generate package.json with MyNodeProject', () => {
 		assert.file('package.json');
 
+		assert.jsonFileContent('package.json', { name: 'MyNodeProject' });
 		assert.jsonFileContent('package.json', {
-			name: 'MyNodeProject',
-			email: 'tester@test.test',
-			repository: {
-				type: 'git',
-				url: 'git@test.test:KK578/MyNodeProject.git'
-			}
+			author: { name: 'The Tester', email: 'tester@test.test' }
+		});
+		assert.jsonFileContent('package.json', {
+			repository: { type: 'git', url: 'git@test.test:KK578/MyNodeProject.git' }
 		});
 	});
 

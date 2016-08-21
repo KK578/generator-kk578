@@ -27,47 +27,36 @@ function checkForGit(dir, callback) {
 	});
 }
 
-const prompts = {
+let prompts = {
 	appName: {
 		type: 'input',
 		name: 'appName',
 		message: 'Your project name'
-	},
-	app: [
-		{
-			type: 'input',
-			name: 'name',
-			message: 'Your name',
-			store: true
-		},
-		{
-			type: 'input',
-			name: 'email',
-			message: 'Your email address',
-			store: true
-		},
-		{
-			type: 'input',
-			name: 'gitRemoteUrl',
-			message: 'Remote Git repository URL',
-			optional: true
-		}
-	],
-	node: [
-		{
-			type: 'input',
-			name: 'name',
-			message: 'Your name',
-			store: true
-		},
-		{
-			type: 'input',
-			name: 'email',
-			message: 'Your email address',
-			store: true
-		}
-	]
+	}
 };
+
+prompts.app = [
+	{
+		type: 'input',
+		name: 'name',
+		message: 'Your name',
+		store: true
+	},
+	{
+		type: 'input',
+		name: 'email',
+		message: 'Your email address',
+		store: true
+	},
+	{
+		type: 'input',
+		name: 'gitRemoteUrl',
+		message: 'Remote Git repository URL',
+		optional: true
+	}
+];
+
+prompts.node = prompts.app;
 
 exports.checkForGit = checkForGit;
 exports.prompts = prompts;

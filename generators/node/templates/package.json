@@ -4,12 +4,10 @@
   "author": {
     "name": "<%= name %>",
     "email": "<%= email %>"
-  },
-  <%if (gitRemoteUrl) { %>
+  },<% if (gitRemoteUrl) { %>
   "repository": {
     "type": "git",
     "url": "<%= gitRemoteUrl %>"
-  },
-  <% } %>
+  },<% } %>
   "license": "BSD-3-Clause"
 }

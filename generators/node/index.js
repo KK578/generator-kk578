@@ -44,6 +44,11 @@ const generator = generators.Base.extend({
 		util.prompts.node.map(p => {
 			// Check that this hasn't been enabled already as an option.
 			if (!this.options[p.name]) {
+				// Bind the current git remote to default.
+				if (p.name == 'gitRemoteUrl') {
+					p.default = this.git.remoteUrl
+				}
+
 				requiredPrompts.push(p);
 			}
 		});
@@ -56,6 +61,12 @@ const generator = generators.Base.extend({
 
 				this.composeWith('kk578:app', { options: this.options });
 			});
+	},
+	writing() {
+		this.copy('.eslintrc.json');
+		this.copy('gruntfile.js');
+		this.bulkDirectory('grunt/', 'configs/grunt/');
+		this.template('package.json', 'package.json', this.options);
 	}
 });
 
