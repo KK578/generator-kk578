@@ -15,12 +15,9 @@ const generator = generators.Base.extend({
 			optional: true
 		});
 
-		let setOption = p => {
+		util.prompts.node.map(p => {
 			this.option(p.name);
-		};
-
-		util.prompts.app.map(setOption);
-		util.prompts.node.map(setOption);
+		});
 	},
 	initializing() {
 		const done = this.async();
