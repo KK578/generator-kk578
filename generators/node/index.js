@@ -58,9 +58,10 @@ const generator = generators.Base.extend({
 				requiredPrompts.map(p => {
 					this.options[p.name] = answers[p.name];
 				});
-
-				this.composeWith('kk578:app', { options: this.options });
 			});
+	},
+	composition() {
+		this.composeWith('kk578:app', { options: this.options });
 	},
 	writing() {
 		this.copy('.eslintrc.json');
