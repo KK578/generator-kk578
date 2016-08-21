@@ -24,6 +24,10 @@ const generator = generators.Base.extend({
 		// Check for git.
 		const done = this.async();
 
+		if (this.appName) {
+			this.options.appName = this.appName;
+		}
+
 		util.checkForGit(path.join(process.cwd(), '.git'), (git) => {
 			this.git = git;
 			done();
@@ -32,7 +36,7 @@ const generator = generators.Base.extend({
 	prompting() {
 		let requiredPrompts = [];
 
-		if (!this.appName) {
+		if (!this.options.appName) {
 			requiredPrompts.push(util.prompts.appName);
 		}
 
@@ -50,8 +54,6 @@ const generator = generators.Base.extend({
 
 		return this.prompt(requiredPrompts)
 			.then(answers => {
-				this.options.appName = this.appName;
-
 				requiredPrompts.map(p => {
 					this.options[p.name] = answers[p.name];
 				});

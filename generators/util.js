@@ -52,6 +52,20 @@ const prompts = {
 			message: 'Remote Git repository URL',
 			optional: true
 		}
+	],
+	node: [
+		{
+			type: 'input',
+			name: 'name',
+			message: 'Your name',
+			store: true
+		},
+		{
+			type: 'input',
+			name: 'email',
+			message: 'Your email address',
+			store: true
+		}
 	]
 };
 
