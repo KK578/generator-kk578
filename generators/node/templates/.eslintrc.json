@@ -52,7 +52,6 @@
     "no-spaced-func": "error",
     "no-trailing-spaces": "error",
     "no-whitespace-before-property": "error",
-    "object-curly-newline": "error",
     "object-curly-spacing": [ "error", "always" ],
     "one-var": [ "error", "never" ],
     "padded-blocks": [ "error", "never" ],

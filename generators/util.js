@@ -1,5 +1,4 @@
 ﻿const fs = require('fs');
-const path = require('path');
 const spawn = require('child_process').spawn;
 
 function checkForGit(dir, callback) {
@@ -7,7 +6,7 @@ function checkForGit(dir, callback) {
 		let git = {
 			initialised: false,
 			remoteUrl: ''
-		}
+		};
 
 		if (err) {
 			callback(git);

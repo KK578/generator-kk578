@@ -7,17 +7,21 @@
 				src: [
 					'gruntfile.js',
 					'configs/grunt/*.js',
-					'test/**/*.js'
+					'test/*.js',
+					'generators/util.js'
 				]
 			}
 		]
 	},
 	app: {
+		files: { src: 'generators/app/index.js' }
+	},
+	node: {
 		files: [
-			{ src: 'generators/app/index.js' },
+			{ src: 'generators/node/index.js' },
 			{
 				expand: true,
-				cwd: 'generators/app/templates',
+				cwd: 'generators/node/templates',
 				src: [
 					'gruntfile.js',
 					'configs/grunt/*.js'

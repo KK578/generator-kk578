@@ -17,7 +17,7 @@ const generator = generators.Base.extend({
 
 		let setOption = p => {
 			this.option(p.name);
-		}
+		};
 
 		util.prompts.app.map(setOption);
 		util.prompts.node.map(setOption);
@@ -45,8 +45,8 @@ const generator = generators.Base.extend({
 			// Check that this hasn't been enabled already as an option.
 			if (!this.options[p.name]) {
 				// Bind the current git remote to default.
-				if (p.name == 'gitRemoteUrl') {
-					p.default = this.git.remoteUrl
+				if (p.name === 'gitRemoteUrl') {
+					p.default = this.git.remoteUrl;
 				}
 
 				requiredPrompts.push(p);
