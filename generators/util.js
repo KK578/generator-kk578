@@ -2,8 +2,8 @@
 const spawn = require('child_process').spawn;
 
 function checkForGit(dir, callback) {
-	fs.access(dir, fs.constants.F_OK, err => {
-		let git = {
+	fs.access(dir, fs.constants.F_OK, (err) => {
+		const git = {
 			initialised: false,
 			remoteUrl: ''
 		};
@@ -15,7 +15,7 @@ function checkForGit(dir, callback) {
 			git.initialised = true;
 			const gitConfig = spawn('git', ['config', '--get', 'remote.origin.url']);
 
-			gitConfig.stdout.on('data', data => {
+			gitConfig.stdout.on('data', (data) => {
 				git.remoteUrl = data.toString('utf8').replace('\n', '');
 			});
 

@@ -28,5 +28,18 @@
 				]
 			}
 		]
+	},
+	nodeServer: {
+		files: [
+			{ src: 'generators/node-server/index.js' },
+			{
+				expand: true,
+				cwd: 'generators/node-server/templates',
+				src: [
+					'server/*.js',
+					'server/**/*.js'
+				]
+			}
+		]
 	}
 };

@@ -16,7 +16,7 @@ const generator = generators.Base.extend({
 			optional: true
 		});
 
-		util.prompts.app.map(p => {
+		util.prompts.app.map((p) => {
 			this.option(p.name);
 		});
 	},
@@ -34,9 +34,9 @@ const generator = generators.Base.extend({
 		});
 	},
 	prompting() {
-		let requiredPrompts = [];
+		const requiredPrompts = [];
 
-		util.prompts.app.map(p => {
+		util.prompts.app.map((p) => {
 			// Check that this hasn't been enabled already as an option.
 			if (this.options[p.name] === undefined) {
 				// Bind the current git remote to default.
@@ -49,8 +49,8 @@ const generator = generators.Base.extend({
 		});
 
 		return this.prompt(requiredPrompts)
-			.then(answers => {
-				requiredPrompts.map(p => {
+			.then((answers) => {
+				requiredPrompts.map((p) => {
 					this.options[p.name] = answers[p.name];
 				});
 			});
