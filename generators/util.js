@@ -1,5 +1,4 @@
 ﻿const fs = require('fs');
-const path = require('path');
 const spawn = require('child_process').spawn;
 
 function checkForGit(dir, callback) {
@@ -7,7 +6,7 @@ function checkForGit(dir, callback) {
 		let git = {
 			initialised: false,
 			remoteUrl: ''
-		}
+		};
 
 		if (err) {
 			callback(git);
@@ -27,33 +26,36 @@ function checkForGit(dir, callback) {
 	});
 }
 
-const prompts = {
+let prompts = {
 	appName: {
 		type: 'input',
 		name: 'appName',
 		message: 'Your project name'
-	},
-	app: [
-		{
-			type: 'input',
-			name: 'name',
-			message: 'Your name',
-			store: true
-		},
-		{
-			type: 'input',
-			name: 'email',
-			message: 'Your email address',
-			store: true
-		},
-		{
-			type: 'input',
-			name: 'gitRemoteUrl',
-			message: 'Remote Git repository URL',
-			optional: true
-		}
-	]
+	}
 };
+
+prompts.app = [
+	{
+		type: 'input',
+		name: 'name',
+		message: 'Your name',
+		store: true
+	},
+	{
+		type: 'input',
+		name: 'email',
+		message: 'Your email address',
+		store: true
+	},
+	{
+		type: 'input',
+		name: 'gitRemoteUrl',
+		message: 'Remote Git repository URL',
+		optional: true
+	}
+];
+
+prompts.node = prompts.app;
 
 exports.checkForGit = checkForGit;
 exports.prompts = prompts;

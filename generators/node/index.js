@@ -1,5 +1,4 @@
 ﻿const generators = require('yeoman-generator');
-const spawn = require('child_process').spawn;
 const path = require('path');
 
 const util = require('../util.js');
@@ -16,12 +15,11 @@ const generator = generators.Base.extend({
 			optional: true
 		});
 
-		util.prompts.app.map(p => {
+		util.prompts.node.map(p => {
 			this.option(p.name);
 		});
 	},
 	initializing() {
-		// Check for git.
 		const done = this.async();
 
 		if (this.appName) {
@@ -36,11 +34,11 @@ const generator = generators.Base.extend({
 	prompting() {
 		let requiredPrompts = [];
 
-		if (!this.options.appName) {
+		if (!this.appName) {
 			requiredPrompts.push(util.prompts.appName);
 		}
 
-		util.prompts.app.map(p => {
+		util.prompts.node.map(p => {
 			// Check that this hasn't been enabled already as an option.
 			if (!this.options[p.name]) {
 				// Bind the current git remote to default.
@@ -57,40 +55,55 @@ const generator = generators.Base.extend({
 				requiredPrompts.map(p => {
 					this.options[p.name] = answers[p.name];
 				});
+
+				this.composeWith('kk578:app', { options: this.options });
 			});
 	},
-	gitInit() {
-		if (!this.git.initialised) {
-			const done = this.async();
-			const gitInit = spawn('git', ['init']);
+	packageJson() {
+		const packageJson = {
+			name: this.options.appName,
+			version: '0.0.0',
+			author: {
+				name: this.options.name,
+				email: this.options.email
+			},
+			license: 'BSD-3-Clause',
+			dependencies: {},
+			devDependencies: {
+				'eslint-formatter-pretty': '^0.2.2',
+				'grunt': '^1.0.1',
+				'grunt-eslint': '^19.0.0',
+				'jit-grunt': '^0.10.0',
+				'load-grunt-config': '^0.19.2',
+				'time-grunt': '^1.4.0'
+			}
+		};
 
-			gitInit.on('close', () => {
-				this.log('Git repository initialised.');
-				done();
+		if (this.options.gitRemoteUrl) {
+			packageJson.repository = {
+				type: 'git',
+				url: this.options.gitRemoteUrl
+			};
+		}
+
+		if (this.options.nodeServer) {
+			Object.assign(packageJson.dependencies, { express: '4.14.0' });
+
+			Object.assign(packageJson.devDependencies, {
+				'browser-sync': '2.14.0',
+				'grunt-contrib-uglify': '^2.0.0',
+				'grunt-contrib-watch': '^1.0.0',
+				'grunt-express-server': '^0.5.3'
 			});
 		}
-	},
-	gitRemote() {
-		if (!this.options.gitRemoteUrl) {
-			return;
-		}
 
-		if (this.git.remoteUrl !== this.options.gitRemoteUrl) {
-			const done = this.async();
-			const gitRemote = spawn('git', ['remote', 'add', 'origin', this.options.gitRemoteUrl]);
-
-			gitRemote.on('close', () => {
-				this.log(`Git remote url set to "${this.options.gitRemoteUrl}"`);
-				done();
-			});
-		}
+		this.options.packageJson = packageJson;
 	},
 	writing() {
-		this.copy('.editorconfig');
-		this.copy('.gitattributes');
-		this.copy('.gitignore');
-		this.template('LICENSE.md', 'LICENSE.md', this.options);
-		this.template('README.md', 'README.md', this.options);
+		this.copy('.eslintrc.json');
+		this.copy('gruntfile.js');
+		this.copy('grunt/eslint.js', 'configs/grunt/eslint.js');
+		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
 	}
 });
 
