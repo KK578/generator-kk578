@@ -51,6 +51,7 @@
     "no-new-object": "error",
     "no-spaced-func": "error",
     "no-trailing-spaces": "error",
+    "no-useless-concat": "error",
     "no-whitespace-before-property": "error",
     "object-curly-spacing": [ "error", "always" ],
     "one-var": [ "error", "never" ],
@@ -59,6 +60,15 @@
     "semi": "error",
     "space-before-function-paren": [ "error", {"anonymous": "always", "named": "never"} ],
     "space-in-parens": "error",
-    "space-infix-ops": "error"
+    "space-infix-ops": "error",
+
+    // ES6
+    "arrow-body-style": [ "error", "always" ],
+    "arrow-parens": "error",
+    "arrow-spacing": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-template": "error",
+    "template-curly-spacing": "error"
   }
 }
