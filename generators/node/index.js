@@ -81,7 +81,12 @@ const generator = generators.Base.extend({
 		}
 
 		if (this.options.nodeServer) {
-			Object.assign(packageJson.dependencies, { express: '4.14.0' });
+			Object.assign(packageJson.dependencies, {
+				compression: '1.6.2',
+				ejs: '2.5.1',
+				express: '4.14.0',
+				morgan: '1.7.0'
+			});
 
 			Object.assign(packageJson.devDependencies, {
 				'browser-sync': '2.14.0',
