@@ -23,6 +23,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 
 	it('should generate extra dependencies to package.json', () => {
 		assert.fileContent('package.json', /"express"/);
+		assert.fileContent('package.json', /"morgan"/);
 		assert.fileContent('package.json', /"browser-sync"/);
 		assert.fileContent('package.json', /"grunt-express-server"/);
 		assert.fileContent('package.json', /"grunt-contrib-watch"/);
