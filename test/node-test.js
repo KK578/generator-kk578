@@ -32,11 +32,23 @@ describe('yo kk578:node MyNodeProject', () => {
 		});
 	});
 
+	it('should not generate dependencies for package.json for node-server', () => {
+		assert.noFileContent('package.json', /"express"/);
+		assert.noFileContent('package.json', /"browser-sync"/);
+		assert.noFileContent('package.json', /"grunt-express-server"/);
+		assert.noFileContent('package.json', /"grunt-contrib-watch"/);
+		assert.noFileContent('package.json', /"grunt-contrib-uglify"/);
+	});
+
 	it('should generate grunt files', () => {
 		assert.file(['gruntfile.js', 'configs/grunt/eslint.js']);
 	});
 
 	it('should generate misc. config files', () => {
 		assert.file(['.eslintrc.json']);
+	});
+
+	it('should not copy files from development', () => {
+		assert.noFile('node_modules/');
 	});
 });
