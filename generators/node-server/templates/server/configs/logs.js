@@ -2,13 +2,13 @@
 
 module.exports = (server) => {
 	switch (server.get('env')) {
-		case 'production':
-			server.use(morgan('tiny'));
-			break;
-
 		case 'development':
 		default:
 			server.use(morgan('dev'));
+			break;
+
+		case 'production':
+			server.use(morgan('tiny'));
 			break;
 	}
 };
