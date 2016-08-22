@@ -39,7 +39,7 @@
     "max-len": ["error", { "code": 100, "tabWidth": 4, "ignoreUrls": true }],
     "max-statements-per-line": ["warn", { "max": 1 }],
     "max-statements": [ "warn", { "max": 15 }],
-    "new-cap": "error",
+    "new-cap": [ "error", { "capIsNewExceptions": ["Router"] }],
     "new-parens": "error",
     "newline-after-var": "error",
     "newline-before-return": "error",
