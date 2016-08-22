@@ -56,6 +56,19 @@ const generator = generators.Base.extend({
 	composition() {
 		this.options.nodeServer = true;
 		this.composeWith('kk578:node', { options: this.options });
+	},
+	writing() {
+		this.copy('server/server.js');
+		this.copy('server/development.js');
+		this.copy('server/production.js');
+
+		this.copy('server/configs/logs.js');
+		this.copy('server/configs/setup.js');
+		this.copy('server/configs/router.js');
+		this.copy('server/configs/browser-sync.js');
+
+		this.copy('server/routes/static.js');
+		this.copy('server/routes/dev-404.js');
 	}
 });
 

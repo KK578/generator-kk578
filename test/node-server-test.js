@@ -40,7 +40,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 		]);
 	});
 
-	it('should generate controller scripts for express', () => {
+	it('should generate server scripts for express', () => {
 		assert.file([
 			'server/development.js',
 			'server/production.js',
@@ -52,7 +52,10 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 			'server/configs/router.js',
 			'server/configs/setup.js'
 		]);
-		assert.file(['server/routes/static.js']);
+		assert.file([
+			'server/routes/static.js',
+			'server/routes/dev-404.js'
+		]);
 	});
 
 	it('should not copy files from development', () => {
