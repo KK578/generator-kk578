@@ -46,9 +46,9 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 
 	it('should generate grunt configs for dependencies', () => {
 		assert.file([
-			'configs/grunt/express.js',
-			'configs/grunt/watch.js',
-			'configs/grunt/uglify.js'
+			'grunt/express.js',
+			'grunt/watch.js',
+			'grunt/uglify.js'
 		]);
 	});
 

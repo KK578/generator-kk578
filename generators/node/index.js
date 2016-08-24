@@ -98,13 +98,37 @@ const generator = generators.Base.extend({
 
 		this.options.packageJson = packageJson;
 	},
+	gruntAlias() {
+		const aliases = {};
+
+		aliases.lint = {
+			description: 'Lint files in the project.',
+			tasks: [
+				'eslint'
+			]
+		};
+
+		if (this.options.nodeServer) {
+			aliases['watch-build:server'] = {
+				description: 'Watch task for building server files',
+				tasks: [
+					'eslint:server',
+					'uglify:server'
+				]
+			};
+		}
+
+		this.options.grunt = {};
+		this.options.grunt.aliases = aliases;
+	},
 	composition() {
 		this.composeWith('kk578:app', { options: this.options });
 	},
 	writing() {
 		this.copy('.eslintrc.json');
 		this.copy('gruntfile.js');
-		this.copy('grunt/eslint.js', 'configs/grunt/eslint.js');
+		this.copy('grunt/eslint.js', 'grunt/eslint.js');
+		this.write('grunt/aliases.js', `module.exports = ${JSON.stringify(this.options.grunt.aliases, null, 2)};`);
 		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
 	}
 });
