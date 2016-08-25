@@ -1,5 +1,6 @@
 ﻿const generators = require('yeoman-generator');
 const path = require('path');
+const sortObject = require('sort-object-keys');
 
 const util = require('../util.js');
 
@@ -91,6 +92,8 @@ const generator = generators.Base.extend({
 			});
 		}
 
+		packageJson.dependencies = sortObject(packageJson.dependencies);
+		packageJson.devDependencies = sortObject(packageJson.devDependencies);
 		this.options.packageJson = packageJson;
 	},
 	composition() {

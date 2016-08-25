@@ -21,6 +21,7 @@
     "url": "https://github.com/KK578/generator-kk578.git"
   },
   "dependencies": {
+    "sort-object-keys": "^1.1.2",
     "yeoman-generator": "^0.24.1"
   },
   "devDependencies": {
