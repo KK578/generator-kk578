@@ -1,8 +1,8 @@
 ﻿module.exports = {
-	developer: {
+	development: {
 		options: {
 			port: 5000,
-			script: 'build/server/developer.js'
+			script: 'build/server/development.js'
 		}
 	},
 	production: {
@@ -10,10 +10,10 @@
 			script: 'build/server/production.js'
 		}
 	},
-	developerPublic: {
+	developmentPublic: {
 		options: {
 			port: 25565,
-			script: 'build/server/developer.js'
+			script: 'build/server/development.js'
 		}
 	}
 };
