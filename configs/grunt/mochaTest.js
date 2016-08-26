@@ -9,5 +9,5 @@
 	},
 	app: { src: 'test/app-test.js' },
 	node: { src: 'test/node-test.js' },
-	nodeServer: { src: 'test/node-server-test.js' }
+	'node-server': { src: 'test/node-server-test.js' }
 };
