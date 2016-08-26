@@ -58,6 +58,12 @@ const generator = generators.Base.extend({
 		this.composeWith('kk578:node', { options: this.options });
 	},
 	writing() {
+		this.template('npm-shrinkwrap.json', 'npm-shrinkwrap.json', this.options);
+
+		this.copy('grunt/express.js');
+		this.copy('grunt/uglify.js');
+		this.copy('grunt/watch.js');
+
 		this.copy('server/server.js');
 		this.copy('server/development.js');
 		this.copy('server/production.js');
