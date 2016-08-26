@@ -12,7 +12,8 @@ function initLoadGruntConfig(grunt) {
 		configPath: path.join(__dirname, 'configs/grunt'),
 		jitGrunt: {
 			staticMappings: {
-				mochaTest: 'grunt-mocha-test'
+				mochaTest: 'grunt-mocha-test',
+				express: 'grunt-express-server'
 			}
 		}
 	};
