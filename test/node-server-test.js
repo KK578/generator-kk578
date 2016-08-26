@@ -70,6 +70,13 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 		]);
 	});
 
+	it('should generate a .env file', () => {
+		assert.file(['.env']);
+		assert.fileContent('.env', /NODE_ENV=development/);
+		assert.fileContent('.env', /PORT=[0-9]*/);
+		assert.fileContent('.env', /BROWSER_SYNC_PORT=[0-9]*/);
+	});
+
 	it('should not copy files from development', () => {
 		assert.noFile(['build/', 'node_modules/']);
 	});
