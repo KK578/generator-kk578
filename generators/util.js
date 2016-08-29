@@ -150,5 +150,4 @@ exports.generatorConstructor = generatorConstructor;
 exports.generatorInitializing = generatorInitializing;
 exports.generatorPrompting = generatorPrompting;
 
-exports.checkForGit = checkForGit;
 exports.prompts = prompts;
