@@ -15,7 +15,7 @@ const generator = generators.Base.extend({
 		util.generatorInitializing.call(this, done);
 	},
 	prompting() {
-		util.generatorPrompting.call(this, util.prompts.app);
+		return util.generatorPrompting.call(this, util.prompts.app);
 	},
 	gitInit() {
 		if (!this.git.initialised) {
