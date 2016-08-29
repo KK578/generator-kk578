@@ -54,8 +54,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 
 	it('should generate server scripts for express', () => {
 		assert.file([
-			'server/development.js',
-			'server/production.js',
+			'server/start.js',
 			'server/server.js'
 		]);
 		assert.file([
@@ -68,6 +67,13 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 			'server/routes/static.js',
 			'server/routes/dev-404.js'
 		]);
+	});
+
+	it('should generate a .env file', () => {
+		assert.file(['.env']);
+		assert.fileContent('.env', /NODE_ENV=development/);
+		assert.fileContent('.env', /PORT=[0-9]*/);
+		assert.fileContent('.env', /PORT_BROWSER_SYNC=[0-9]*/);
 	});
 
 	it('should not copy files from development', () => {

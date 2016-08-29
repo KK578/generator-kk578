@@ -8,7 +8,7 @@
 
 	// Defer browser-sync initialisation until next tick to ensure the express server is running.
 	process.nextTick(() => {
-		const port = process.env.BROWSER_SYNC_PORT || 3000;
+		const port = process.env.PORT_BROWSER_SYNC || 3000;
 		const proxy = `localhost:${parseInt(server.get('port'))}`;
 		const files = [
 			{

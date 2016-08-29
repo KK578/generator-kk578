@@ -92,7 +92,7 @@ const generator = generators.Base.extend({
 				'browser-sync': '2.14.0',
 				'grunt-contrib-uglify': '^2.0.0',
 				'grunt-contrib-watch': '^1.0.0',
-				'grunt-express-server': '^0.5.3'
+				'grunt-express-server': 'KK578/grunt-express-server'
 			});
 		}
 
