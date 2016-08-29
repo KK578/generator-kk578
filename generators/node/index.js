@@ -121,7 +121,8 @@ const generator = generators.Base.extend({
 				description: 'Watch task for building server files',
 				tasks: [
 					'eslint:server',
-					'uglify:server'
+					'uglify:server',
+					'sync:server'
 				]
 			};
 		}
