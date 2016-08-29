@@ -58,8 +58,9 @@ prompts.app = prompts.all.concat([
 ]);
 
 prompts.node = prompts.app;
-
 prompts.nodeServer = prompts.node;
+
+prompts.polymerApp = prompts.nodeServer;
 
 exports.checkForGit = checkForGit;
 exports.prompts = prompts;
