@@ -117,7 +117,7 @@ const generator = generators.Base.extend({
 				]
 			};
 
-			aliases['watch-build:server'] = {
+			aliases['build:server'] = {
 				description: 'Watch task for building server files',
 				tasks: [
 					'eslint:server',
