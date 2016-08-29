@@ -109,6 +109,14 @@ const generator = generators.Base.extend({
 		};
 
 		if (this.options.nodeServer) {
+			aliases.serve = {
+				description: 'Start server and watch for file changes',
+				tasks: [
+					'express',
+					'watch'
+				]
+			};
+
 			aliases['watch-build:server'] = {
 				description: 'Watch task for building server files',
 				tasks: [
