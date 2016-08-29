@@ -7,7 +7,16 @@
 		options: {
 			reload: true
 		},
-		files: ['server/**/*.js'],
-		tasks: ['watch-build:server']
+		files: [
+			'gruntfile.js',
+			'grunt/*.js',
+			'server/**/*.js'
+		],
+		tasks: [
+			'express:stop',
+			'eslint:server',
+			'watch-build:server',
+			'express'
+		]
 	}
 };
