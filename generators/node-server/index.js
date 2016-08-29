@@ -62,6 +62,7 @@ const generator = generators.Base.extend({
 		this.copy('.env');
 
 		this.copy('grunt/express.js');
+		this.copy('grunt/sync.js');
 		this.copy('grunt/uglify.js');
 		this.copy('grunt/watch.js');
 
