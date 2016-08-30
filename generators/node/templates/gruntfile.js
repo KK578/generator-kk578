@@ -9,10 +9,11 @@ function initTimeGrunt(grunt) {
 function initLoadGruntConfig(grunt) {
 	const loadGruntConfig = require('load-grunt-config');
 	const options = {
-		configPath: path.join(__dirname, 'configs/grunt'),
+		configPath: path.join(__dirname, 'grunt'),
 		jitGrunt: {
 			staticMappings: {
-				mochaTest: 'grunt-mocha-test'
+				mochaTest: 'grunt-mocha-test',
+				express: 'grunt-express-server'
 			}
 		}
 	};

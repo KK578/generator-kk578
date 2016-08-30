@@ -23,24 +23,39 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 
 	it('should generate extra dependencies to package.json', () => {
 		assert.fileContent('package.json', /"express"/);
+		assert.fileContent('package.json', /"morgan"/);
+		assert.fileContent('package.json', /"ejs"/);
+		assert.fileContent('package.json', /"compression"/);
 		assert.fileContent('package.json', /"browser-sync"/);
 		assert.fileContent('package.json', /"grunt-express-server"/);
 		assert.fileContent('package.json', /"grunt-contrib-watch"/);
 		assert.fileContent('package.json', /"grunt-contrib-uglify"/);
 	});
 
+	it('should generate npm-shrinkwrap for uglifyjs', () => {
+		assert.file('npm-shrinkwrap.json');
+		assert.jsonFileContent('npm-shrinkwrap.json', {
+			name: 'MyNodeServerProject',
+			dependencies: {
+				'uglify-js': {
+					from: 'mishoo/UglifyJS2#harmony'
+				}
+			}
+		});
+	});
+
 	it('should generate grunt configs for dependencies', () => {
 		assert.file([
-			'configs/grunt/express.js',
-			'configs/grunt/watch.js',
-			'configs/grunt/uglify.js'
+			'grunt/express.js',
+			'grunt/sync.js',
+			'grunt/uglify.js',
+			'grunt/watch.js'
 		]);
 	});
 
-	it('should generate controller scripts for express', () => {
+	it('should generate server scripts for express', () => {
 		assert.file([
-			'server/development.js',
-			'server/production.js',
+			'server/start.js',
 			'server/server.js'
 		]);
 		assert.file([
@@ -49,7 +64,17 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 			'server/configs/router.js',
 			'server/configs/setup.js'
 		]);
-		assert.file(['server/routes/static.js']);
+		assert.file([
+			'server/routes/static.js',
+			'server/routes/dev-404.js'
+		]);
+	});
+
+	it('should generate a .env file', () => {
+		assert.file(['.env']);
+		assert.fileContent('.env', /NODE_ENV=development/);
+		assert.fileContent('.env', /PORT=[0-9]*/);
+		assert.fileContent('.env', /PORT_BROWSER_SYNC=[0-9]*/);
 	});
 
 	it('should not copy files from development', () => {

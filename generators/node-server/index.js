@@ -56,6 +56,26 @@ const generator = generators.Base.extend({
 	composition() {
 		this.options.nodeServer = true;
 		this.composeWith('kk578:node', { options: this.options });
+	},
+	writing() {
+		this.template('npm-shrinkwrap.json', 'npm-shrinkwrap.json', this.options);
+		this.copy('.env');
+
+		this.copy('grunt/express.js');
+		this.copy('grunt/sync.js');
+		this.copy('grunt/uglify.js');
+		this.copy('grunt/watch.js');
+
+		this.copy('server/server.js');
+		this.copy('server/start.js');
+
+		this.copy('server/configs/logs.js');
+		this.copy('server/configs/setup.js');
+		this.copy('server/configs/router.js');
+		this.copy('server/configs/browser-sync.js');
+
+		this.copy('server/routes/static.js');
+		this.copy('server/routes/dev-404.js');
 	}
 });
 

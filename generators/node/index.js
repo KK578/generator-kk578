@@ -82,13 +82,18 @@ const generator = generators.Base.extend({
 		}
 
 		if (this.options.nodeServer) {
-			Object.assign(packageJson.dependencies, { express: '4.14.0' });
+			Object.assign(packageJson.dependencies, {
+				compression: '1.6.2',
+				ejs: '2.5.1',
+				express: '4.14.0',
+				morgan: '1.7.0'
+			});
 
 			Object.assign(packageJson.devDependencies, {
 				'browser-sync': '2.14.0',
 				'grunt-contrib-uglify': '^2.0.0',
 				'grunt-contrib-watch': '^1.0.0',
-				'grunt-express-server': '^0.5.3'
+				'grunt-express-server': 'KK578/grunt-express-server'
 			});
 		}
 
@@ -96,13 +101,46 @@ const generator = generators.Base.extend({
 		packageJson.devDependencies = sortObject(packageJson.devDependencies);
 		this.options.packageJson = packageJson;
 	},
+	gruntAlias() {
+		const aliases = {};
+
+		aliases.lint = {
+			description: 'Lint files in the project.',
+			tasks: [
+				'eslint'
+			]
+		};
+
+		if (this.options.nodeServer) {
+			aliases.serve = {
+				description: 'Start server and watch for file changes',
+				tasks: [
+					'express',
+					'watch'
+				]
+			};
+
+			aliases['watch-build:server'] = {
+				description: 'Watch task for building server files',
+				tasks: [
+					'eslint:server',
+					'uglify:server',
+					'sync:server'
+				]
+			};
+		}
+
+		this.options.grunt = {};
+		this.options.grunt.aliases = aliases;
+	},
 	composition() {
 		this.composeWith('kk578:app', { options: this.options });
 	},
 	writing() {
 		this.copy('.eslintrc.json');
 		this.copy('gruntfile.js');
-		this.copy('grunt/eslint.js', 'configs/grunt/eslint.js');
+		this.copy('grunt/eslint.js', 'grunt/eslint.js');
+		this.write('grunt/aliases.js', `module.exports = ${JSON.stringify(this.options.grunt.aliases, null, 2)};`);
 		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
 	}
 });
