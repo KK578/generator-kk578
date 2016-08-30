@@ -62,13 +62,13 @@ const generator = generators.Base.extend({
 		this.options.packageJson = packageJson;
 	},
 	gruntTasks() {
-		this.options.grunt = util.prepareGruntConfigs(this.options);
+		this.options.grunt = util.grunt.prepareConfigs(this.options);
 	},
 	composition() {
 		this.composeWith('kk578:app', { options: this.options });
 	},
 	writing() {
-		const gruntConfigs = util.stringifyGruntConfigs(this.options.grunt);
+		const gruntConfigs = util.grunt.stringifyConfigs(this.options.grunt);
 
 		this.copy('.eslintrc.json');
 
