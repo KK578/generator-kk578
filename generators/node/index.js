@@ -64,48 +64,23 @@ const generator = generators.Base.extend({
 		packageJson.devDependencies = sortObject(packageJson.devDependencies);
 		this.options.packageJson = packageJson;
 	},
-	gruntAlias() {
-		const aliases = {};
-
-		aliases.lint = {
-			description: 'Lint files in the project.',
-			tasks: [
-				'eslint'
-			]
-		};
-
-		if (this.options.nodeServer) {
-			aliases.serve = {
-				description: 'Start server and watch for file changes',
-				tasks: [
-					'express',
-					'watch'
-				]
-			};
-
-			aliases['build:server'] = {
-				description: 'Watch task for building server files',
-				tasks: [
-					'eslint:server',
-					'uglify:server',
-					'sync:server'
-				]
-			};
-		}
-
-		this.options.grunt = {};
-		this.options.grunt.aliases = aliases;
+	gruntTasks() {
+		this.options.grunt = util.grunt.prepareConfigs(this.options);
 	},
 	composition() {
 		this.composeWith('kk578:app', { options: this.options });
 	},
 	writing() {
+		const gruntConfigs = util.grunt.stringifyConfigs(this.options.grunt);
+
 		this.copy('.eslintrc.json');
-		this.copy('gruntfile.js');
-		this.copy('grunt/eslint.js', 'grunt/eslint.js');
-		this.write('grunt/aliases.js', `module.exports = ${
-			JSON.stringify(this.options.grunt.aliases, null, 2)};`);
+
 		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
+
+		this.copy('gruntfile.js');
+		gruntConfigs.map((config) => {
+			this.write(config.file, config.content);
+		});
 	}
 });
 

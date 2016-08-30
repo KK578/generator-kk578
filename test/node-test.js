@@ -26,14 +26,6 @@ describe('yo kk578:node MyNodeProject', () => {
 		assert.file(['.eslintrc.json']);
 	});
 
-	it('should generate grunt files', () => {
-		assert.file([
-			'gruntfile.js',
-			'grunt/eslint.js',
-			'grunt/aliases.js'
-		]);
-	});
-
 	it('should not copy files from development', () => {
 		assert.noFile('node_modules/');
 	});
@@ -61,6 +53,34 @@ describe('yo kk578:node MyNodeProject', () => {
 			assert.noFileContent('package.json', /"grunt-express-server"/);
 			assert.noFileContent('package.json', /"grunt-contrib-watch"/);
 			assert.noFileContent('package.json', /"grunt-contrib-uglify"/);
+		});
+	});
+
+	describe('Grunt', () => {
+		it('should generate gruntfile.js', () => {
+			assert.file('gruntfile.js');
+		});
+
+		it('should generate grunt configs', () => {
+			assert.file([
+				'grunt/eslint.js',
+				'grunt/aliases.js'
+			]);
+		});
+
+		it('should not add tasks specific to node-server', () => {
+			assert.noFileContent('grunt/aliases.js', /serve/);
+			assert.noFileContent('grunt/aliases.js', /build:server/);
+			assert.noFileContent('grunt/eslint.js', /server/);
+		});
+
+		it('should not generate grunt configs for node-server', () => {
+			assert.noFile([
+				'grunt/express.js',
+				'grunt/sync.js',
+				'grunt/uglify.js',
+				'grunt/watch.js'
+			]);
 		});
 	});
 });

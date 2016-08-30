@@ -2,6 +2,8 @@
 const spawn = require('child_process').spawn;
 const path = require('path');
 
+const utilGrunt = require('./util-grunt.js');
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Helpers
 /**
@@ -154,3 +156,5 @@ exports.generatorInitializing = generatorInitializing;
 exports.generatorPrompting = generatorPrompting;
 
 exports.prompts = prompts;
+
+exports.grunt = utilGrunt;

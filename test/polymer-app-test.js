@@ -86,7 +86,15 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 	});
 
 	describe('Grunt', () => {
-		it('should generate grunt configs for new dependencies', () => {
+		it('should add new tasks for Bower', () => {
+			assert.fileContent('grunt/aliases.js', /build:bower/);
+			assert.fileContent('grunt/uglify.js', /bower/);
+			assert.fileContent('grunt/watch.js', /bower/);
+			assert.fileContent('grunt/minifyPolymer.js', /bower/);
+			assert.fileContent('grunt/minifyPolymerCSS.js', /bower/);
+		});
+
+		it('should generate additional grunt configs for polymer-app', () => {
 			assert.file([
 				'grunt/babel.js',
 				'grunt/bower.js',
@@ -95,14 +103,6 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'grunt/sass.js',
 				'grunt/vulcanize.js'
 			]);
-		});
-
-		it('should add new tasks for Bower', () => {
-			assert.file('grunt/aliases.js', /build:bower/);
-			assert.file('grunt/uglify.js', /bower/);
-			assert.file('grunt/watch.js', /bower/);
-			assert.file('grunt/minifyPolymer.js', /bower/);
-			assert.file('grunt/minifyPolymerCSS.js', /bower/);
 		});
 	});
 

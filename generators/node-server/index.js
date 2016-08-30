@@ -24,11 +24,6 @@ const generator = generators.Base.extend({
 		this.template('npm-shrinkwrap.json', 'npm-shrinkwrap.json', this.options);
 		this.copy('.env');
 
-		this.copy('grunt/express.js');
-		this.copy('grunt/sync.js');
-		this.copy('grunt/uglify.js');
-		this.copy('grunt/watch.js');
-
 		this.copy('server/server.js');
 		this.copy('server/start.js');
 
