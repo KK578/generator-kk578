@@ -148,9 +148,61 @@ prompts.nodeServer = prompts.node;
 prompts.polymerApp = prompts.nodeServer;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+// Grunt Configs
+function prepareGruntConfigs(options) {
+	const grunt = {};
+
+	grunt.aliases = gruntAliases(options);
+
+	return grunt;
+}
+
+function writeGruntConfigs(writer, configs) {
+	const keys = Object.keys(configs);
+	keys.map((key) => {
+		console.log(key, configs[key]);
+	});
+}
+
+function gruntAliases(options) {
+	const aliases = {};
+
+	aliases.lint = {
+		description: 'Lint files in the project.',
+		tasks: [
+			'eslint'
+		]
+	};
+
+	if (options.nodeServer) {
+		aliases.serve = {
+			description: 'Start server and watch for file changes',
+			tasks: [
+				'express',
+				'watch'
+			]
+		};
+
+		aliases['build:server'] = {
+			description: 'Watch task for building server files',
+			tasks: [
+				'eslint:server',
+				'uglify:server',
+				'sync:server'
+			]
+		};
+	}
+
+	return aliases;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 // Exports
 exports.generatorConstructor = generatorConstructor;
 exports.generatorInitializing = generatorInitializing;
 exports.generatorPrompting = generatorPrompting;
 
 exports.prompts = prompts;
+
+exports.prepareGruntConfigs = prepareGruntConfigs;
+exports.writeGruntConfigs = writeGruntConfigs;
