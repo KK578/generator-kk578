@@ -15,6 +15,19 @@ describe('yo kk578 MyProject', () => {
 			.toPromise();
 	});
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////
+
+	it('should generate misc. config files', () => {
+		assert.file(['.editorconfig', 'README.md', 'LICENSE.md']);
+	});
+
+	it('should add project information to relevant items', () => {
+		assert.fileContent('README.md', /^\# MyProject/);
+
+		assert.fileContent('LICENSE.md', /MyProject/);
+		assert.fileContent('LICENSE.md', /The Tester \(tester@test.test\)/);
+	});
+
 	describe('Git', () => {
 		it('should generate git config files', () => {
 			assert.file(['.gitignore', '.gitattributes']);
@@ -24,10 +37,5 @@ describe('yo kk578 MyProject', () => {
 			assert.file('.git/');
 			assert.fileContent('.git/config', /url = git@test.test:KK578\/MyProject\.git/m);
 		});
-	});
-
-	it('should generate misc. config files', () => {
-		assert.file(['.editorconfig', 'README.md', 'LICENSE.md']);
-		assert.fileContent('README.md', /^\# MyProject/);
 	});
 });
