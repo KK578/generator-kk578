@@ -100,7 +100,7 @@ function gruntUglify(options) {
 					dest: 'build/server/'
 				}
 			]
-		}
+		};
 	}
 
 	return uglify;
