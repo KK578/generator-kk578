@@ -37,7 +37,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				authors: [
 					{ name: 'The Tester', email: 'tester@test.test' }
 				],
-				repository: { type: 'git', url: 'git@test.test:KK578/MyNodeProject.git' }
+				repository: { type: 'git', url: 'git@test.test:KK578/MyPolymerAppProject.git' }
 			});
 		});
 
