@@ -15,7 +15,7 @@
 		tasks: [
 			'express:stop',
 			'eslint:server',
-			'watch-build:server',
+			'build:server',
 			'express'
 		]
 	}
