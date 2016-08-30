@@ -59,13 +59,97 @@ function gruntEslint(options) {
 	return eslint;
 }
 
+function gruntExpress(options) {
+	const express = {};
+
+	if (options.nodeServer) {
+		express.all = {
+			options: {
+				script: 'build/server/start.js'
+			}
+		};
+	}
+
+	return express;
+}
+
+function gruntSync(options) {
+	const sync = {};
+
+	if (options.nodeServer) {
+		sync.server = {
+			files: {
+				'build/.env': '.env'
+			}
+		};
+	}
+
+	return sync;
+}
+
+function gruntUglify(options) {
+	const uglify = {};
+
+	if (options.nodeServer) {
+		uglify.server = {
+			files: [
+				{
+					expand: true,
+					cwd: 'server/',
+					src: ['**/*.js'],
+					dest: 'build/server/'
+				}
+			]
+		}
+	}
+
+	return uglify;
+}
+
+function gruntWatch(options) {
+	const watch = {};
+
+	if (options.nodeServer) {
+		watch.options = {
+			spawn: false,
+			interrupt: true
+		};
+
+		watch.server = {
+			options: {
+				reload: true
+			},
+			files: [
+				'gruntfile.js',
+				'grunt/*.js',
+				'server/**/*.js'
+			],
+			tasks: [
+				'express:stop',
+				'eslint:server',
+				'build:server',
+				'express'
+			]
+		};
+	}
+
+	return watch;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Initialisation and preparation for writing
 function prepareConfigs(options) {
 	const grunt = {};
 
+	// App
 	grunt.aliases = gruntAliases(options);
 	grunt.eslint = gruntEslint(options);
+
+	// Node Server
+	grunt.express = gruntExpress(options);
+	grunt.sync = gruntSync(options);
+	grunt.uglify = gruntUglify(options);
+	grunt.watch = gruntWatch(options);
 
 	return grunt;
 }
@@ -75,10 +159,12 @@ function stringifyConfigs(configs) {
 	const keys = Object.keys(configs);
 
 	keys.map((key) => {
-		stringifiedConfigs.push({
-			file: `grunt/${key}.js`,
-			content: `module.exports = ${JSON.stringify(configs[key], null, '\t')};`
-		});
+		if (Object.keys(configs[key]).length !== 0) {
+			stringifiedConfigs.push({
+				file: `grunt/${key}.js`,
+				content: `module.exports = ${JSON.stringify(configs[key], null, '\t')};`
+			});
+		}
 	});
 
 	return stringifiedConfigs;
