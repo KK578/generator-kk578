@@ -68,13 +68,17 @@ const generator = generators.Base.extend({
 		this.composeWith('kk578:app', { options: this.options });
 	},
 	writing() {
+		const gruntConfigs = util.stringifyGruntConfigs(this.options.grunt);
+
 		this.copy('.eslintrc.json');
+
+		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
+
 		this.copy('gruntfile.js');
 		this.copy('grunt/eslint.js', 'grunt/eslint.js');
-		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
-		util.writeGruntConfigs(this.write, this.options.grunt);
-		//this.write('grunt/aliases.js', `module.exports = ${
-		//	JSON.stringify(this.options.grunt.aliases, null, 2)};`);
+		gruntConfigs.map((config) => {
+			this.write(config.file, config.content);
+		});
 	}
 });
 

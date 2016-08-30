@@ -157,11 +157,18 @@ function prepareGruntConfigs(options) {
 	return grunt;
 }
 
-function writeGruntConfigs(writer, configs) {
+function stringifyGruntConfigs(configs) {
+	const stringifiedConfigs = [];
 	const keys = Object.keys(configs);
+
 	keys.map((key) => {
-		console.log(key, configs[key]);
+		stringifiedConfigs.push({
+			file: `grunt/${key}.js`,
+			content: `module.exports = ${JSON.stringify(configs[key], null, '\t')};`
+		});
 	});
+
+	return stringifiedConfigs;
 }
 
 function gruntAliases(options) {
@@ -205,4 +212,4 @@ exports.generatorPrompting = generatorPrompting;
 exports.prompts = prompts;
 
 exports.prepareGruntConfigs = prepareGruntConfigs;
-exports.writeGruntConfigs = writeGruntConfigs;
+exports.stringifyGruntConfigs = stringifyGruntConfigs;
