@@ -1,5 +1,4 @@
 ﻿const generators = require('yeoman-generator');
-const path = require('path');
 
 const util = require('../util.js');
 
@@ -11,6 +10,7 @@ const generator = generators.Base.extend({
 	},
 	initializing() {
 		const done = this.async();
+
 		util.generatorInitializing.call(this, done);
 	},
 	prompting() {
@@ -100,7 +100,8 @@ const generator = generators.Base.extend({
 		this.copy('.eslintrc.json');
 		this.copy('gruntfile.js');
 		this.copy('grunt/eslint.js', 'grunt/eslint.js');
-		this.write('grunt/aliases.js', `module.exports = ${JSON.stringify(this.options.grunt.aliases, null, 2)};`);
+		this.write('grunt/aliases.js', `module.exports = ${
+			JSON.stringify(this.options.grunt.aliases, null, 2)};`);
 		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
 	}
 });

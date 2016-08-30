@@ -1,6 +1,5 @@
 ﻿const generators = require('yeoman-generator');
 const spawn = require('child_process').spawn;
-const path = require('path');
 
 const util = require('../util.js');
 
@@ -12,6 +11,7 @@ const generator = generators.Base.extend({
 	},
 	initializing() {
 		const done = this.async();
+
 		util.generatorInitializing.call(this, done);
 	},
 	prompting() {

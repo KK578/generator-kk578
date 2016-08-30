@@ -8,8 +8,10 @@ const path = require('path');
  * Helper function to determine if a git repo is already present in the directory.
  *
  * @param dir String - Directory to check.
- * @param callback Function (Object) - Callback returning an object { initialized: Boolean, url: String }
-										with the origin git remote url at origin (May be empty).
+ * @param callback Function (Object) - Callback returning an object with the origin git remote
+										url at origin (May be empty).
+										{ initialized: Boolean, url: String }
+
  */
 function checkForGit(dir, callback) {
 	fs.access(dir, fs.constants.F_OK, (err) => {
