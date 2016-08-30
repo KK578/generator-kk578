@@ -1,6 +1,4 @@
-﻿const path = require('path');
-
-function initTimeGrunt(grunt) {
+﻿function initTimeGrunt(grunt) {
 	const timeGrunt = require('time-grunt');
 
 	timeGrunt(grunt);
@@ -9,7 +7,6 @@ function initTimeGrunt(grunt) {
 function initLoadGruntConfig(grunt) {
 	const loadGruntConfig = require('load-grunt-config');
 	const options = {
-		configPath: path.join(__dirname, 'configs/grunt'),
 		jitGrunt: {
 			staticMappings: {
 				mochaTest: 'grunt-mocha-test'
