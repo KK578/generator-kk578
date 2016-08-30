@@ -61,7 +61,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 	describe('npm', () => {
 		it('should generate extra devDependencies to package.json', () => {
 			assert.fileContent('package.json', /"grunt-babel"/);
-			assert.fileContent('package.json', /"grunt-bower"/);
+			assert.fileContent('package.json', /"grunt-bower-task"/);
 			assert.fileContent('package.json', /"grunt-minify-polymer"/);
 			assert.fileContent('package.json', /"grunt-sass"/);
 			assert.fileContent('package.json', /"grunt-vulcanize"/);
