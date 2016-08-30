@@ -30,15 +30,6 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 		assert.fileContent('.env', /PORT_BROWSER_SYNC=[0-9]*/);
 	});
 
-	it('should generate grunt configs for dependencies', () => {
-		assert.file([
-			'grunt/express.js',
-			'grunt/sync.js',
-			'grunt/uglify.js',
-			'grunt/watch.js'
-		]);
-	});
-
 	it('should not copy files from development', () => {
 		assert.noFile(['build/', 'node_modules/']);
 	});
@@ -67,6 +58,23 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 					'uglify-js': { from: 'mishoo/UglifyJS2#harmony' }
 				}
 			});
+		});
+	});
+
+	describe('Grunt', () => {
+		it('should add additional tasks specific to node-server', () => {
+			assert.fileContent('grunt/aliases.js', /serve/);
+			assert.fileContent('grunt/aliases.js', /build:server/);
+			assert.fileContent('grunt/eslint.js', /server/);
+		});
+
+		it('should generate additional grunt configs for node-server', () => {
+			assert.file([
+				'grunt/express.js',
+				'grunt/sync.js',
+				'grunt/uglify.js',
+				'grunt/watch.js'
+			]);
 		});
 	});
 
