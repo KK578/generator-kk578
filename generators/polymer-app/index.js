@@ -56,6 +56,7 @@ const generator = generators.Base.extend({
 		this.composeWith('kk578:node-server', { options: this.options });
 	},
 	writing() {
+		this.copy('.bowerrc');
 		this.write('bower.json', JSON.stringify(this.options.bowerJson, null, 2));
 	}
 });
