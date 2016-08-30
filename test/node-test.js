@@ -49,8 +49,14 @@ describe('yo kk578:node MyNodeProject', () => {
 			});
 		});
 
-		it('should not generate dependencies for package.json for node-server', () => {
+		it('should not generate dependencies to package.json for node-server', () => {
 			assert.noFileContent('package.json', /"express"/);
+			assert.noFileContent('package.json', /"morgan"/);
+			assert.noFileContent('package.json', /"ejs"/);
+			assert.noFileContent('package.json', /"compression"/);
+		});
+
+		it('should not generate devDependencies to package.json for node-server', () => {
 			assert.noFileContent('package.json', /"browser-sync"/);
 			assert.noFileContent('package.json', /"grunt-express-server"/);
 			assert.noFileContent('package.json', /"grunt-contrib-watch"/);
