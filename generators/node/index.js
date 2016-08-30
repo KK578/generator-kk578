@@ -75,7 +75,6 @@ const generator = generators.Base.extend({
 		this.write('package.json', JSON.stringify(this.options.packageJson, null, 2));
 
 		this.copy('gruntfile.js');
-		this.copy('grunt/eslint.js', 'grunt/eslint.js');
 		gruntConfigs.map((config) => {
 			this.write(config.file, config.content);
 		});
