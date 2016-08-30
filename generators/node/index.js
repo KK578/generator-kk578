@@ -46,18 +46,28 @@ const generator = generators.Base.extend({
 
 		if (this.options.nodeServer) {
 			Object.assign(packageJson.dependencies, {
-				compression: '1.6.2',
-				ejs: '2.5.1',
-				express: '4.14.0',
-				morgan: '1.7.0'
+				compression: '^1.6.2',
+				ejs: '^2.5.1',
+				express: '^4.14.0',
+				morgan: '^1.7.0'
 			});
 
 			Object.assign(packageJson.devDependencies, {
-				'browser-sync': '2.14.0',
+				'browser-sync': '^2.14.0',
 				'grunt-contrib-uglify': '^2.0.0',
 				'grunt-contrib-watch': '^1.0.0',
 				'grunt-express-server': 'KK578/grunt-express-server'
 			});
+
+			if (this.options.polymerApp) {
+				Object.assign(packageJson.devDependencies, {
+					'grunt-babel': '^6.0.0',
+					'grunt-bower-task': '^0.4.0',
+					'grunt-minify-polymer': '^2.1.1',
+					'grunt-sass': '^1.2.1',
+					'grunt-vulcanize': '^1.0.0',
+				});
+			}
 		}
 
 		packageJson.dependencies = sortObject(packageJson.dependencies);
