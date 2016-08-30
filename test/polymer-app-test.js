@@ -22,18 +22,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			.toPromise();
 	});
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////
-
-	it('should generate grunt configs for dependencies', () => {
-		assert.file([
-			'grunt/babel.js',
-			'grunt/bower.js',
-			'grunt/minifyPolymer.js',
-			'grunt/minifyPolymerCss.js',
-			'grunt/sass.js',
-			'grunt/vulcanize.js'
-		]);
-	});
+	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	it('should not copy files from development', () => {
 		assert.noFile(['build/', 'node_modules/']);
@@ -41,12 +30,12 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 
 	describe('Bower', () => {
 		it('should generate bower.json with MyPolymerAppProject', () => {
-			assert.file('bower.json']);
+			assert.file('bower.json');
 
 			assert.jsonFileContent('bower.json', {
 				name: 'MyPolymerAppProject',
 				authors: [
-					{ name: 'The Tester', email: 'tester@test.test'}
+					{ name: 'The Tester', email: 'tester@test.test' }
 				],
 				repository: { type: 'git', url: 'git@test.test:KK578/MyNodeProject.git' }
 			});
@@ -54,7 +43,8 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 
 		it('should have basic polymer dependencies', () => {
 			assert.fileContent('bower.json', /"polymer": "Polymer\/polymer.*"/);
-			assert.fileContent('bower.json', /"paper-elements": "PolymerElements\/paper-elements.*"/);
+			assert.fileContent('bower.json',
+				/"paper-elements": "PolymerElements\/paper-elements.*"/);
 		});
 
 		it('should have basic polymer devDependencies', () => {
@@ -82,7 +72,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 		it('should generate browser-sync plugins', () => {
 			assert.file([
 				'server/configs/browser-sync/plugins/scroll.js',
-				'server/configs/browser-sync/handlers/polymer-style-inject.js',
+				'server/configs/browser-sync/handlers/polymer-style-inject.js'
 			]);
 		});
 
@@ -92,6 +82,27 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'server/routes/staging.js',
 				'server/routes/wct.js'
 			]);
+		});
+	});
+
+	describe('Grunt', () => {
+		it('should generate grunt configs for new dependencies', () => {
+			assert.file([
+				'grunt/babel.js',
+				'grunt/bower.js',
+				'grunt/minifyPolymer.js',
+				'grunt/minifyPolymerCSS.js',
+				'grunt/sass.js',
+				'grunt/vulcanize.js'
+			]);
+		});
+
+		it('should add new tasks for Bower', () => {
+			assert.file('grunt/aliases.js', /build:bower/);
+			assert.file('grunt/uglify.js', /bower/);
+			assert.file('grunt/watch.js', /bower/);
+			assert.file('grunt/minifyPolymer.js', /bower/);
+			assert.file('grunt/minifyPolymerCSS.js', /bower/);
 		});
 	});
 
