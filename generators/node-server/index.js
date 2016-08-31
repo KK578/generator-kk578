@@ -33,7 +33,7 @@ const generator = generators.Base.extend({
 		this.copy('server/configs/browser-sync.js');
 
 		this.copy('server/routes/static.js');
-		this.copy('server/routes/dev-404.js');
+		this.copy('server/routes/404.dev.js');
 	}
 });
 
