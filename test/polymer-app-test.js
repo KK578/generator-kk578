@@ -79,6 +79,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 		it('should generate additional server routes', () => {
 			assert.file([
 				'server/routes/bower.js',
+				'server/routes/components.js',
 				'server/routes/staging.js',
 				'server/routes/wct.js'
 			]);
@@ -99,21 +100,71 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 
 		it('should add new tasks for Bower', () => {
 			assert.fileContent('grunt/aliases.js', /build:bower/);
-			assert.fileContent('grunt/uglify.js', /bower/);
-			assert.fileContent('grunt/watch.js', /bower/);
+			assert.fileContent('grunt/bower.js', /development/);
+			assert.fileContent('grunt/bower.js', /production/);
 			assert.fileContent('grunt/minifyPolymer.js', /bower/);
 			assert.fileContent('grunt/minifyPolymerCSS.js', /bower/);
+			assert.fileContent('grunt/uglify.js', /bower/);
+			assert.fileContent('grunt/watch.js', /bower/);
 		});
+
+		it('should add new tasks for views', () => {
+			assert.fileContent('grunt/aliases.js', /build:views/);
+			assert.fileContent('grunt/eslint.js', /views/);
+			assert.fileContent('grunt/minifyPolymer.js', /views/);
+			assert.fileContent('grunt/sass.js', /sass-partials/);
+			assert.fileContent('grunt/sass.js', /views/);
+			assert.fileContent('grunt/uglify.js', /views/);
+			assert.fileContent('grunt/watch.js', /views/);
+		});
+
+		it('should add new tasks for custom components', () => {
+			assert.fileContent('grunt/aliases.js', /build:components/);
+			assert.fileContent('grunt/eslint.js', /components/);
+			assert.fileContent('grunt/minifyPolymer.js', /components/);
+			assert.fileContent('grunt/sass.js', /components/);
+			assert.fileContent('grunt/uglify.js', /components/);
+			assert.fileContent('grunt/watch.js', /components/);
+		});
+
+		it('should add new tasks for production build');
 	});
 
 	describe('Public', () => {
 		it('should generate basic views', () => {
 			assert.file([
-				'404.html',
-				'bower.html',
-				'elements.html',
-				'index.html'
+				'public/404.html',
+				'public/bower.html',
+				'public/elements.html',
+				'public/index.html'
 			]);
 		});
+
+		it('should generate SASS partials', () => {
+			assert.file([
+				'public/stylesheets/partials/_layouts.scss',
+				'public/stylesheets/partials/_mixins.scss'
+			]);
+		});
+
+		it('should generate SASS stylesheets for views', () => {
+			assert.file([
+				'public/stylesheets/404.scss',
+				'public/stylesheets/bower.scss',
+				'public/stylesheets/index.scss',
+				'public/stylesheets/theme.scss'
+			]);
+		});
+
+		it('should generate front end scripts', () => {
+			assert.file([
+				'es6-support.js',
+				'es6-support.dev.js',
+				'load.js'
+			]);
+		});
+
+		it('should generate custom components');
+		it('should generate WCT suite');
 	});
 });

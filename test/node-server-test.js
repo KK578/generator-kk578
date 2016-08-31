@@ -66,6 +66,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 			assert.fileContent('grunt/aliases.js', /serve/);
 			assert.fileContent('grunt/aliases.js', /build:server/);
 			assert.fileContent('grunt/eslint.js', /server/);
+			assert.fileContent('grunt/watch.js', /server/);
 		});
 
 		it('should not add configs specific to polymer-app', () => {
