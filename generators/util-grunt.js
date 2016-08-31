@@ -172,6 +172,51 @@ function gruntWatch(options) {
 	return watch;
 }
 
+function gruntMinifyPolymer(options) {
+	const minifyPolymer = {};
+
+	if (options.polymerApp) {
+		minifyPolymer.bower = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/bower_components/',
+					src: [
+						'**/*.html',
+						'!**/{index,demo}.html',
+						'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
+					],
+					dest: 'build/public/bower_components/'
+				}
+			]
+		};
+	}
+
+	return minifyPolymer;
+}
+
+function gruntMinifyPolymerCss(options) {
+	const minifyPolymerCss = {};
+
+	if (options.polymerApp) {
+		minifyPolymerCss.bower = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/bower_components/',
+					src: [
+						'**/*.css',
+						'!**/{index,demo}.css',
+						'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
+					],
+					dest: 'build/public/bower_components/'
+				}
+			]
+		};
+	}
+
+	return minifyPolymer;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Initialisation and preparation for writing
 function prepareConfigs(options) {
@@ -186,6 +231,10 @@ function prepareConfigs(options) {
 	grunt.sync = gruntSync(options);
 	grunt.uglify = gruntUglify(options);
 	grunt.watch = gruntWatch(options);
+
+	// Polymer App
+	grunt.minifyPolymer = gruntMinifyPolymer(options);
+	grunt.minifyPolymerCss = gruntMinifyPolymerCss(options);
 
 	return grunt;
 }
