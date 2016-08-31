@@ -58,6 +58,8 @@ const generator = generators.Base.extend({
 	writing() {
 		this.copy('.bowerrc');
 		this.write('bower.json', JSON.stringify(this.options.bowerJson, null, 2));
+
+		this.copy('server/configs/browser-sync/plugins/scroll.js');
 	}
 });
 

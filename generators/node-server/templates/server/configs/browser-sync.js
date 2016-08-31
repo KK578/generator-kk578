@@ -1,22 +1,28 @@
 ﻿const fs = require('fs');
 const path = require('path');
 
-function loadPlugins(bs, callback) {
+function loadPlugins(callback) {
 	fs.readdir(path.join(__dirname, 'browser-sync/plugins'), (err, files) => {
 		if (err) {
 			return callback(err);
 		}
 
-		files.map((file) => {
-			const plugin = require(file);
+		let readPlugins = 0;
+		let scriptContents = '';
 
-			bs.use({
-				plugin: plugin.plugin,
-				hooks: plugin.hooks
+		files.map((file) => {
+			fs.readFile(path.join(__dirname, 'browser-sync/plugins', file), 'utf-8', (err, data) => {
+				if (err) {
+					callback(err);
+				}
+
+				scriptContents += data;
+
+				if (++readPlugins === files.length) {
+					callback(null, scriptContents);
+				}
 			});
 		});
-
-		callback();
 	});
 }
 
@@ -28,7 +34,32 @@ module.exports = (server) => {
 	const browserSync = require('browser-sync');
 	const bs = browserSync.create('Server');
 
-	loadPlugins(bs, () => {
+	loadPlugins((err, scriptContents) => {
+		if (err) {
+			console.log(err);
+			return;
+		}
+
+		// Scroll elements to be synced across apps.
+		const scrollElements = [
+			'#mainContainer'
+		];
+
+		bs.use({
+			plugin: function (opts, $bs) { },
+			hooks: {
+				'client:events': function () {
+					var events = ['custom-component-css'];
+					scrollElements.map(function (element) {
+						events.push(element + ':scroll');
+					});
+
+					return events;
+				},
+				'client:js': scriptContents
+			}
+		});
+
 		// Defer browser-sync initialisation until next tick to ensure express server is running.
 		process.nextTick(() => {
 			const port = process.env.PORT_BROWSER_SYNC || 3000;
