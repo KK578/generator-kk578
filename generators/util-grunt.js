@@ -20,13 +20,24 @@ function gruntAliases(options) {
 		};
 
 		aliases['build:server'] = {
-			description: 'Watch task for building server files',
+			description: 'Build task for server files',
 			tasks: [
 				'eslint:server',
 				'uglify:server',
 				'sync:server'
 			]
 		};
+
+		if (options.polymerApp) {
+			aliases['build:bower'] = {
+				description: 'Build task for bower components',
+				tasks: [
+					'minifyPolymer:bower',
+					'minifyPolymerCSS:bower',
+					'uglify:bower'
+				]
+			}
+		}
 	}
 
 	return aliases;
@@ -101,6 +112,24 @@ function gruntUglify(options) {
 				}
 			]
 		};
+
+		if (options.polymerApp) {
+			uglify.bower = {
+				files: [
+					{
+						expand: true,
+						cwd: 'public/bower_components/',
+						src: [
+							'**/*.js',
+							'!**/*.min.js',
+							'!**/{grunt,gulp}file.js',
+							'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
+						],
+						dest: 'build/public/bower_components/'
+					}
+				]
+			}
+		}
 	}
 
 	return uglify;
@@ -131,6 +160,13 @@ function gruntWatch(options) {
 				'express'
 			]
 		};
+
+		if (options.polymerApp) {
+			watch.bower = {
+				files: ['bower.json'],
+				tasks: ['build:bower']
+			}
+		}
 	}
 
 	return watch;
