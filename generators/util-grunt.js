@@ -36,7 +36,7 @@ function gruntAliases(options) {
 					'minifyPolymerCSS:bower',
 					'uglify:bower'
 				]
-			}
+			};
 		}
 	}
 
@@ -128,7 +128,7 @@ function gruntUglify(options) {
 						dest: 'build/public/bower_components/'
 					}
 				]
-			}
+			};
 		}
 	}
 
@@ -165,7 +165,7 @@ function gruntWatch(options) {
 			watch.bower = {
 				files: ['bower.json'],
 				tasks: ['build:bower']
-			}
+			};
 		}
 	}
 
