@@ -215,7 +215,7 @@ function gruntMinifyPolymerCss(options) {
 		};
 	}
 
-	return minifyPolymer;
+	return minifyPolymerCss;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Initialisation and preparation for writing
