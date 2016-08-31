@@ -72,6 +72,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 		it('should generate browser-sync plugins', () => {
 			assert.file([
 				'server/configs/browser-sync/plugins/scroll.js',
+				'server/configs/browser-sync/plugins/polymer-style-inject.js',
 				'server/configs/browser-sync/handlers/polymer-style-inject.js'
 			]);
 		});

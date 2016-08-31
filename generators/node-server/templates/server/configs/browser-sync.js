@@ -13,7 +13,7 @@ function loadPlugins(callback) {
 		files.map((file) => {
 			fs.readFile(path.join(__dirname, 'browser-sync/plugins', file), 'utf-8', (err, data) => {
 				if (err) {
-					callback(err);
+					return callback(err);
 				}
 
 				scriptContents += data;
@@ -23,6 +23,31 @@ function loadPlugins(callback) {
 				}
 			});
 		});
+	});
+}
+
+function loadHandlers(callback) {
+	fs.readdir(path.join(__dirname, 'browser-sync/handlers'), (err, files) => {
+		if (err) {
+			return callback(err);
+		}
+
+		// TODO: Confirm path, watch either source or build files.
+		let otherFiles = ['public/**/*.{html,css,js}'];
+		const watchedFiles = [];
+
+		files.map((file) => {
+			const handler = require(path.join(__dirname, 'browser-sync/handlers', file));
+
+			watchedFiles.push(handler);
+			otherFiles = otherFiles.concat(handler.match.map((s) => {
+				return `!${s}`;
+			}));
+		});
+
+		watchedFiles.push(otherFiles);
+
+		callback(null, watchedFiles);
 	});
 }
 
@@ -37,6 +62,7 @@ module.exports = (server) => {
 	loadPlugins((err, scriptContents) => {
 		if (err) {
 			console.log(err);
+
 			return;
 		}
 
@@ -60,28 +86,29 @@ module.exports = (server) => {
 			}
 		});
 
-		// Defer browser-sync initialisation until next tick to ensure express server is running.
-		process.nextTick(() => {
-			const port = process.env.PORT_BROWSER_SYNC || 3000;
-			const proxy = `localhost:${parseInt(server.get('port'))}`;
-			const files = [
-				{
-					match: [
-						'public/**/*.{html,css,js}'
-					]
-				}
-			];
+		loadHandlers((err, files) => {
+			if (err) {
+				console.log(err);
 
-			bs.init({
-				files: files,
-				logPrefix: 'BrowserSync',
-				minify: true,
-				open: false,
-				reloadOnRestart: true,
-				reloadDebound: 2000,
-				server: false,
-				port: port,
-				proxy: proxy
+				return;
+			}
+
+			// Defer initialisation until next tick to ensure express server is running.
+			process.nextTick(() => {
+				const port = process.env.PORT_BROWSER_SYNC || 3000;
+				const proxy = `localhost:${parseInt(server.get('port'))}`;
+
+				bs.init({
+					files: files,
+					logPrefix: 'BrowserSync',
+					minify: true,
+					open: false,
+					reloadOnRestart: true,
+					reloadDebound: 2000,
+					server: false,
+					port: port,
+					proxy: proxy
+				});
 			});
 		});
 	});
