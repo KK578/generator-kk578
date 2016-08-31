@@ -116,7 +116,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 		it('should generate server routes', () => {
 			assert.file([
 				'server/routes/static.js',
-				'server/routes/dev-404.js'
+				'server/routes/404.dev.js'
 			]);
 		});
 	});

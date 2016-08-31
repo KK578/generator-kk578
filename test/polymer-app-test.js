@@ -78,10 +78,10 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 
 		it('should generate additional server routes', () => {
 			assert.file([
-				'server/routes/bower.js',
-				'server/routes/components.js',
-				'server/routes/staging.js',
-				'server/routes/wct.js'
+				'server/routes/bower.dev.js',
+				'server/routes/components.dev.js',
+				'server/routes/staging.dev.js',
+				'server/routes/wct.dev.js'
 			]);
 		});
 	});
