@@ -80,7 +80,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.file([
 				'server/routes/bower.dev.js',
 				'server/routes/components.dev.js',
-				'server/routes/staging.dev.js',
+				//'server/routes/staging.dev.js',
 				'server/routes/wct.dev.js'
 			]);
 		});
