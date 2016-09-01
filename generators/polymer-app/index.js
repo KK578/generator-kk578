@@ -63,6 +63,8 @@ const generator = generators.Base.extend({
 		this.copy('server/routes/wct.dev.js');
 
 		this.copy('server/configs/browser-sync/plugins/scroll.js');
+		this.copy('server/configs/browser-sync/plugins/polymer-style-inject.js');
+		this.copy('server/configs/browser-sync/handlers/polymer-style-inject.js');
 	}
 });
 
