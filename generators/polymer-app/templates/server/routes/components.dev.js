@@ -10,9 +10,9 @@ router.get('/custom-components/:component/*.html', (req, res) => {
 	const elementPath = path.join(__dirname, `../../public/${element}/${element}`);
 
 	fs.readFile(`${elementPath}.html`, { encoding: 'utf-8' }, function (err, html) {
-        if (err) {
-            throw err;
-        }
+		if (err) {
+			throw err;
+		}
 
 		fs.readFile(`${elementPath}.css`, { encoding: 'utf-8' }, function (err, css) {
 			if (err) {
@@ -23,7 +23,7 @@ router.get('/custom-components/:component/*.html', (req, res) => {
 			const stampLocation = new RegExp(`<style.*href=".*${element}\.css".*?><\/style>`);
 			const taggedCss = `<style>${css}</style>`;
 
-			html.replace(stampLocation, taggedCss)
+			res.send(html.replace(stampLocation, taggedCss));
 		});
 	});
 });

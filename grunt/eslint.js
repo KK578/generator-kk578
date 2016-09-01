@@ -29,15 +29,27 @@
 			}
 		]
 	},
-	nodeServer: {
+	'node-server': {
 		files: [
 			{ src: 'generators/node-server/index.js' },
 			{
 				expand: true,
 				cwd: 'generators/node-server/templates',
 				src: [
-					'server/*.js',
 					'server/**/*.js'
+				]
+			}
+		]
+	},
+	'polymer-app': {
+		files: [
+			{ src: 'generators/polymer-app/index.js' },
+			{
+				expand: true,
+				cwd: 'generators/polymer-app/templates',
+				src: [
+					'server/**/*.js',
+					'public/**/*.js'
 				]
 			}
 		]
