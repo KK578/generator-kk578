@@ -4,7 +4,6 @@ const path = require('path');
 function loadRoutes(server, files) {
 	files.map((file) => {
 		const route = require(path.join(__dirname, '../routes/', file));
-		console.log(file + '\n//' + route);
 
 		server.use(route.mountPath, route.router);
 	});
