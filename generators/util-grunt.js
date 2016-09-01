@@ -172,6 +172,30 @@ function gruntWatch(options) {
 	return watch;
 }
 
+function gruntBower(options) {
+	const bower = {};
+
+	if (options.polymerApp) {
+		bower.options = {
+			copy: false,
+			targetDir: 'public/bower-components/',
+			layout: 'byComponent'
+		};
+
+		bower.development = {
+			options: { verbose: true }
+		};
+
+		bower.production = {
+			options: {
+				bowerOptions: { production: true }
+			}
+		}
+	}
+
+	return bower;
+}
+
 function gruntMinifyPolymer(options) {
 	const minifyPolymer = {};
 
@@ -233,6 +257,7 @@ function prepareConfigs(options) {
 	grunt.watch = gruntWatch(options);
 
 	// Polymer App
+	grunt.bower = gruntBower(options);
 	grunt.minifyPolymer = gruntMinifyPolymer(options);
 	grunt.minifyPolymerCss = gruntMinifyPolymerCss(options);
 
