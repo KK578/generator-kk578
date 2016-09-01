@@ -37,6 +37,15 @@ function gruntAliases(options) {
 					'uglify:bower'
 				]
 			};
+
+			aliases['build:views'] = {
+				description: 'Build task for views',
+				tasks: [
+					'minifyPolymer:views',
+					'sass:views',
+					'uglify:views'
+				]
+			};
 		}
 	}
 
@@ -64,6 +73,10 @@ function gruntEslint(options) {
 	if (options.nodeServer) {
 		eslint.server = {
 			files: 'server/**/*.js'
+		};
+
+		eslint.views = {
+			src: ['public/scripts/**/*.js']
 		};
 	}
 
@@ -129,6 +142,17 @@ function gruntUglify(options) {
 					}
 				]
 			};
+
+			uglify.views = {
+				files: [
+					{
+						expand: true,
+						cwd: 'public/scripts/',
+						src: ['**/*.js'],
+						dest: 'build/scripts/'
+					}
+				]
+			};
 		}
 	}
 
@@ -166,6 +190,23 @@ function gruntWatch(options) {
 				files: ['bower.json'],
 				tasks: ['build:bower']
 			};
+
+			watch['sass-partials'] = {
+				files: ['public/stylesheets/partials/*.scss'],
+				tasks: ['sass']
+			},
+
+			watch.views = {
+				files: [
+					'public/*.html',
+					'public/stylesheets/*.scss',
+					'public/scripts/**/*.js'
+				],
+				tasks: [
+					'eslint:views',
+					'build:views'
+				]
+			};
 		}
 	}
 
@@ -190,7 +231,7 @@ function gruntBower(options) {
 			options: {
 				bowerOptions: { production: true }
 			}
-		}
+		};
 	}
 
 	return bower;
@@ -211,6 +252,17 @@ function gruntMinifyPolymer(options) {
 						'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
 					],
 					dest: 'build/public/bower_components/'
+				}
+			]
+		};
+
+		minifyPolymer.views = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/',
+					src: ['*.html'],
+					dest: 'build/public/'
 				}
 			]
 		};
@@ -241,6 +293,27 @@ function gruntMinifyPolymerCss(options) {
 
 	return minifyPolymerCss;
 }
+
+function gruntSass(options) {
+	const sass = {};
+
+	if (options.polymerApp) {
+		sass.views = {
+			files: [
+				{
+					expand: true,
+					cwd: 'browser/stylesheets/',
+					src: ['*.scss'],
+					ext: '.css',
+					dest: 'build/public/stylesheets/'
+				}
+			]
+		};
+	}
+
+	return sass;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Initialisation and preparation for writing
 function prepareConfigs(options) {
@@ -260,6 +333,7 @@ function prepareConfigs(options) {
 	grunt.bower = gruntBower(options);
 	grunt.minifyPolymer = gruntMinifyPolymer(options);
 	grunt.minifyPolymerCss = gruntMinifyPolymerCss(options);
+	grunt.sass = gruntSass(options);
 
 	return grunt;
 }

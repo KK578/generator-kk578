@@ -112,10 +112,10 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/aliases.js', /build:views/);
 			assert.fileContent('grunt/eslint.js', /views/);
 			assert.fileContent('grunt/minifyPolymer.js', /views/);
-			assert.fileContent('grunt/sass.js', /sass-partials/);
 			assert.fileContent('grunt/sass.js', /views/);
 			assert.fileContent('grunt/uglify.js', /views/);
 			assert.fileContent('grunt/watch.js', /views/);
+			assert.fileContent('grunt/watch.js', /sass-partials/);
 		});
 
 		it('should add new tasks for custom components', () => {
