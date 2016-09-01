@@ -7,4 +7,7 @@ router.get('/**/stylesheets/404.css\*', (req, res) => {
 });
 
 
-module.exports = router;
+module.exports = {
+	mountPath: '/',
+	router: router
+};

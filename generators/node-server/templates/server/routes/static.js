@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 // Serve public directory as static html.
-router.get('/', express.static(path.join(__dirname, '../../public/')));
+router.use('/', express.static(path.join(__dirname, '../../public/')));
 
 // Serve 404 page.
 router.get('*', (req, res) => {
@@ -12,4 +12,7 @@ router.get('*', (req, res) => {
 });
 
 
-module.exports = router;
+module.exports = {
+	mountPath: '/',
+	router: router
+};
