@@ -89,12 +89,13 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 	describe('Grunt', () => {
 		it('should generate additional grunt configs for polymer-app', () => {
 			assert.file([
-				'grunt/babel.js',
+				// TODO: Reenable Babel and Vulcanize tasks for production builds.
+				//'grunt/babel.js',
 				'grunt/bower.js',
 				'grunt/minifyPolymer.js',
 				'grunt/minifyPolymerCSS.js',
 				'grunt/sass.js',
-				'grunt/vulcanize.js'
+				//'grunt/vulcanize.js'
 			]);
 		});
 
