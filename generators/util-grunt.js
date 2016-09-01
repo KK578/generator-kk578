@@ -118,14 +118,14 @@ function gruntUglify(options) {
 				files: [
 					{
 						expand: true,
-						cwd: 'public/bower_components/',
+						cwd: 'public/bower-components/',
 						src: [
 							'**/*.js',
 							'!**/*.min.js',
 							'!**/{grunt,gulp}file.js',
 							'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
 						],
-						dest: 'build/public/bower_components/'
+						dest: 'build/public/bower-components/'
 					}
 				]
 			};
@@ -180,13 +180,13 @@ function gruntMinifyPolymer(options) {
 			files: [
 				{
 					expand: true,
-					cwd: 'public/bower_components/',
+					cwd: 'public/bower-components/',
 					src: [
 						'**/*.html',
 						'!**/{index,demo}.html',
 						'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
 					],
-					dest: 'build/public/bower_components/'
+					dest: 'build/public/bower-components/'
 				}
 			]
 		};
@@ -203,13 +203,13 @@ function gruntMinifyPolymerCss(options) {
 			files: [
 				{
 					expand: true,
-					cwd: 'public/bower_components/',
+					cwd: 'public/bower-components/',
 					src: [
 						'**/*.css',
 						'!**/{index,demo}.css',
 						'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
 					],
-					dest: 'build/public/bower_components/'
+					dest: 'build/public/bower-components/'
 				}
 			]
 		};
