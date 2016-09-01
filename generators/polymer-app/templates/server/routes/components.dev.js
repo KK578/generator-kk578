@@ -33,6 +33,9 @@ router.get('/custom-components/**/*.css', (req, res) => {
 	res.send('');
 });
 
+// TODO: Add route to transpile js on request.
+//router.get('/custom-components/**/*.js', (req, res) => { });
+
 
 module.exports = {
 	mountPath: '/',

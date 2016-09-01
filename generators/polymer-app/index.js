@@ -57,6 +57,9 @@ const generator = generators.Base.extend({
 	writing() {
 		this.copy('.bowerrc');
 		this.write('bower.json', JSON.stringify(this.options.bowerJson, null, 2));
+
+		this.copy('server/routes/bower.dev.js');
+		this.copy('server/routes/components.dev.js');
 	}
 });
 
