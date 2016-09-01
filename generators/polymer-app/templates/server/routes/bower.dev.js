@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 // Serve bower.html loading in list of installed bower components.
-router.get('/bower', (req, res) => {
+router.get('/', (req, res) => {
 	const bowerPath = path.join(__dirname, '../../public/bower.html');
 
 	fs.readFile(bowerPath, { encoding: 'utf-8' }, function (err, html) {
@@ -33,7 +33,7 @@ router.get('/bower', (req, res) => {
 });
 
 // Serve bower components from source files to this route.
-router.use('/bower', express.static(path.join(__dirname, '../../../public/bower-components')));
+router.use('/', express.static(path.join(__dirname, '../../../public/bower-components')));
 
 
 module.exports = {
