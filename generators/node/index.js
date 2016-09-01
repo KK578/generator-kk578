@@ -61,6 +61,7 @@ const generator = generators.Base.extend({
 
 			if (this.options.polymerApp) {
 				Object.assign(packageJson.devDependencies, {
+					'glob': '^7.0.6',
 					'grunt-babel': '^6.0.0',
 					'grunt-bower-task': '^0.4.0',
 					'grunt-minify-polymer': '^2.1.1',
