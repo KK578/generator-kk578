@@ -1,0 +1,29 @@
+﻿@function get-color-var-name($color, $number) {
+	@return unquote('--paper-' + $color + '-' + $number);
+}
+
+$theme-color: 'indigo';
+$theme-accent-color: 'blue';
+
+
+$theme-background: get-color-var-name($theme-color, 50);
+$theme-loading-background: get-color-var-name($theme-color, 500);
+
+$theme-primary: get-color-var-name($theme-color, 500);
+$theme-primary-light: get-color-var-name($theme-color, 300);
+$theme-primary-dark: get-color-var-name($theme-color, 700);
+
+$theme-accent: get-color-var-name($theme-accent-color, A400);
+$theme-accent-light: get-color-var-name($theme-accent-color, A200);
+$theme-accent-dark: get-color-var-name($theme-accent-color, A700);
+
+
+$black-primary: rgba(0, 0, 0, 0.87);
+$black-secondary: rgba(0, 0, 0, 0.54);
+$black-disabled: rgba(0, 0, 0, 0.26);
+$black-divider: rgba(0, 0, 0, 0.12);
+
+$white-primary: rgba(255, 255, 255, 1.00);
+$white-secondary: rgba(255, 255, 255, 0.70);
+$white-disabled: rgba(255, 255, 255, 0.30);
+$white-divider: rgba(255, 255, 255, 0.12);
