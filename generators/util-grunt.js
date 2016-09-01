@@ -38,6 +38,15 @@ function gruntAliases(options) {
 				]
 			};
 
+			aliases['build:components'] = {
+				description: 'Build task for custom components',
+				tasks: [
+					'minifyPolymer:components',
+					'sass:components',
+					'uglify:components'
+				]
+			};
+
 			aliases['build:views'] = {
 				description: 'Build task for views',
 				tasks: [
@@ -73,6 +82,10 @@ function gruntEslint(options) {
 	if (options.nodeServer) {
 		eslint.server = {
 			files: 'server/**/*.js'
+		};
+
+		eslint.components = {
+			files: ['public/custom-components/**/*.js']
 		};
 
 		eslint.views = {
@@ -143,6 +156,17 @@ function gruntUglify(options) {
 				]
 			};
 
+			uglify.components = {
+				files: [
+					{
+						expand: true,
+						cwd: 'public/custom-components/',
+						src: ['**/*.js'],
+						dest: 'build/public/custom-components/'
+					}
+				]
+			};
+
 			uglify.views = {
 				files: [
 					{
@@ -189,6 +213,14 @@ function gruntWatch(options) {
 			watch.bower = {
 				files: ['bower.json'],
 				tasks: ['build:bower']
+			};
+
+			watch.components = {
+				files: ['public/custom-components/**/*'],
+				tasks: [
+					'eslint:components',
+					'build:components'
+				]
 			};
 
 			watch['sass-partials'] = {
@@ -256,6 +288,17 @@ function gruntMinifyPolymer(options) {
 			]
 		};
 
+		minifyPolymer.components = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/custom-components/',
+					src: ['**/*.html'],
+					dest: 'build/public/custom-components/'
+				}
+			]
+		};
+
 		minifyPolymer.views = {
 			files: [
 				{
@@ -298,11 +341,23 @@ function gruntSass(options) {
 	const sass = {};
 
 	if (options.polymerApp) {
+		sass.components = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/custom-components/',
+					src: ['**/*.scss'],
+					ext: '.css',
+					dest: 'build/public/custom-components/'
+				}
+			]
+		};
+
 		sass.views = {
 			files: [
 				{
 					expand: true,
-					cwd: 'browser/stylesheets/',
+					cwd: 'public/stylesheets/',
 					src: ['*.scss'],
 					ext: '.css',
 					dest: 'build/public/stylesheets/'
