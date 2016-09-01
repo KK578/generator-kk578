@@ -61,6 +61,8 @@ const generator = generators.Base.extend({
 		this.copy('server/routes/bower.dev.js');
 		this.copy('server/routes/components.dev.js');
 		this.copy('server/routes/wct.dev.js');
+
+		this.copy('server/configs/browser-sync/plugins/scroll.js');
 	}
 });
 

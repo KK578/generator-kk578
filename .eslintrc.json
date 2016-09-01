@@ -5,7 +5,8 @@
   },
   "env": {
     "node": true,
-    "mocha": true
+    "mocha": true,
+    "browser": true
   },
   "rules": {
     "block-scoped-var": "error",
