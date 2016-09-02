@@ -1,4 +1,6 @@
-﻿///////////////////////////////////////////////////////////////////////////////////////////////////
+﻿const stringify = require('stringify-object');
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 // Grunt config customisations
 function gruntAliases(options) {
 	const aliases = {
@@ -399,9 +401,11 @@ function stringifyConfigs(configs) {
 
 	keys.map((key) => {
 		if (Object.keys(configs[key]).length !== 0) {
+			const configString = stringify(configs[key]).replace(/\n/g, '\r\n');
+
 			stringifiedConfigs.push({
 				file: `grunt/${key}.js`,
-				content: `module.exports = ${JSON.stringify(configs[key], null, '\t')};`
+				content: `module.exports = ${configString};\r\n`
 			});
 		}
 	});
