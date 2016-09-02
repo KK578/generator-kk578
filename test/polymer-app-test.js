@@ -45,6 +45,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('bower.json', /"polymer": "Polymer\/polymer.*"/);
 			assert.fileContent('bower.json',
 				/"paper-elements": "PolymerElements\/paper-elements.*"/);
+			assert.fileContent('bower.json', /"lodash"/);
 		});
 
 		it('should have basic polymer devDependencies', () => {

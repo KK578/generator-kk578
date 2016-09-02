@@ -10,7 +10,7 @@
 		Polymer.Base.importHref('elements.html', function () {
 			const loaders = document.querySelectorAll('.loading');
 
-			loaders.forEach((loader) => {
+			_.map(loaders, (loader) => {
 				loader.classList.remove('loading');
 			});
 
@@ -43,7 +43,7 @@
 		const elementImport = document.createElement('link');
 
 		elementImport.rel = 'import';
-		elementImport.href = 'splash_elements.html';
+		elementImport.href = 'splash-elements.html';
 		elementImport.onload = loaded;
 
 		document.head.appendChild(elementImport);

@@ -34,6 +34,7 @@ const generator = generators.Base.extend({
 			}],
 			license: 'BSD-3-Clause',
 			dependencies: {
+				'lodash': '^4.15.0',
 				'polymer': 'Polymer/polymer#^1.6.1',
 				'paper-elements': 'PolymerElements/paper-elements#^1.0.7'
 			},
