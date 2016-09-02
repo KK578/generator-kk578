@@ -1,29 +1,35 @@
-﻿@function get-color-var-name($color, $number) {
-	@return unquote('--paper-' + $color + '-' + $number);
-}
+﻿@import '_material_color.scss';
 
-$theme-color: 'indigo';
-$theme-accent-color: 'blue';
+/****************************/
+/* Theme color declarations */
+$theme-color: indigo;
+$theme-accent-color: blue;
+$theme-color-number: 500;
+$theme-color-light-number: 300;
+$theme-color-dark-number: 700;
+$theme-accent-color-number: A400;
+$theme-accent-color-light-number: A200;
+$theme-accent-color-dark-number: A700;
 
 
+/******************/
+/* Variable names */
+/* Primary */
+$theme-primary: get-color-var-name($theme-color, $theme-color-number);
+$theme-primary-light: get-color-var-name($theme-color, $theme-color-light-number);
+$theme-primary-dark: get-color-var-name($theme-color, $theme-color-dark-number);
+/* Accent */
+$theme-accent: get-color-var-name($theme-accent-color, $theme-accent-color-number);
+$theme-accent-light: get-color-var-name($theme-accent-color, $theme-accent-color-light-number);
+$theme-accent-dark: get-color-var-name($theme-accent-color, $theme-accent-color-dark-number);
+/* Backgrounds*/
 $theme-background: get-color-var-name($theme-color, 50);
 $theme-loading-background: get-color-var-name($theme-color, 500);
 
-$theme-primary: get-color-var-name($theme-color, 500);
-$theme-primary-light: get-color-var-name($theme-color, 300);
-$theme-primary-dark: get-color-var-name($theme-color, 700);
-
-$theme-accent: get-color-var-name($theme-accent-color, A400);
-$theme-accent-light: get-color-var-name($theme-accent-color, A200);
-$theme-accent-dark: get-color-var-name($theme-accent-color, A700);
-
-
-$black-primary: rgba(0, 0, 0, 0.87);
-$black-secondary: rgba(0, 0, 0, 0.54);
-$black-disabled: rgba(0, 0, 0, 0.26);
-$black-divider: rgba(0, 0, 0, 0.12);
-
-$white-primary: rgba(255, 255, 255, 1.00);
-$white-secondary: rgba(255, 255, 255, 0.70);
-$white-disabled: rgba(255, 255, 255, 0.30);
-$white-divider: rgba(255, 255, 255, 0.12);
+/*********************/
+/* RGB Helper Values */
+/* Theme */
+$theme-primary-rgb: material-color($theme-color, $theme-color-number);
+$theme-primary-light-rgb: material-color($theme-color, $theme-color-light-number);
+$theme-primary-dark-rgb: material-color($theme-color, $theme-color-dark-number);
+$theme-background-rgb: material-color($theme-color, 50);

@@ -1,0 +1,26 @@
+﻿@import 'partials/_layouts.scss';
+@import 'partials/_mixins.scss';
+@import 'partials/_theme.scss';
+
+body#404 {
+	@include layout-fullbleed;
+	@include layout;
+	@include layout-center;
+	@include layout-center-justified;
+    font-family: 'Roboto', 'Noto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+	background-color: $theme-background-rgb;
+	text-align: center;
+
+	h1 {
+		color: $theme-primary-rgb;
+		font-size: 2em;
+		margin: 0;
+	}
+
+	p {
+		color: $theme-primary-dark-rgb;
+	}
+}
