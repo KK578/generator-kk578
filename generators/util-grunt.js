@@ -173,7 +173,7 @@ function gruntUglify(options) {
 						expand: true,
 						cwd: 'public/scripts/',
 						src: ['**/*.js'],
-						dest: 'build/scripts/'
+						dest: 'build/public/scripts/'
 					}
 				]
 			};
