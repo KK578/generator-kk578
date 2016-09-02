@@ -137,6 +137,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'public/404.html',
 				'public/bower.html',
 				'public/elements.html',
+				'public/splash-elements.html',
 				'public/index.html'
 			]);
 		});
