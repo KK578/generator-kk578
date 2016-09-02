@@ -37,6 +37,24 @@ function gruntAliases(options) {
 					'uglify:bower'
 				]
 			};
+
+			aliases['build:components'] = {
+				description: 'Build task for custom components',
+				tasks: [
+					'minifyPolymer:components',
+					'sass:components',
+					'uglify:components'
+				]
+			};
+
+			aliases['build:views'] = {
+				description: 'Build task for views',
+				tasks: [
+					'minifyPolymer:views',
+					'sass:views',
+					'uglify:views'
+				]
+			};
 		}
 	}
 
@@ -64,6 +82,14 @@ function gruntEslint(options) {
 	if (options.nodeServer) {
 		eslint.server = {
 			files: 'server/**/*.js'
+		};
+
+		eslint.components = {
+			files: ['public/custom-components/**/*.js']
+		};
+
+		eslint.views = {
+			src: ['public/scripts/**/*.js']
 		};
 	}
 
@@ -129,6 +155,28 @@ function gruntUglify(options) {
 					}
 				]
 			};
+
+			uglify.components = {
+				files: [
+					{
+						expand: true,
+						cwd: 'public/custom-components/',
+						src: ['**/*.js'],
+						dest: 'build/public/custom-components/'
+					}
+				]
+			};
+
+			uglify.views = {
+				files: [
+					{
+						expand: true,
+						cwd: 'public/scripts/',
+						src: ['**/*.js'],
+						dest: 'build/public/scripts/'
+					}
+				]
+			};
 		}
 	}
 
@@ -166,10 +214,59 @@ function gruntWatch(options) {
 				files: ['bower.json'],
 				tasks: ['build:bower']
 			};
+
+			watch.components = {
+				files: ['public/custom-components/**/*'],
+				tasks: [
+					'eslint:components',
+					'build:components'
+				]
+			};
+
+			watch['sass-partials'] = {
+				files: ['public/stylesheets/partials/*.scss'],
+				tasks: ['sass']
+			},
+
+			watch.views = {
+				files: [
+					'public/*.html',
+					'public/stylesheets/*.scss',
+					'public/scripts/**/*.js'
+				],
+				tasks: [
+					'eslint:views',
+					'build:views'
+				]
+			};
 		}
 	}
 
 	return watch;
+}
+
+function gruntBower(options) {
+	const bower = {};
+
+	if (options.polymerApp) {
+		bower.options = {
+			copy: false,
+			targetDir: 'public/bower-components/',
+			layout: 'byComponent'
+		};
+
+		bower.development = {
+			options: { verbose: true }
+		};
+
+		bower.production = {
+			options: {
+				bowerOptions: { production: true }
+			}
+		};
+	}
+
+	return bower;
 }
 
 function gruntMinifyPolymer(options) {
@@ -187,6 +284,28 @@ function gruntMinifyPolymer(options) {
 						'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
 					],
 					dest: 'build/public/bower-components/'
+				}
+			]
+		};
+
+		minifyPolymer.components = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/custom-components/',
+					src: ['**/*.html'],
+					dest: 'build/public/custom-components/'
+				}
+			]
+		};
+
+		minifyPolymer.views = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/',
+					src: ['*.html'],
+					dest: 'build/public/'
 				}
 			]
 		};
@@ -217,6 +336,39 @@ function gruntMinifyPolymerCss(options) {
 
 	return minifyPolymerCss;
 }
+
+function gruntSass(options) {
+	const sass = {};
+
+	if (options.polymerApp) {
+		sass.components = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/custom-components/',
+					src: ['**/*.scss'],
+					ext: '.css',
+					dest: 'build/public/custom-components/'
+				}
+			]
+		};
+
+		sass.views = {
+			files: [
+				{
+					expand: true,
+					cwd: 'public/stylesheets/',
+					src: ['*.scss'],
+					ext: '.css',
+					dest: 'build/public/stylesheets/'
+				}
+			]
+		};
+	}
+
+	return sass;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Initialisation and preparation for writing
 function prepareConfigs(options) {
@@ -233,8 +385,10 @@ function prepareConfigs(options) {
 	grunt.watch = gruntWatch(options);
 
 	// Polymer App
+	grunt.bower = gruntBower(options);
 	grunt.minifyPolymer = gruntMinifyPolymer(options);
 	grunt.minifyPolymerCss = gruntMinifyPolymerCss(options);
+	grunt.sass = gruntSass(options);
 
 	return grunt;
 }
