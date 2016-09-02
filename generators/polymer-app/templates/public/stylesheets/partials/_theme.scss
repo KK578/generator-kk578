@@ -32,4 +32,5 @@ $theme-loading-background: get-color-var-name($theme-color, 500);
 $theme-primary-rgb: material-color($theme-color, $theme-color-number);
 $theme-primary-light-rgb: material-color($theme-color, $theme-color-light-number);
 $theme-primary-dark-rgb: material-color($theme-color, $theme-color-dark-number);
+$theme-accent-rgb: material-color($theme-accent-color, $theme-accent-color-number);
 $theme-background-rgb: material-color($theme-color, 50);

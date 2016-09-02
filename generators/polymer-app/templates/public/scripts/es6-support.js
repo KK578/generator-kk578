@@ -13,14 +13,14 @@
 		return true;
 	}
 
+	var src = document.querySelector('#es6-support').src;
+	var target = src.split('?target=')[1];
 	var script = document.createElement('script');
 
-	if (supportsEs6()) {
-		script.src = 'scripts/load.js';
-	}
-	else {
-		script.src = 'scripts/load.es5.js';
+	if (!supportsEs6()) {
+		target = target.replace('.js', '.es5.js');
 	}
 
+	script.src = 'scripts/' +  target;
 	document.head.appendChild(script);
 })();
