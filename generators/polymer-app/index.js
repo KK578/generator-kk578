@@ -59,6 +59,25 @@ const generator = generators.Base.extend({
 	writing() {
 		this.copy('.bowerrc');
 		this.write('bower.json', JSON.stringify(this.options.bowerJson, null, 2));
+
+		this.template('public/404.html', 'public/404.html', this.options);
+		this.template('public/bower.html', 'public/bower.html', this.options);
+		this.template('public/index.html', 'public/index.html', this.options);
+		this.copy('public/elements.html');
+		this.copy('public/splash-elements.html');
+
+		this.copy('public/stylesheets/404.scss');
+		this.copy('public/stylesheets/bower.scss');
+		this.copy('public/stylesheets/index.scss');
+		this.copy('public/stylesheets/partials/_layouts.scss');
+		this.copy('public/stylesheets/partials/_material_color.scss');
+		this.copy('public/stylesheets/partials/_mixins.scss');
+		this.copy('public/stylesheets/partials/_theme.scss');
+
+		this.copy('public/scripts/bower.js');
+		this.copy('public/scripts/es6-support.js');
+		this.copy('public/scripts/load.js');
+
 	}
 });
 
