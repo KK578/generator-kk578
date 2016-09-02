@@ -145,7 +145,9 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 		it('should generate SASS partials', () => {
 			assert.file([
 				'public/stylesheets/partials/_layouts.scss',
-				'public/stylesheets/partials/_mixins.scss'
+				'public/stylesheets/partials/_material_color.scss',
+				'public/stylesheets/partials/_mixins.scss',
+				'public/stylesheets/partials/_theme.scss'
 			]);
 		});
 
@@ -153,16 +155,15 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.file([
 				'public/stylesheets/404.scss',
 				'public/stylesheets/bower.scss',
-				'public/stylesheets/index.scss',
-				'public/stylesheets/theme.scss'
+				'public/stylesheets/index.scss'
 			]);
 		});
 
 		it('should generate front end scripts', () => {
 			assert.file([
-				'es6-support.js',
-				'es6-support.dev.js',
-				'load.js'
+				'public/scripts/es6-support.js',
+				'public/scripts/load.js',
+				'public/scripts/bower.js'
 			]);
 		});
 
