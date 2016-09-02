@@ -33,6 +33,7 @@ const generator = generators.Base.extend({
 			}],
 			license: 'BSD-3-Clause',
 			dependencies: {
+				'lodash': '^4.15.0',
 				'polymer': 'Polymer/polymer#^1.6.1',
 				'paper-elements': 'PolymerElements/paper-elements#^1.0.7'
 			},
@@ -65,6 +66,25 @@ const generator = generators.Base.extend({
 		this.copy('server/configs/browser-sync/plugins/scroll.js');
 		this.copy('server/configs/browser-sync/plugins/polymer-style-inject.js');
 		this.copy('server/configs/browser-sync/handlers/polymer-style-inject.js');
+
+		this.template('public/404.html', 'public/404.html', this.options);
+		this.template('public/bower.html', 'public/bower.html', this.options);
+		this.template('public/index.html', 'public/index.html', this.options);
+		this.copy('public/elements.html');
+		this.copy('public/splash-elements.html');
+
+		this.copy('public/stylesheets/404.scss');
+		this.copy('public/stylesheets/bower.scss');
+		this.copy('public/stylesheets/index.scss');
+		this.copy('public/stylesheets/partials/_layouts.scss');
+		this.copy('public/stylesheets/partials/_material_color.scss');
+		this.copy('public/stylesheets/partials/_mixins.scss');
+		this.copy('public/stylesheets/partials/_theme.scss');
+
+		this.copy('public/scripts/bower.js');
+		this.copy('public/scripts/es6-support.js');
+		this.copy('public/scripts/load.js');
+
 	}
 });
 

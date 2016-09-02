@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><%= appName %></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="stylesheets/index.css" />
+
+	<script id="es6-support" src="scripts/es6-support.js?target=load.js" ></script>
+</head>
+<body>
+    <splash-screen id="splash-screen" class="loading">
+        <paper-material id="splash-card" class="loading" animated="true" elevation="0">
+            <span id="splash-title" class="loading">Hello!</span>
+            <paper-spinner id="splash-spinner" class="loading" active="true"></paper-spinner>
+        </paper-material>
+    </splash-screen>
+
+    <app-element class="fit"></app-element>
+</body>
+</html>
