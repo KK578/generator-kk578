@@ -36,10 +36,11 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 
 	describe('npm', () => {
 		it('should generate extra dependencies to package.json', () => {
+			assert.fileContent('package.json', /"compression"/);
+			assert.fileContent('package.json', /"dotenv"/);
+			assert.fileContent('package.json', /"ejs"/);
 			assert.fileContent('package.json', /"express"/);
 			assert.fileContent('package.json', /"morgan"/);
-			assert.fileContent('package.json', /"ejs"/);
-			assert.fileContent('package.json', /"compression"/);
 		});
 
 		it('should generate extra devDependencies to package.json', () => {
@@ -47,6 +48,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 			assert.fileContent('package.json', /"grunt-express-server"/);
 			assert.fileContent('package.json', /"grunt-contrib-watch"/);
 			assert.fileContent('package.json', /"grunt-contrib-uglify"/);
+			assert.fileContent('package.json', /"grunt-sync"/);
 		});
 
 		it('should generate npm-shrinkwrap for uglify-js', () => {

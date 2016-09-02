@@ -47,6 +47,7 @@ const generator = generators.Base.extend({
 		if (this.options.nodeServer) {
 			Object.assign(packageJson.dependencies, {
 				compression: '^1.6.2',
+				dotenv: '^2.0.0',
 				ejs: '^2.5.1',
 				express: '^4.14.0',
 				morgan: '^1.7.0'
@@ -56,7 +57,8 @@ const generator = generators.Base.extend({
 				'browser-sync': '^2.14.0',
 				'grunt-contrib-uglify': '^2.0.0',
 				'grunt-contrib-watch': '^1.0.0',
-				'grunt-express-server': 'KK578/grunt-express-server'
+				'grunt-express-server': 'KK578/grunt-express-server',
+				'grunt-sync': '^0.6.2',
 			});
 
 			if (this.options.polymerApp) {

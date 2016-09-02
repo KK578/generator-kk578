@@ -102,7 +102,7 @@ function gruntExpress(options) {
 	const express = {};
 
 	if (options.nodeServer) {
-		express.all = {
+		express.server = {
 			options: {
 				script: 'build/server/start.js'
 			}
@@ -204,10 +204,10 @@ function gruntWatch(options) {
 				'server/**/*.js'
 			],
 			tasks: [
-				'express:stop',
+				'express:server:stop',
 				'eslint:server',
 				'build:server',
-				'express'
+				'express:server'
 			]
 		};
 
