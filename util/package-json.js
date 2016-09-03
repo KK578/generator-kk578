@@ -1,6 +1,6 @@
 ﻿const sortObject = require('sort-object-keys');
 
-module.exports = (options) => {
+function create(options) {
 	const packageJson = {
 		name: options.appName,
 		version: '0.0.0',
@@ -60,4 +60,8 @@ module.exports = (options) => {
 	packageJson.devDependencies = sortObject(packageJson.devDependencies);
 
 	return packageJson;
+}
+
+module.exports = {
+	create: create
 };

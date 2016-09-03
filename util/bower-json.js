@@ -1,4 +1,4 @@
-﻿module.exports = (options) => {
+﻿function create(options) {
 	const bowerJson = {
 		name: options.appName,
 		version: '0.0.0',
@@ -38,4 +38,8 @@
 	}
 
 	return bowerJson;
+}
+
+module.exports = {
+	create: create
 };

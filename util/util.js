@@ -1,5 +1,6 @@
 ﻿module.exports = {
-	packageJson: require('./package-json.js'),
 	bowerJson: require('./bower-json.js'),
-	gruntConfigs: require('./grunt-configs.js')
+	git: require('./git.js'),
+	gruntConfigs: require('./grunt-configs.js'),
+	packageJson: require('./package-json.js')
 };
