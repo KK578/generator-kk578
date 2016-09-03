@@ -8,7 +8,8 @@
 					'gruntfile.js',
 					'configs/grunt/*.js',
 					'test/*.js',
-					'generators/util*.js'
+					'generators/util*.js',
+					'util/**/*.js'
 				]
 			}
 		]
