@@ -389,7 +389,7 @@ function prepareConfigs(options) {
 	// Polymer App
 	grunt.bower = gruntBower(options);
 	grunt.minifyPolymer = gruntMinifyPolymer(options);
-	grunt.minifyPolymerCss = gruntMinifyPolymerCss(options);
+	grunt.minifyPolymerCSS = gruntMinifyPolymerCss(options);
 	grunt.sass = gruntSass(options);
 
 	return grunt;

@@ -6,7 +6,8 @@
     "yeoman-generator"
   ],
   "engines": {
-    "node": "<4"
+    "node": ">=6",
+    "npm": ">=3"
   },
   "files": [
     "generators/app",
@@ -35,6 +36,8 @@
     "jit-grunt": "^0.10.0",
     "load-grunt-config": "^0.19.2",
     "mocha": "^3.0.0",
-    "time-grunt": "^1.4.0"
+    "time-grunt": "^1.4.0",
+    "yeoman-test": "^1.4.0",
+    "yeoman-assert": "^2.2.1"
   }
 }
