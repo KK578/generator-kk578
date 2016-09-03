@@ -268,7 +268,7 @@ function gruntBabel(options) {
 					dest: 'build/public/scripts/'
 				}
 			]
-		}
+		};
 	}
 
 	return babel;
