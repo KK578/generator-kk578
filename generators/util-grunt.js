@@ -247,6 +247,33 @@ function gruntWatch(options) {
 	return watch;
 }
 
+function gruntBabel(options) {
+	const babel = {};
+
+	if (options.polymerApp) {
+		babel.options = {
+			presets: ['es2015']
+		};
+
+		babel.views = {
+			files: [
+				{
+					expand: true,
+					cwd: 'build/public/scripts/',
+					src: [
+						'**/*.js',
+						'!es6-support.js'
+					],
+					ext: 'es5.js',
+					dest: 'build/public/scripts/'
+				}
+			]
+		}
+	}
+
+	return babel;
+}
+
 function gruntBower(options) {
 	const bower = {};
 
@@ -387,6 +414,7 @@ function prepareConfigs(options) {
 	grunt.watch = gruntWatch(options);
 
 	// Polymer App
+	grunt.babel = gruntBabel(options);
 	grunt.bower = gruntBower(options);
 	grunt.minifyPolymer = gruntMinifyPolymer(options);
 	grunt.minifyPolymerCSS = gruntMinifyPolymerCss(options);
