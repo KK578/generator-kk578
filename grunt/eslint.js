@@ -6,9 +6,9 @@
 				expand: true,
 				src: [
 					'gruntfile.js',
-					'configs/grunt/*.js',
+					'grunt/*.js',
 					'test/*.js',
-					'generators/util*.js'
+					'util/**/*.js'
 				]
 			}
 		]

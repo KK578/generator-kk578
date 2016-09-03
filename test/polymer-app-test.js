@@ -92,7 +92,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 		it('should generate additional grunt configs for polymer-app', () => {
 			assert.file([
 				// TODO: Reenable Babel and Vulcanize tasks for production builds.
-				//'grunt/babel.js',
+				'grunt/babel.js',
 				'grunt/bower.js',
 				'grunt/minifyPolymer.js',
 				'grunt/minifyPolymerCSS.js',
@@ -113,6 +113,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 
 		it('should add new tasks for views', () => {
 			assert.fileContent('grunt/aliases.js', /build:views/);
+			assert.fileContent('grunt/babel.js', /views/);
 			assert.fileContent('grunt/eslint.js', /views/);
 			assert.fileContent('grunt/minifyPolymer.js', /views/);
 			assert.fileContent('grunt/sass.js', /views/);
