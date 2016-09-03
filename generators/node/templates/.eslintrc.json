@@ -4,9 +4,13 @@
     "ecmaVersion": 6
   },
   "env": {
+    "browser": true,
     "node": true,
-    "mocha": true,
-    "browser": true
+    "mocha": true
+  },
+  "globals": {
+    "Polymer": false,
+    "_": false
   },
   "rules": {
     "block-scoped-var": "error",

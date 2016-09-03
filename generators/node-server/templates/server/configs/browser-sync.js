@@ -2,7 +2,9 @@
 const path = require('path');
 
 function loadPlugins(callback) {
-	fs.readdir(path.join(__dirname, 'browser-sync/plugins'), (err, files) => {
+	const dir = path.join(__dirname, 'browser-sync/plugins');
+
+	fs.readdir(dir, (err, files) => {
 		if (err) {
 			return callback(err);
 		}
@@ -11,7 +13,7 @@ function loadPlugins(callback) {
 		let scriptContents = '';
 
 		files.map((file) => {
-			fs.readFile(path.join(__dirname, 'browser-sync/plugins', file), 'utf-8', (err, data) => {
+			fs.readFile(path.join(dir, file), 'utf-8', (err, data) => {
 				if (err) {
 					return callback(err);
 				}
@@ -66,18 +68,22 @@ module.exports = (server) => {
 			return;
 		}
 
+		// TODO: Load this from a JSON file.
 		// Scroll elements to be synced across apps.
 		const scrollElements = [
 			'#mainContainer'
 		];
 
 		bs.use({
-			plugin: function (opts, $bs) { },
+			// TODO: Check if this is required by browser-sync.
+			//plugin: function (opts, bs) { },
 			hooks: {
 				'client:events': function () {
-					var events = ['custom-component-css'];
+					// TODO: Load this from plugins.
+					const events = ['custom-component-css'];
+
 					scrollElements.map(function (element) {
-						events.push(element + ':scroll');
+						events.push(`${element}:scroll`);
 					});
 
 					return events;
