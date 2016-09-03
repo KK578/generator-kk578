@@ -7,5 +7,7 @@ cache:
 install:
   - npm install
   - npm install -g grunt-cli
+before_script:
+  - grunt lint
 script:
   - grunt test
