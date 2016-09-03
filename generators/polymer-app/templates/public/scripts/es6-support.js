@@ -1,4 +1,4 @@
-﻿/* eslint no-var: "off" */
+﻿/* eslint no-var: "off", prefer-template: "off" */
 (function () {
 	function supportsEs6() {
 		try {
@@ -21,6 +21,6 @@
 		target = target.replace('.js', '.es5.js');
 	}
 
-	script.src = 'scripts/' +  target;
+	script.src = 'scripts/' + target;
 	document.head.appendChild(script);
 })();

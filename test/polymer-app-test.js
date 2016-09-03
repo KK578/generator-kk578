@@ -96,7 +96,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'grunt/bower.js',
 				'grunt/minifyPolymer.js',
 				'grunt/minifyPolymerCSS.js',
-				'grunt/sass.js',
+				'grunt/sass.js'
 				//'grunt/vulcanize.js'
 			]);
 		});

@@ -58,7 +58,7 @@ const generator = generators.Base.extend({
 				'grunt-contrib-uglify': '^2.0.0',
 				'grunt-contrib-watch': '^1.0.0',
 				'grunt-express-server': 'KK578/grunt-express-server',
-				'grunt-sync': '^0.6.2',
+				'grunt-sync': '^0.6.2'
 			});
 
 			if (this.options.polymerApp) {

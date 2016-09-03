@@ -1,7 +1,7 @@
 ﻿(function () {
-	function setupTemplate() {
-		const template = document.getElementById('template');
+	const template = document.getElementById('template');
 
+	function setupTemplate() {
 		template.properties = {
 			components: {
 				type: Array,
@@ -11,23 +11,24 @@
 				type: String,
 				observer: 'selectedChanged'
 			}
-		}
+		};
 
-		template.selectedChanged = function (n) {
-			template.displayed = '/bower/' + n;
-		}
+		template.selectedChanged = (newElement) => {
+			template.displayed = `/bower/${newElement}`;
+		};
 
-		template.select = function (e) {
+		template.select = (e) => {
 			const event = Polymer.dom(e).event;
 			const hash = event.model.item.component;
-			window.location.hash = hash;
 
+			window.location.hash = hash;
 			template.$['drawer-panel'].closeDrawer();
-		}
+		};
 	}
 
 	function onHashChange() {
-		var hash = window.location.hash.split('#')[1];
+		const hash = window.location.hash.split('#')[1];
+
 		template.selected = hash;
 	}
 
