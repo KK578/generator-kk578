@@ -32,7 +32,7 @@ function initializing(done) {
 
 	const dir = path.join(process.cwd(), '.git');
 
-	gitUtil.check(dir, (git) => {
+	gitUtil.exists(dir, (git) => {
 		this.git = git;
 		done();
 	});
