@@ -1,20 +1,21 @@
 ﻿const generators = require('yeoman-generator');
 
-const util = require('../util.js');
+const util = require('../../util/util.js');
+const prompts = util.prompts.nodeServer;
 
 const generator = generators.Base.extend({
 	// Cannot use arrow notation due to this object not referencing the correct object.
 	constructor: function () {
 		generators.Base.apply(this, arguments);
-		util.generatorConstructor.call(this, util.prompts.nodeServer);
+		util.generator.constructor.call(this, prompts);
 	},
 	initializing() {
 		const done = this.async();
 
-		util.generatorInitializing.call(this, done);
+		util.generator.initializing.call(this, done);
 	},
 	prompting() {
-		return util.generatorPrompting.call(this, util.prompts.nodeServer);
+		return util.generator.prompting.call(this, prompts);
 	},
 	composition() {
 		this.options.nodeServer = true;
