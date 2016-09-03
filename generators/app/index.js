@@ -1,28 +1,27 @@
 ﻿const generators = require('yeoman-generator');
-const spawn = require('child_process').spawn;
 
-const util = require('../util.js');
+const util = require('../../util/util.js');
+const prompts = util.prompts.app;
 
 const generator = generators.Base.extend({
 	// Cannot use arrow notation due to this object not referencing the correct object.
 	constructor: function () {
 		generators.Base.apply(this, arguments);
-		util.generatorConstructor.call(this, util.prompts.app);
+		util.generator.constructor.call(this, prompts);
 	},
 	initializing() {
 		const done = this.async();
 
-		util.generatorInitializing.call(this, done);
+		util.generator.initializing.call(this, done);
 	},
 	prompting() {
-		return util.generatorPrompting.call(this, util.prompts.app);
+		return util.generator.prompting.call(this, prompts);
 	},
 	gitInit() {
 		if (!this.git.initialised) {
 			const done = this.async();
-			const gitInit = spawn('git', ['init']);
 
-			gitInit.on('close', () => {
+			util.git.create(() => {
 				this.log('Git repository initialised.');
 				done();
 			});
@@ -35,9 +34,8 @@ const generator = generators.Base.extend({
 
 		if (this.git.remoteUrl !== this.options.gitRemoteUrl) {
 			const done = this.async();
-			const gitRemote = spawn('git', ['remote', 'add', 'origin', this.options.gitRemoteUrl]);
 
-			gitRemote.on('close', () => {
+			util.git.addRemote('origin', this.options.gitRemoteUrl, () => {
 				this.log(`Git remote url set to "${this.options.gitRemoteUrl}"`);
 				done();
 			});
