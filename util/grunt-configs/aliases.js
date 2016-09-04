@@ -21,7 +21,7 @@ module.exports = (options) => {
 			description: 'Build task for server files',
 			tasks: [
 				'newer:uglify:server',
-				'sync:server'
+				'newer:copy:server'
 			]
 		};
 

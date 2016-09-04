@@ -8,9 +8,9 @@ function initialise(options) {
 	grunt.eslint = require('./grunt-configs/eslint.js')(options);
 
 	// Node Server
+	grunt.copy = require('./grunt-configs/copy.js')(options);
 	grunt.express = require('./grunt-configs/express.js')(options);
 	grunt.newer = require('./grunt-configs/newer.js')(options);
-	grunt.sync = require('./grunt-configs/sync.js')(options);
 	grunt.uglify = require('./grunt-configs/uglify.js')(options);
 	grunt.watch = require('./grunt-configs/watch.js')(options);
 

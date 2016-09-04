@@ -45,10 +45,11 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 
 		it('should generate extra devDependencies to package.json', () => {
 			assert.fileContent('package.json', /"browser-sync"/);
-			assert.fileContent('package.json', /"grunt-express-server"/);
+			assert.fileContent('package.json', /"grunt-contrib-copy"/);
 			assert.fileContent('package.json', /"grunt-contrib-watch"/);
 			assert.fileContent('package.json', /"grunt-contrib-uglify"/);
-			assert.fileContent('package.json', /"grunt-sync"/);
+			assert.fileContent('package.json', /"grunt-express-server"/);
+			assert.fileContent('package.json', /"grunt-newer"/);
 		});
 
 		it('should generate npm-shrinkwrap for uglify-js', () => {
@@ -67,7 +68,9 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 		it('should add additional tasks specific to node-server', () => {
 			assert.fileContent('grunt/aliases.js', /serve/);
 			assert.fileContent('grunt/aliases.js', /build:server/);
+			assert.fileContent('grunt/copy.js', /server/);
 			assert.fileContent('grunt/eslint.js', /server/);
+			assert.file('grunt/newer.js');
 			assert.fileContent('grunt/watch.js', /server/);
 		});
 

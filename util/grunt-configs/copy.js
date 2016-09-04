@@ -1,13 +1,13 @@
 module.exports = (options) => {
-	const sync = {};
+	const copy = {};
 
 	if (options.nodeServer) {
-		sync.server = {
+		copy.server = {
 			files: {
 				'build/.env': '.env'
 			}
 		};
 	}
 
-	return sync;
+	return copy;
 };
