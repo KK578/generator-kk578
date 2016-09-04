@@ -6,7 +6,7 @@
 
 		get listeners() {
 			return {
-				'neon-animation-finish': 'onAnimationFinished'
+				'neon-animation-finish': 'onCloseAnimationFinished'
 			};
 		}
 
@@ -31,19 +31,51 @@
 				},
 				sharedElements: {
 					type: Object,
-					value: () => {
+					value: function () {
 						return { ripple: this };
 					}
 				}
 			};
 		}
 
-		runAnimation() {
+		attached() {
 			document.body.classList.add('splash-animating');
+
+			this.async(() => {
+				this.startSplashAnimation();
+				this.loadAppDependencies()
+			}, 250);
+		}
+
+		startSplashAnimation() {
+			Polymer.dom(this.$.spinner).classList.remove('minimised');
+			this.$.spinner.active = true;
+			this.$.card.elevation = 5;
+		}
+
+		endSplashAnimation() {
+			Polymer.dom(this.$.card).classList.remove('loading');
+			this.$.card.elevation = 0;
+
+			Polymer.dom(this.$.title).classList.remove('loading');
+
+			Polymer.dom(this.$.spinner).classList.add('minimised');
+			this.$.spinner.active = false;
+		}
+
+		loadAppDependencies() {
+			Polymer.Base.importHref('elements.html', () => {
+				this.endSplashAnimation();
+
+				this.async(this.closeAnimation, 300);
+			});
+		}
+
+		closeAnimation() {
 			this.playAnimation();
 		}
 
-		onAnimationFinished() {
+		onCloseAnimationFinished() {
 			document.body.classList.remove('splash-animating');
 			Polymer.dom(this.parentNode).removeChild(this);
 		}
