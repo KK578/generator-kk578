@@ -18,7 +18,19 @@ function initLoadGruntConfig(grunt) {
 	loadGruntConfig(grunt, options);
 }
 
+function quietGruntNewer(grunt) {
+	const originalHeader = grunt.log.header;
+
+	grunt.log.header = (message) => {
+		// Only if the header does not start with newer or newer-postrun.
+		if (!/newer(-postrun)?:/.test(message)) {
+			originalHeader.apply(this, arguments);
+		}
+	}
+}
+
 module.exports = function (grunt) {
 	initTimeGrunt(grunt);
 	initLoadGruntConfig(grunt);
+	quietGruntNewer(grunt);
 };
