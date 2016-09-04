@@ -20,6 +20,7 @@ $transition-settings: 0.3s ease-out;
 	@include border-radius(8px);
 	background-color: rgba(0, 0, 0, 0);
 	padding: 40px;
+	margin: 0 12px;
 
 	&.loading {
 		background-color: $white-primary;
@@ -31,7 +32,7 @@ $transition-settings: 0.3s ease-out;
 		font-size: 24px;
 		font-weight: 500;
 		line-height: 28px;
-		margin: 0 0 4px;
+		margin-bottom: 4px;
 		text-align: center;
 
 		&.loading {
