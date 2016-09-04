@@ -1,50 +1,14 @@
 ﻿(function () {
-	const loadingDelay = 100;
-	const finishDelay = 500;
-
-	function endSplashScreen() {
-		document.getElementById('splash-screen').runAnimation();
+	function finishPreload() {
+		document.querySelector('splash-screen').classList.remove('start-up');
 	}
 
-	function loadAppDependencies() {
-		Polymer.Base.importHref('elements.html', function () {
-			const loaders = document.querySelectorAll('.loading');
-
-			_.map(loaders, (loader) => {
-				loader.classList.remove('loading');
-			});
-
-			// HACK: Some browsers don't appear to like multiple animations running on the same
-			// element at the same time. So run async to allow loading class styles to be
-			// removed before seaming the card into the background.
-			window.setTimeout(function () {
-				// End splash-screen animation.
-				document.getElementById('splash-spinner').active = false;
-				document.getElementById('splash-card').elevation = 0;
-			}, finishDelay);
-
-			window.setTimeout(endSplashScreen, finishDelay);
-		});
-	}
-
-	function startSplashScreen() {
-		// Scale in paper-spinner and animate paper-material.
-		document.getElementById('splash-spinner').classList.remove('loading');
-		document.getElementById('splash-card').elevation = 5;
-
-		window.setTimeout(loadAppDependencies, loadingDelay);
-	}
-
-	function loadInitialDependencies() {
-		function loaded() {
-			window.setTimeout(startSplashScreen, 0);
-		}
-
+	function loadSplashElements() {
 		const elementImport = document.createElement('link');
 
 		elementImport.rel = 'import';
 		elementImport.href = 'splash-elements.html';
-		elementImport.onload = loaded;
+		elementImport.onload = finishPreload;
 
 		document.head.appendChild(elementImport);
 	}
@@ -55,13 +19,13 @@
 			'content' in document.createElement('template');
 
 		if (native) {
-			loadInitialDependencies();
+			loadSplashElements();
 		}
 		else {
 			const script = document.createElement('script');
 
 			script.src = 'bower-components/webcomponentsjs/webcomponents-lite.js';
-			script.onload = loadInitialDependencies;
+			script.onload = loadSplashElements;
 			document.head.appendChild(script);
 		}
 	}

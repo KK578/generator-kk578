@@ -18,12 +18,15 @@ body {
 }
 
 splash-screen {
-    @include layout-vertical;
-    @include layout-center;
-    @include layout-center-justified;
     background-color: #FFFFFF;
     height: 100%;
     width: 100%;
     position: absolute;
     z-index: 20;
+
+	&.start-up {
+		@include layout-vertical;
+		@include layout-center;
+		@include layout-center-justified;
+	}
 }

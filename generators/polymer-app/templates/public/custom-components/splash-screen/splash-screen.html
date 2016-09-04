@@ -1,0 +1,26 @@
+﻿<link rel="import" href="../../bower-components/polymer/polymer.html" />
+
+<link rel="import" href="../../bower-components/font-roboto/roboto.html" />
+
+<link rel="import" href="../../bower-components/iron-flex-layout/iron-flex-layout-classes.html" />
+
+<link rel="import" href="../../bower-components/paper-material/paper-material.html" />
+<link rel="import" href="../../bower-components/paper-spinner/paper-spinner.html" />
+<link rel="import" href="../../bower-components/paper-styles/color.html" />
+
+<link rel="import" href="../../bower-components/neon-animation/neon-animation-runner-behavior.html" />
+<link rel="import" href="../../bower-components/neon-animation/animations/reverse-ripple-animation.html" />
+
+<dom-module id="splash-screen">
+	<link rel="import" type="css" href="splash-screen.css" />
+	<style is="custom-style" include="iron-flex iron-positioning"></style>
+	<template>
+		<div class="fit layout vertical center-center">
+			<paper-material id="card" class="loading" animated="true" elevation="0">
+				<h2 id="title" class="loading">Hello!</h2>
+				<paper-spinner id="spinner" class="loading"></paper-spinner>
+			</paper-material>
+		</div>
+	</template>
+	<script src="splash-screen.js"></script>
+</dom-module>
