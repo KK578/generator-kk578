@@ -7,21 +7,21 @@ const router = express.Router();
 // Stamp css content into html during development.
 router.get('/custom-components/:component/*.html', (req, res) => {
 	const element = req.params.component;
-	const elementPath = path.join(__dirname, `../../public/${element}/${element}`);
+	const elementPath = path.join(__dirname, `../../public/custom-components/${element}/${element}`);
 
-	fs.readFile(`${elementPath}.html`, { encoding: 'utf-8' }, function (err, html) {
+	fs.readFile(`${elementPath}.html`, 'utf-8', (err, html) => {
 		if (err) {
 			throw err;
 		}
 
-		fs.readFile(`${elementPath}.css`, { encoding: 'utf-8' }, function (err, css) {
+		fs.readFile(`${elementPath}.css`, 'utf-8', (err, css) => {
 			if (err) {
 				throw err;
 			}
 
 			// Find the style tag that references the component's css.
-			const stampLocation = new RegExp(`^[\S\s]+(<link.*href=".*?${element}.css.*?".*?\/>)`);
-			const taggedCss = `<style>${css}</style>`;
+			const stampLocation = new RegExp(`<template><link.*href=".*?${element}.css.*?".*?\/?>)`);
+			const taggedCss = `<template><style>${css}</style>`;
 
 			res.send(html.replace(stampLocation, taggedCss));
 		});
