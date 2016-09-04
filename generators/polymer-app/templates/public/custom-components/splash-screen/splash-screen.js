@@ -18,7 +18,7 @@
 					type: Object,
 					value: function () {
 						const x = window.innerWidth / 2;
-						const y = window.innerHeight / 2;
+						const y = 0;
 
 						return {
 							name: 'reverse-ripple-animation',
@@ -41,10 +41,10 @@
 		attached() {
 			document.body.classList.add('splash-animating');
 
-			this.async(() => {
-				this.startSplashAnimation();
-				this.loadAppDependencies()
-			}, 250);
+			const delay = 275;
+
+			this.async(this.startSplashAnimation, delay);
+			this.async(this.loadAppDependencies, delay + 300);
 		}
 
 		startSplashAnimation() {
