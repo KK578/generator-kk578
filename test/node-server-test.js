@@ -62,15 +62,32 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 				}
 			});
 		});
+
+		it('should not generate extra devDependencies specific to polymer-app', () => {
+			assert.noFileContent('package.json', /"grunt-babel"/);
+			assert.noFileContent('package.json', /"grunt-bower-task"/);
+			assert.noFileContent('package.json', /"grunt-minify-polymer"/);
+			assert.noFileContent('package.json', /"grunt-sass"/);
+			assert.noFileContent('package.json', /"grunt-vulcanize"/);
+		});
 	});
 
 	describe('Grunt', () => {
+		it('should generate additional grunt configs for node-server', () => {
+			assert.file([
+				'grunt/copy.js',
+				'grunt/express.js',
+				'grunt/newer.js',
+				'grunt/uglify.js',
+				'grunt/watch.js'
+			]);
+		});
+
 		it('should add additional tasks specific to node-server', () => {
 			assert.fileContent('grunt/aliases.js', /serve/);
 			assert.fileContent('grunt/aliases.js', /build:server/);
 			assert.fileContent('grunt/copy.js', /server/);
 			assert.fileContent('grunt/eslint.js', /server/);
-			assert.file('grunt/newer.js');
 			assert.fileContent('grunt/watch.js', /server/);
 		});
 
@@ -85,19 +102,34 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 			]);
 		});
 
+		it('should not add task configs specific to polymer-app', () => {
+			assert.noFile([
+				'grunt/babel.js',
+				'grunt/minifyPolymer.js',
+				'grunt/minifyPolymerCSS.js',
+				'grunt/sass.js'
+			]);
+		});
+
 		it('should not add tasks specific to polymer-app for Bower', () => {
 			assert.noFileContent('grunt/aliases.js', /build:bower/);
 			assert.noFileContent('grunt/uglify.js', /bower/);
 			assert.noFileContent('grunt/watch.js', /bower/);
 		});
 
-		it('should generate additional grunt configs for node-server', () => {
-			assert.file([
-				'grunt/express.js',
-				'grunt/sync.js',
-				'grunt/uglify.js',
-				'grunt/watch.js'
-			]);
+		it('should not add tasks specific to polymer-app for views', () => {
+			assert.noFileContent('grunt/aliases.js', /build:views/);
+			assert.noFileContent('grunt/eslint.js', /views/);
+			assert.noFileContent('grunt/uglify.js', /views/);
+			assert.noFileContent('grunt/watch.js', /views/);
+			assert.noFileContent('grunt/watch.js', /sass-partials/);
+		});
+
+		it('should not add tasks specific to polymer-app for custom components', () => {
+			assert.noFileContent('grunt/aliases.js', /build:components/);
+			assert.noFileContent('grunt/eslint.js', /components/);
+			assert.noFileContent('grunt/uglify.js', /components/);
+			assert.noFileContent('grunt/watch.js', /components/);
 		});
 	});
 
