@@ -20,13 +20,28 @@ function initLoadGruntConfig(grunt) {
 
 function quietGruntNewer(grunt) {
 	const originalHeader = grunt.log.header;
+	const originalWriteLn = grunt.log.writeln;
 
-	grunt.log.header = (message) => {
+	// Cannot use arrow functions here as the this object is incorrect otherwise.
+	grunt.log.header = function (message) {
 		// Only if the header does not start with newer or newer-postrun.
 		if (!/newer(-postrun)?:/.test(message)) {
 			originalHeader.apply(this, arguments);
 		}
-	}
+
+		return this;
+	};
+
+	// Cannot use arrow functions here as the this object is incorrect otherwise.
+	grunt.log.writeln = function (message) {
+		// Only write the message if it is not the text from a grunt-newer task.
+		if (message !== 'No newer files to process.') {
+			originalWriteLn.apply(this, arguments);
+		}
+
+		// Need to return the object as in grunt-legacy-log#writeln.
+		return this;
+	};
 }
 
 module.exports = function (grunt) {
