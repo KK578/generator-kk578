@@ -20,8 +20,7 @@ module.exports = (options) => {
 		aliases['build:server'] = {
 			description: 'Build task for server files',
 			tasks: [
-				'eslint:server',
-				'uglify:server',
+				'newer:uglify:server',
 				'sync:server'
 			]
 		};
@@ -30,27 +29,27 @@ module.exports = (options) => {
 			aliases['build:bower'] = {
 				description: 'Build task for bower components',
 				tasks: [
-					'minifyPolymer:bower',
-					'minifyPolymerCSS:bower',
-					'uglify:bower'
+					'newer:minifyPolymer:bower',
+					'newer:minifyPolymerCSS:bower',
+					'newer:uglify:bower'
 				]
 			};
 
 			aliases['build:components'] = {
 				description: 'Build task for custom components',
 				tasks: [
-					'minifyPolymer:components',
-					'sass:components',
-					'uglify:components'
+					'newer:minifyPolymer:components',
+					'newer:sass:components',
+					'newer:uglify:components'
 				]
 			};
 
 			aliases['build:views'] = {
 				description: 'Build task for views',
 				tasks: [
-					'minifyPolymer:views',
-					'sass:views',
-					'uglify:views'
+					'newer:minifyPolymer:views',
+					'newer:sass:views',
+					'newer:uglify:views'
 				]
 			};
 		}

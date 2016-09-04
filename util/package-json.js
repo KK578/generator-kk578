@@ -41,6 +41,7 @@ function create(options) {
 			'grunt-contrib-uglify': '^2.0.0',
 			'grunt-contrib-watch': '^1.0.0',
 			'grunt-express-server': 'KK578/grunt-express-server',
+			'grunt-newer': '^1.2.0',
 			'grunt-sync': '^0.6.2'
 		});
 
