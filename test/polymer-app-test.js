@@ -96,8 +96,8 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'grunt/bower.js',
 				'grunt/minifyPolymer.js',
 				'grunt/minifyPolymerCSS.js',
-				'grunt/sass.js'
-				//'grunt/vulcanize.js'
+				'grunt/sass.js',
+				'grunt/vulcanize.js'
 			]);
 		});
 
@@ -131,7 +131,12 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/watch.js', /components/);
 		});
 
-		it('should add new tasks for production build');
+		it('should add new tasks for production build', () => {
+			assert.fileContent('grunt/babel.js', /production/);
+			assert.fileContent('grunt/minifyPolymer.js', /production/);
+			assert.fileContent('grunt/vulcanize.js', /[^(splash\-)]elements/);
+			assert.fileContent('grunt/vulcanize.js', /splash-elements/);
+		});
 	});
 
 	describe('Public', () => {
