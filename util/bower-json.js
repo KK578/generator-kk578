@@ -27,7 +27,6 @@
 
 	if (options.polymerApp) {
 		Object.assign(bowerJson.dependencies, {
-			'lodash': '^4.15.0',
 			'polymer': 'Polymer/polymer#^1.6.1',
 			'paper-elements': 'PolymerElements/paper-elements#^1.0.7'
 		});
