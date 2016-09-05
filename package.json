@@ -6,8 +6,8 @@
     "yeoman-generator"
   ],
   "engines": {
-    "node": ">=6",
-    "npm": ">=3"
+    "node": ">=4",
+    "npm": ">=2"
   },
   "files": [
     "generators/app",
