@@ -19,6 +19,7 @@ function initialise(options) {
 	grunt.minifyPolymer = require('./grunt-configs/minify-polymer.js')(options);
 	grunt.minifyPolymerCSS = require('./grunt-configs/minify-polymer-css.js')(options);
 	grunt.sass = require('./grunt-configs/sass.js')(options);
+	grunt.vulcanize = require('./grunt-configs/vulcanize.js')(options);
 
 	return grunt;
 }
