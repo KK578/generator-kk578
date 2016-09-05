@@ -1,13 +1,15 @@
-﻿module.exports = (options) => {
+﻿const bower = 'build/public/bower-components';
+
+module.exports = (options) => {
 	const vulcanize = {};
 
 	if (options.polymerApp) {
 		vulcanize.options = {
-			excludes: ['build/public/bower-components/polymer/polymer.html'],
+			excludes: [`${bower}/polymer/polymer.html`],
 			inlineScripts: true,
 			inlineCss: true,
 			stripComments: true
-		}
+		};
 
 		vulcanize['splash-elements'] = {
 			options: {
@@ -22,41 +24,41 @@
 			options: {
 				stripExcludes: [
 					// Polymer
-					'build/public/bower-components/polymer/polymer.html',
+					`${bower}/polymer/polymer.html`,
 
 					// Paper-Styles
-					'build/public/bower-components/paper-styles/color.html',
-					'build/public/bower-components/paper-styles/shadow.html',
-					'build/public/bower-components/font-roboto/roboto.html',
+					`${bower}/paper-styles/color.html`,
+					`${bower}/paper-styles/shadow.html`,
+					`${bower}/font-roboto/roboto.html`,
 
 					// Paper-Material
-					'build/public/bower-components/paper-material/paper-material.html',
-					'build/public/bower-components/paper-material/paper-material-shared-styles.html',
+					`${bower}/paper-material/paper-material.html`,
+					`${bower}/paper-material/paper-material-shared-styles.html`,
 
 					// Paper-Spinner
-					'build/public/bower-components/paper-spinner/paper-spinner.html',
-					'build/public/bower-components/paper-spinner/paper-spinner-behavior.html',
-					'build/public/bower-components/paper-spinner/paper-spinner-styles.html',
-					'build/public/bower-components/iron-flex-layout/iron-flex-layout.html',
+					`${bower}/paper-spinner/paper-spinner.html`,
+					`${bower}/paper-spinner/paper-spinner-behavior.html`,
+					`${bower}/paper-spinner/paper-spinner-styles.html`,
+					`${bower}/iron-flex-layout/iron-flex-layout.html`,
 
 					// Neon-Animation-Runner-Behavior
-					'build/public/bower-components/neon-animation/neon-animation-runner-behavior.html',
-					'build/public/bower-components/neon-animation/neon-animatable-behavior.html',
-					'build/public/bower-components/iron-meta/iron-meta.html',
+					`${bower}/neon-animation/neon-animation-runner-behavior.html`,
+					`${bower}/neon-animation/neon-animatable-behavior.html`,
+					`${bower}/iron-meta/iron-meta.html`,
 
 					// Reverse-Ripple-Animation
-					'build/public/bower-components/neon-animation/animations/reverse-ripple-animation.html',
-					'build/public/bower-components/neon-animation/neon-shared-element-animation-behavior.html',
-					'build/public/bower-components/neon-animation/neon-animation-behavior.html',
-					'build/public/bower-components/neon-animation/web-animations.html',
-					'build/public/bower-components/web-animations-js/web-animations-next-lite.min.js'
+					`${bower}/neon-animation/animations/reverse-ripple-animation.html`,
+					`${bower}/neon-animation/neon-shared-element-animation-behavior.html`,
+					`${bower}/neon-animation/neon-animation-behavior.html`,
+					`${bower}/neon-animation/web-animations.html`,
+					`${bower}/web-animations-js/web-animations-next-lite.min.js`
 				],
 				csp: 'scripts/elements.js'
 			},
 			files: {
 				'build/public/elements.html': 'build/public/elements.html'
 			}
-		}
+		};
 	}
 
 	return vulcanize;
