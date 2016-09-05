@@ -1,0 +1,18 @@
+﻿@import '../../stylesheets/partials/_layouts.scss';
+@import '../../stylesheets/partials/_mixins.scss';
+@import '../../stylesheets/partials/_theme.scss';
+
+:host {
+	display: block;
+}
+
+paper-material {
+	@include border-radius(4px);
+	background-color: $white-primary;
+	margin: 12px;
+	padding: 10px;
+}
+
+paper-header-panel {
+	background-color: var($theme-background);
+}

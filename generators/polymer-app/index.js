@@ -3,8 +3,6 @@
 const util = require('../../util/util.js');
 const prompts = util.prompts.polymerApp;
 
-let bowerJson;
-
 const generator = generators.Base.extend({
 	// Cannot use arrow notation due to this object not referencing the correct object.
 	constructor: function () {
@@ -24,12 +22,12 @@ const generator = generators.Base.extend({
 		this.composeWith('kk578:node-server', { options: this.options });
 	},
 	bowerJson() {
-		bowerJson = util.bowerJson.create(this.options);
+		this.bowerJson = util.bowerJson.create(this.options);
 	},
 	writing() {
 		/* eslint max-statements: "off" */
 		this.copy('.bowerrc');
-		this.write('bower.json', JSON.stringify(bowerJson, null, 2));
+		this.write('bower.json', JSON.stringify(this.bowerJson, null, 2));
 
 		this.copy('server/routes/bower.dev.js');
 		this.copy('server/routes/components.dev.js');
@@ -52,6 +50,16 @@ const generator = generators.Base.extend({
 		this.copy('public/stylesheets/partials/_material_color.scss');
 		this.copy('public/stylesheets/partials/_mixins.scss');
 		this.copy('public/stylesheets/partials/_theme.scss');
+
+		this.template('public/custom-components/splash-screen/splash-screen.html',
+			'public/custom-components/splash-screen/splash-screen.html', this.options);
+		this.copy('public/custom-components/splash-screen/splash-screen.js');
+		this.copy('public/custom-components/splash-screen/splash-screen.scss');
+
+		this.template('public/custom-components/app-element/app-element.html',
+			'public/custom-components/app-element/app-element.html', this.options);
+		this.copy('public/custom-components/app-element/app-element.js');
+		this.copy('public/custom-components/app-element/app-element.scss');
 
 		this.copy('public/scripts/bower.js');
 		this.copy('public/scripts/es6-support.js');

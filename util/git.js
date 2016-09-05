@@ -11,13 +11,15 @@ const spawn = require('child_process').spawn;
  *
  */
 function exists(dir, callback) {
-	fs.access(dir, fs.constants.F_OK, (err) => {
+	fs.stat(dir, (err, stats) => {
 		const git = {
 			initialised: false,
 			remoteUrl: ''
 		};
 
-		if (err) {
+		// Err implies that the directory does not exist.
+		// !stats.isDirectory() ensures that .git is not a directory.
+		if (err || !stats.isDirectory()) {
 			callback(git);
 		}
 		else {
