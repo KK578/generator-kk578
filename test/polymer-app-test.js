@@ -91,7 +91,6 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 	describe('Grunt', () => {
 		it('should generate additional grunt configs for polymer-app', () => {
 			assert.file([
-				// TODO: Reenable Babel and Vulcanize tasks for production builds.
 				'grunt/babel.js',
 				'grunt/bower.js',
 				'grunt/minifyPolymer.js',
@@ -175,7 +174,20 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			]);
 		});
 
-		it('should generate custom components');
+		it('should generate custom components', () => {
+			assert.file([
+				'public/custom-components/splash-element/splash-element.html',
+				'public/custom-components/splash-element/splash-element.js',
+				'public/custom-components/splash-element/splash-element.scss'
+			]);
+
+			assert.file([
+				'public/custom-components/app-element/app-element.html',
+				'public/custom-components/app-element/app-element.js',
+				'public/custom-components/app-element/app-element.scss'
+			]);
+		});
+
 		it('should generate WCT suite');
 	});
 });
