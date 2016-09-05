@@ -1,6 +1,7 @@
 ###############
 ### Project ###
 .env
+.cache/
 tmp/
 
 ## Dependencies

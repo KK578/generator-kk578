@@ -38,10 +38,11 @@ function create(options) {
 
 		Object.assign(packageJson.devDependencies, {
 			'browser-sync': '^2.14.0',
+			'grunt-contrib-copy': '^1.0.0',
 			'grunt-contrib-uglify': '^2.0.0',
 			'grunt-contrib-watch': '^1.0.0',
 			'grunt-express-server': 'KK578/grunt-express-server',
-			'grunt-sync': '^0.6.2'
+			'grunt-newer': '^1.2.0'
 		});
 
 		if (options.polymerApp) {

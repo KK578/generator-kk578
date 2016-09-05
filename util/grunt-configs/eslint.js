@@ -21,13 +21,15 @@ module.exports = (options) => {
 			files: 'server/**/*.js'
 		};
 
-		eslint.components = {
-			files: ['public/custom-components/**/*.js']
-		};
+		if (options.polymerApp) {
+			eslint.components = {
+				files: ['public/custom-components/**/*.js']
+			};
 
-		eslint.views = {
-			src: ['public/scripts/**/*.js']
-		};
+			eslint.views = {
+				src: ['public/scripts/**/*.js']
+			};
+		}
 	}
 
 	return eslint;
