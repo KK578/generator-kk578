@@ -24,19 +24,20 @@
 					// Polymer
 					'build/public/bower-components/polymer/polymer.html',
 
+					// Paper-Styles
+					'build/public/bower-components/paper-styles/color.html',
+					'build/public/bower-components/paper-styles/shadow.html',
+					'build/public/bower-components/font-roboto/roboto.html',
+
 					// Paper-Material
 					'build/public/bower-components/paper-material/paper-material.html',
-					'build/public/bower-components/paper-styles/shadow.html',
 					'build/public/bower-components/paper-material/paper-material-shared-styles.html',
 
 					// Paper-Spinner
 					'build/public/bower-components/paper-spinner/paper-spinner.html',
-					'build/public/bower-components/iron-flex-layout/iron-flex-layout.html',
 					'build/public/bower-components/paper-spinner/paper-spinner-behavior.html',
 					'build/public/bower-components/paper-spinner/paper-spinner-styles.html',
-
-					// Paper-Styles/color
-					'build/public/bower-components/paper-styles/color.html',
+					'build/public/bower-components/iron-flex-layout/iron-flex-layout.html',
 
 					// Neon-Animation-Runner-Behavior
 					'build/public/bower-components/neon-animation/neon-animation-runner-behavior.html',
