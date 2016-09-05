@@ -18,16 +18,31 @@ module.exports = (options) => {
 
 	if (options.nodeServer) {
 		eslint.server = {
-			files: 'server/**/*.js'
+			files: [
+				{
+					expand: true,
+					src: 'server/**/*.js'
+				}
+			]
 		};
 
 		if (options.polymerApp) {
 			eslint.components = {
-				files: ['public/custom-components/**/*.js']
+				files: [
+					{
+						expand: true,
+						src: 'public/custom-components/**/*.js'
+					}
+				]
 			};
 
 			eslint.views = {
-				src: ['public/scripts/**/*.js']
+				files: [
+					{
+						expand: true,
+						src: ['public/scripts/**/*.js']
+					}
+				]
 			};
 		}
 	}

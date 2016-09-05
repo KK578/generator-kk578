@@ -36,7 +36,7 @@ module.exports = (options) => {
 				// polymer-app: 'build:components'
 				// polymer-app: 'build:views'
 			]
-		}
+		};
 
 		aliases['build:development'] = {
 			description: 'Build project files for development',
@@ -45,7 +45,7 @@ module.exports = (options) => {
 				// polymer-app: bower:development
 				'build:all'
 			]
-		}
+		};
 
 		aliases['build:production'] = {
 			description: 'Build project for production.',
