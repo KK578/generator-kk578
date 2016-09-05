@@ -51,6 +51,16 @@ const generator = generators.Base.extend({
 		this.copy('public/stylesheets/partials/_mixins.scss');
 		this.copy('public/stylesheets/partials/_theme.scss');
 
+		this.template('public/custom-components/splash-screen/splash-screen.html',
+			'public/custom-components/splash-screen/splash-screen.html', this.options);
+		this.copy('public/custom-components/splash-screen/splash-screen.js');
+		this.copy('public/custom-components/splash-screen/splash-screen.scss');
+
+		this.template('public/custom-components/app-element/app-element.html',
+			'public/custom-components/app-element/app-element.html', this.options);
+		this.copy('public/custom-components/app-element/app-element.js');
+		this.copy('public/custom-components/app-element/app-element.scss');
+
 		this.copy('public/scripts/bower.js');
 		this.copy('public/scripts/es6-support.js');
 		this.copy('public/scripts/load.js');

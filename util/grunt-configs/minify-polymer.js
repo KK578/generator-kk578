@@ -38,6 +38,20 @@ module.exports = (options) => {
 				}
 			]
 		};
+
+		minifyPolymer.production = {
+			files: [
+				{
+					expand: true,
+					cwd: 'build/public/',
+					src: [
+						'splash-elements.html',
+						'elements.html'
+					],
+					dest: 'build/public/'
+				}
+			]
+		};
 	}
 
 	return minifyPolymer;

@@ -91,13 +91,12 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 	describe('Grunt', () => {
 		it('should generate additional grunt configs for polymer-app', () => {
 			assert.file([
-				// TODO: Reenable Babel and Vulcanize tasks for production builds.
 				'grunt/babel.js',
 				'grunt/bower.js',
 				'grunt/minifyPolymer.js',
 				'grunt/minifyPolymerCSS.js',
-				'grunt/sass.js'
-				//'grunt/vulcanize.js'
+				'grunt/sass.js',
+				'grunt/vulcanize.js'
 			]);
 		});
 
@@ -131,7 +130,12 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/watch.js', /components/);
 		});
 
-		it('should add new tasks for production build');
+		it('should add new tasks for production build', () => {
+			assert.fileContent('grunt/babel.js', /production/);
+			assert.fileContent('grunt/minifyPolymer.js', /production/);
+			assert.fileContent('grunt/vulcanize.js', /[^(splash\-)]elements/);
+			assert.fileContent('grunt/vulcanize.js', /splash-elements/);
+		});
 	});
 
 	describe('Public', () => {
@@ -170,7 +174,20 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			]);
 		});
 
-		it('should generate custom components');
+		it('should generate custom components', () => {
+			assert.file([
+				'public/custom-components/splash-screen/splash-screen.html',
+				'public/custom-components/splash-screen/splash-screen.js',
+				'public/custom-components/splash-screen/splash-screen.scss'
+			]);
+
+			assert.file([
+				'public/custom-components/app-element/app-element.html',
+				'public/custom-components/app-element/app-element.js',
+				'public/custom-components/app-element/app-element.scss'
+			]);
+		});
+
 		it('should generate WCT suite');
 	});
 });

@@ -20,6 +20,21 @@ module.exports = (options) => {
 				}
 			]
 		};
+
+		babel.production = {
+			files: [
+				{
+					expand: true,
+					cwd: 'build/public/scripts/',
+					src: [
+						'elements.js',
+						'splash-elements.js'
+					],
+					ext: 'es5.js',
+					dest: 'build/public/scripts/'
+				}
+			]
+		};
 	}
 
 	return babel;

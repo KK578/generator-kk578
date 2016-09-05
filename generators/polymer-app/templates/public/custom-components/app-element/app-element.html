@@ -1,0 +1,25 @@
+﻿<link rel="import" href="../../bower-components/polymer/polymer.html" />
+
+<link rel="import" href="../../bower-components/iron-flex-layout/iron-flex-layout-classes.html" />
+
+<link rel="import" href="../../bower-components/paper-header-panel/paper-header-panel.html" />
+<link rel="import" href="../../bower-components/paper-toolbar/paper-toolbar.html" />
+<link rel="import" href="../../bower-components/paper-material/paper-material.html" />
+
+<dom-module id="app-element">
+	<template>
+		<link rel="import" type="css" href="app-element.css" />
+		<style is="custom-style" include="iron-flex iron-positioning"></style>
+
+		<paper-header-panel class="flex">
+			<paper-toolbar>
+				<h1><%= appName %> - Home</h1>
+			</paper-toolbar>
+
+			<paper-material>
+				<h2>Made with generator-kk578!</h2>
+			</paper-material>
+		</paper-header-panel>
+	</template>
+	<script src="app-element.js"></script>
+</dom-module>
