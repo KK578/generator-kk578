@@ -12,9 +12,10 @@
 <link rel="import" href="../../bower-components/neon-animation/animations/reverse-ripple-animation.html" />
 
 <dom-module id="splash-screen">
-	<link rel="import" type="css" href="splash-screen.css" />
-	<style is="custom-style" include="iron-flex iron-positioning"></style>
 	<template>
+		<link rel="import" type="css" href="splash-screen.css" />
+		<style is="custom-style" include="iron-flex iron-positioning"></style>
+
 		<div class="fit layout vertical center-center">
 			<paper-material id="card" class="loading" animated="true" elevation="0">
 				<h2 id="title" class="loading">Loading <%= appName %>!</h2>
