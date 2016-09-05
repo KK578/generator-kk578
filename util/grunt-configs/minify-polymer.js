@@ -49,6 +49,7 @@ module.exports = (options) => {
 						'elements.html'
 					],
 					dest: 'build/public/'
+				}
 			]
 		};
 	}

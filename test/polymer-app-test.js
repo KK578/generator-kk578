@@ -176,9 +176,9 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 
 		it('should generate custom components', () => {
 			assert.file([
-				'public/custom-components/splash-element/splash-element.html',
-				'public/custom-components/splash-element/splash-element.js',
-				'public/custom-components/splash-element/splash-element.scss'
+				'public/custom-components/splash-screen/splash-screen.html',
+				'public/custom-components/splash-screen/splash-screen.js',
+				'public/custom-components/splash-screen/splash-screen.scss'
 			]);
 
 			assert.file([
