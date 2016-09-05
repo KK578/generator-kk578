@@ -18,6 +18,7 @@ body {
 }
 
 splash-screen {
+	@include layout-fit;
     background-color: #FFFFFF;
     height: 100%;
     width: 100%;
@@ -29,4 +30,8 @@ splash-screen {
 		@include layout-center;
 		@include layout-center-justified;
 	}
+}
+
+app-element {
+	@include layout-fit;
 }
