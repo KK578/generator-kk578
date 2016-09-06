@@ -3,14 +3,14 @@
 @import 'partials/_theme.scss';
 
 body {
-    @include layout-fullbleed;
-    @include user-select(none);
-    /* Text */
-    font-family: 'Roboto', 'Noto', sans-serif;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    /* Remove blue colouring on Android when tapping an item */
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	@include layout-fullbleed;
+	@include user-select(none);
+	/* Text */
+	font-family: 'Roboto', 'Noto', sans-serif;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	/* Remove blue colouring on Android when tapping an item */
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
 	&.splash-animating {
 		overflow: hidden;
@@ -19,11 +19,11 @@ body {
 
 splash-screen {
 	@include layout-fit;
-    background-color: #FFFFFF;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 20;
+	background-color: #FFFFFF;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 20;
 
 	&.start-up {
 		@include layout-vertical;
