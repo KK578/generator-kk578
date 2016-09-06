@@ -1,3 +1,3 @@
-﻿module.exports = {
+module.exports = {
 	test: { src: 'test/tmp/' }
 };

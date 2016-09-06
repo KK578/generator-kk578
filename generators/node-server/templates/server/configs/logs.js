@@ -1,4 +1,4 @@
-﻿const morgan = require('morgan');
+const morgan = require('morgan');
 
 module.exports = (server) => {
 	switch (server.get('env')) {

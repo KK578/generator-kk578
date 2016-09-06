@@ -1,4 +1,4 @@
-﻿/* eslint no-var: "off", prefer-template: "off" */
+/* eslint no-var: "off", prefer-template: "off" */
 (function () {
 	function supportsEs6() {
 		try {

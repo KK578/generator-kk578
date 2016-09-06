@@ -1,4 +1,4 @@
-﻿const bower = 'build/public/bower-components';
+const bower = 'build/public/bower-components';
 
 module.exports = (options) => {
 	const vulcanize = {};

@@ -1,4 +1,4 @@
-﻿module.exports = {
+module.exports = {
 	bowerJson: require('./bower-json.js'),
 	generator: require('./generator.js'),
 	git: require('./git.js'),

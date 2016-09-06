@@ -1,4 +1,4 @@
-﻿function initTimeGrunt(grunt) {
+function initTimeGrunt(grunt) {
 	const timeGrunt = require('time-grunt');
 
 	timeGrunt(grunt);

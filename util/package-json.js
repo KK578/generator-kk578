@@ -1,4 +1,4 @@
-﻿const sortObject = require('sort-object-keys');
+const sortObject = require('sort-object-keys');
 
 function create(options) {
 	const packageJson = {

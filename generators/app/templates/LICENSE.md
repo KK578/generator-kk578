@@ -1,4 +1,4 @@
-﻿[BSD-2 License](http://opensource.org/licenses/bsd-license.php)
+[BSD-2 License](http://opensource.org/licenses/bsd-license.php)
 
 <%= appName %>  
 Copyright (c) 2016, <%= name %> (<%= email %>).  

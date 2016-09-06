@@ -1,4 +1,4 @@
-﻿module.exports = (options) => {
+module.exports = (options) => {
 	const newer = {};
 
 	if (options.nodeServer) {

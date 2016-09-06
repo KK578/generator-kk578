@@ -1,4 +1,4 @@
-﻿module.exports = {
+module.exports = {
 	default: {
 		description: 'Lint the project and run mocha test suite.',
 		tasks: [

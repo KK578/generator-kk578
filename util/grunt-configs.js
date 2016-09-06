@@ -1,4 +1,4 @@
-﻿const stringifyObject = require('stringify-object');
+const stringifyObject = require('stringify-object');
 
 function initialise(options) {
 	const grunt = {};

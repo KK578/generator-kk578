@@ -1,4 +1,4 @@
-﻿// TODO: Confirm the event name.
+// TODO: Confirm the event name.
 /* eslint no-var: "off", prefer-template: "off" */
 window.addEventListener('WebComponentsReady', function () {
 	var elements = ['#mainContainer'];
