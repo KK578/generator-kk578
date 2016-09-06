@@ -7,12 +7,11 @@ body.error-404 {
 	@include layout;
 	@include layout-center;
 	@include layout-center-justified;
-	font-family: 'Roboto', 'Noto', sans-serif;
 	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-
 	background-color: $theme-background-rgb;
+	font-family: 'Roboto', 'Noto', sans-serif;
 	text-align: center;
+	text-rendering: optimizeLegibility;
 
 	h1 {
 		color: $theme-primary-rgb;

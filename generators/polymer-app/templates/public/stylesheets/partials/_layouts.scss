@@ -69,7 +69,7 @@ Code sourced from https://github.com/PolymerElements/iron-flex-layout/iron-flex-
 
 
 
-@mixin flex($amount:1) {
+@mixin flex($amount: 1) {
 	-ms-flex: $amount;
 	-webkit-flex: $amount;
 	flex: $amount;

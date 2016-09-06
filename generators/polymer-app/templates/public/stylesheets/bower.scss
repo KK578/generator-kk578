@@ -4,15 +4,15 @@
 
 $transition-settings: 0.3s ease-out;
 
-html, body {
+html,
+body {
 	@include layout-fullbleed;
 	@include user-select(none);
-	/* Text */
-	font-family: 'Roboto', 'Noto', sans-serif;
-	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	/* Remove blue colouring on Android when tapping an item */
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: 'Roboto', 'Noto', sans-serif;
+	text-rendering: optimizeLegibility;
 }
 
 paper-header-panel {
@@ -25,8 +25,8 @@ paper-toolbar.paper-toolbar-0 {
 
 paper-item.paper-item-0 {
 	@include transition(background-color $transition-settings, color $transition-settings);
-	position: relative;
 	min-height: 28px;
+	position: relative;
 
 	&.iron-selected {
 		background-color: $theme-primary-dark-rgb;
@@ -40,8 +40,8 @@ paper-ripple {
 
 #component-page {
 	background-color: $theme-background-rgb;
-	border-width: 0 0 0 2px;
 	border-color: $black-divider;
+	border-width: 0 0 0 2px;
 	height: 100%;
 	width: 100%;
 }
