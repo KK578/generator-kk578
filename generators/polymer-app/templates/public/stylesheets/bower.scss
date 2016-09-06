@@ -10,7 +10,7 @@ body {
 	@include user-select(none);
 	-webkit-font-smoothing: antialiased;
 	/* Remove blue colouring on Android when tapping an item */
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: $transparent;
 	font-family: 'Roboto', 'Noto', sans-serif;
 	text-rendering: optimizeLegibility;
 }
@@ -19,18 +19,22 @@ paper-header-panel {
 	background-color: $theme-background-rgb;
 }
 
-paper-toolbar.paper-toolbar-0 {
-	background-color: $theme-primary-rgb;
+paper-toolbar {
+	.paper-toolbar-0 {
+		background-color: $theme-primary-rgb;
+	}
 }
 
-paper-item.paper-item-0 {
-	@include transition(background-color $transition-settings, color $transition-settings);
-	min-height: 28px;
-	position: relative;
+paper-item {
+	&.paper-item-0 {
+		@include transition(background-color $transition-settings, color $transition-settings);
+		min-height: 28px;
+		position: relative;
 
-	&.iron-selected {
-		background-color: $theme-primary-dark-rgb;
-		color: $white-primary;
+		&.iron-selected {
+			background-color: $theme-primary-dark-rgb;
+			color: $white-primary;
+		}
 	}
 }
 

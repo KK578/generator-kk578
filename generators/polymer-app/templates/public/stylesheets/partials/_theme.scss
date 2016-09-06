@@ -35,3 +35,5 @@ $theme-primary-dark-rgb: material-color($theme-color, $theme-color-dark-number);
 $theme-accent-rgb: material-color($theme-accent-color, $theme-accent-color-number);
 $theme-background-rgb: material-color($theme-color, 50);
 $theme-loading-background-rgb: material-color($theme-color, 500);
+
+$transparent: rgba(0, 0, 0, 0);

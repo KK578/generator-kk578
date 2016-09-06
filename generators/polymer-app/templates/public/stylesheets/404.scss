@@ -2,24 +2,26 @@
 @import 'partials/_mixins.scss';
 @import 'partials/_theme.scss';
 
-body.error-404 {
-	@include layout-fullbleed;
-	@include layout;
-	@include layout-center;
-	@include layout-center-justified;
-	-webkit-font-smoothing: antialiased;
-	background-color: $theme-background-rgb;
-	font-family: 'Roboto', 'Noto', sans-serif;
-	text-align: center;
-	text-rendering: optimizeLegibility;
+body {
+	&.error-404 {
+		@include layout-fullbleed;
+		@include layout;
+		@include layout-center;
+		@include layout-center-justified;
+		-webkit-font-smoothing: antialiased;
+		background-color: $theme-background-rgb;
+		font-family: 'Roboto', 'Noto', sans-serif;
+		text-align: center;
+		text-rendering: optimizeLegibility;
 
-	h1 {
-		color: $theme-primary-rgb;
-		font-size: 2em;
-		margin: 0;
-	}
+		h1 {
+			color: $theme-primary-rgb;
+			font-size: 2em;
+			margin: 0;
+		}
 
-	p {
-		color: $theme-primary-dark-rgb;
+		p {
+			color: $theme-primary-dark-rgb;
+		}
 	}
 }

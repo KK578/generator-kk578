@@ -18,7 +18,7 @@ $transition-settings: 0.3s ease-out;
 	@include layout-vertical;
 	@include layout-center;
 	@include border-radius(8px);
-	background-color: rgba(0, 0, 0, 0);
+	background-color: $transparent;
 	margin: 0 12px;
 	padding: 40px;
 
@@ -28,7 +28,7 @@ $transition-settings: 0.3s ease-out;
 
 	#title {
 		@include transition(color $transition-settings);
-		color: rgba(0, 0, 0, 0);
+		color: $transparent;
 		font-size: 24px;
 		font-weight: 500;
 		line-height: 28px;
