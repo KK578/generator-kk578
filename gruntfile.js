@@ -9,7 +9,8 @@ function initLoadGruntConfig(grunt) {
 	const options = {
 		jitGrunt: {
 			staticMappings: {
-				mochaTest: 'grunt-mocha-test'
+				mochaTest: 'grunt-mocha-test',
+				sasslint: 'grunt-sass-lint'
 			}
 		}
 	};

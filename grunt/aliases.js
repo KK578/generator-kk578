@@ -2,13 +2,16 @@ module.exports = {
 	default: {
 		description: 'Lint the project and run mocha test suite.',
 		tasks: [
-			'eslint',
+			'lint',
 			'test'
 		]
 	},
 	lint: {
 		description: 'Lint the project',
-		tasks: ['eslint']
+		tasks: [
+			'eslint',
+			'sassLint'
+		]
 	},
 	test: {
 		description: 'Run mocha test suite.',
