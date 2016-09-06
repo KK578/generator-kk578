@@ -2,7 +2,7 @@
 @import 'partials/_mixins.scss';
 @import 'partials/_theme.scss';
 
-body#404 {
+body.error-404 {
 	@include layout-fullbleed;
 	@include layout;
 	@include layout-center;
