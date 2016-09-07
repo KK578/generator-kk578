@@ -24,6 +24,7 @@
     "no-empty-function": "warn",
     "no-multi-spaces": "error",
     "no-unused-vars": "warn",
+    "no-sequences": "error",
 
     // Styling
     "array-bracket-spacing": [ "error", "never" ],
