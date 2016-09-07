@@ -34,26 +34,31 @@ module.exports = (options) => {
 				files: ['public/custom-components/**/*'],
 				tasks: [
 					'eslint:components',
+					'sasslint:components',
 					'build:components'
 				]
 			};
 
 			watch['sass-partials'] = {
 				files: ['public/stylesheets/partials/*.scss'],
-				tasks: ['sass']
-			},
+				tasks: [
+					'sasslint',
+					'sass'
+				]
+			};
 
-				watch.views = {
-					files: [
-						'public/*.html',
-						'public/stylesheets/*.scss',
-						'public/scripts/**/*.js'
-					],
-					tasks: [
-						'eslint:views',
-						'build:views'
-					]
-				};
+			watch.views = {
+				files: [
+					'public/*.html',
+					'public/stylesheets/*.scss',
+					'public/scripts/**/*.js'
+				],
+				tasks: [
+					'eslint:views',
+					'sasslint:views',
+					'build:views'
+				]
+			};
 		}
 	}
 

@@ -52,6 +52,7 @@ function create(options) {
 				'grunt-bower-task': '^0.4.0',
 				'grunt-minify-polymer': '^2.1.1',
 				'grunt-sass': '^1.2.1',
+				'grunt-sass-lint': 'KK578/grunt-sass-lint',
 				'grunt-vulcanize': '^1.0.0'
 			});
 		}
