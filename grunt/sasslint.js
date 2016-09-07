@@ -1,6 +1,7 @@
-﻿module.exports = {
+module.exports = {
 	options: {
-		configFile: '.sass-lint.yml'
+		configFile: '.sass-lint.yml',
+		format: 'node_modules/eslint-formatter-pretty'
 	},
 	'polymer-app': {
 		files: [
