@@ -1,8 +1,6 @@
 {
-	// names of npm modules to load into htmllint
 	"plugins": [],
 
-	// TODO: export htmllint's default cfg
 	"head-req-title": true,
 	"title-no-dup": true,
 	"href-style": "relative",
@@ -12,7 +10,6 @@
 	"attr-no-unsafe-char": true,
 	"attr-quote-style": "double",
 	"attr-req-value": false,
-	// Only for EJS templating.
 	"attr-name-ignore-regex": "(appName|%)",
 
 	"tag-bans": null,
