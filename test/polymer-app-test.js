@@ -25,7 +25,10 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	it('should generate misc. config files', () => {
-		assert.file('.sass-lint.yml');
+		assert.file([
+			'.sass-lint.yml',
+			'.htmllintrc'
+		]);
 	});
 
 	it('should not copy files from development', () => {
@@ -67,6 +70,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 		it('should generate extra devDependencies to package.json', () => {
 			assert.fileContent('package.json', /"grunt-babel"/);
 			assert.fileContent('package.json', /"grunt-bower-task"/);
+			assert.fileContent('package.json', /"grunt-htmllint"/);
 			assert.fileContent('package.json', /"grunt-minify-polymer"/);
 			assert.fileContent('package.json', /"grunt-sass"/);
 			assert.fileContent('package.json', /"grunt-sass-lint"/);
@@ -98,6 +102,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.file([
 				'grunt/babel.js',
 				'grunt/bower.js',
+				'grunt/htmllint.js',
 				'grunt/minifyPolymer.js',
 				'grunt/minifyPolymerCSS.js',
 				'grunt/sass.js',
@@ -120,6 +125,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/aliases.js', /build:views/);
 			assert.fileContent('grunt/babel.js', /views/);
 			assert.fileContent('grunt/eslint.js', /views/);
+			assert.fileContent('grunt/htmllint.js', /views/);
 			assert.fileContent('grunt/minifyPolymer.js', /views/);
 			assert.fileContent('grunt/sass.js', /views/);
 			assert.fileContent('grunt/sasslint.js', /views/);
@@ -131,6 +137,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 		it('should add new tasks for custom components', () => {
 			assert.fileContent('grunt/aliases.js', /build:components/);
 			assert.fileContent('grunt/eslint.js', /components/);
+			assert.fileContent('grunt/htmllint.js', /components/);
 			assert.fileContent('grunt/minifyPolymer.js', /components/);
 			assert.fileContent('grunt/sass.js', /components/);
 			assert.fileContent('grunt/sasslint.js', /components/);
@@ -143,6 +150,13 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/minifyPolymer.js', /production/);
 			assert.fileContent('grunt/vulcanize.js', /[^(splash\-)]elements/);
 			assert.fileContent('grunt/vulcanize.js', /splash-elements/);
+		});
+
+		it('should add html linting to tasks', () => {
+			assert.fileContent('grunt/aliases.js', /'htmllint'/);
+			assert.fileContent('grunt/watch.js', /'htmllint'/);
+			assert.fileContent('grunt/watch.js', /htmllint:views/);
+			assert.fileContent('grunt/watch.js', /htmllint:components/);
 		});
 
 		it('should add sass linting to tasks', () => {
