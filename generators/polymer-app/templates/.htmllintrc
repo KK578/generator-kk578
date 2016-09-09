@@ -10,12 +10,11 @@
 	"attr-no-unsafe-char": true,
 	"attr-quote-style": "double",
 	"attr-req-value": false,
-	"attr-name-ignore-regex": "(appName|%)",
 
 	"tag-bans": null,
-	"tag-close": false,
+	"tag-close": true,
 	"tag-name-lowercase": true,
-	"tag-name-match": false,
+	"tag-name-match": true,
 
 	"id-class-style": "dash",
 	"class-style": "dash",
