@@ -21,9 +21,11 @@ const generator = generators.Base.extend({
 		this.packageJson = util.packageJson.create(this.options);
 	},
 	gruntTasks() {
-		const gruntConfigs = util.gruntConfigs.initialise(this.options);
+		const done = this.async();
 
-		this.gruntConfigs = util.gruntConfigs.stringify(gruntConfigs);
+		util.gruntConfigs.initialise(this.options, (err, configs) => {
+			this.gruntConfigs = util.gruntConfigs.stringify(configs);
+		});
 	},
 	composition() {
 		this.composeWith('kk578:app', { options: this.options });
