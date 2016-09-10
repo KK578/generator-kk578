@@ -26,6 +26,8 @@ const generator = generators.Base.extend({
 	},
 	writing() {
 		/* eslint max-statements: "off" */
+		this.copy('.htmllintrc');
+
 		this.copy('.bowerrc');
 		this.write('bower.json', JSON.stringify(this.bowerJson, null, 2));
 
