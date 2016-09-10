@@ -9,8 +9,9 @@ module.exports = {
 	lint: {
 		description: 'Lint the project',
 		tasks: [
+			'htmllint',
 			'eslint',
-			'sassLint'
+			'sasslint'
 		]
 	},
 	test: {

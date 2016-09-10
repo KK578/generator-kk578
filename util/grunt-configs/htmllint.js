@@ -5,7 +5,7 @@
 		htmllint.options = {
 			htmllintrc: true,
 			force: true,
-			formatter: 'node_modules/eslint-formatter-pretty'
+			format: 'node_modules/eslint-formatter-pretty'
 		};
 
 		htmllint.views = {
