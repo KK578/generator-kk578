@@ -33,8 +33,9 @@ module.exports = (options) => {
 			watch.components = {
 				files: ['public/custom-components/**/*'],
 				tasks: [
-					'eslint:components',
+					'htmllint:components',
 					'sasslint:components',
+					'eslint:components',
 					'build:components'
 				]
 			};
@@ -54,8 +55,9 @@ module.exports = (options) => {
 					'public/scripts/**/*.js'
 				],
 				tasks: [
-					'eslint:views',
+					'htmllint:views',
 					'sasslint:views',
+					'eslint:views',
 					'build:views'
 				]
 			};

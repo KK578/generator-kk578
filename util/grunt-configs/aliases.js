@@ -26,7 +26,7 @@ module.exports = (options) => {
 		};
 
 		if (options.polymerApp) {
-			aliases.lint.tasks.push('sasslint');
+			aliases.lint.tasks.push('htmllint', 'sasslint');
 
 			aliases['build:bower'] = {
 				description: 'Build task for bower components',
