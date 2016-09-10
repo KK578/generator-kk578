@@ -4,8 +4,7 @@ const path = require('path');
 
 function initialise(options, callback) {
 	const grunt = {};
-
-	configsDir = path.join(__dirname, 'grunt-configs/');
+	const configsDir = path.join(__dirname, 'grunt-configs/');
 
 	fs.readdir(configsDir, (err, files) => {
 		if (err) {

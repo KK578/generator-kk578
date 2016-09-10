@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const eslint = {
 		options: {
 			format: 'node_modules/eslint-formatter-pretty'
@@ -48,4 +48,9 @@ module.exports = (options) => {
 	}
 
 	return eslint;
+}
+
+module.exports = {
+	name: 'eslint',
+	create: create
 };

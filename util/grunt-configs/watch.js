@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const watch = {};
 
 	if (options.nodeServer) {
@@ -58,4 +58,9 @@ module.exports = (options) => {
 	}
 
 	return watch;
+}
+
+module.exports = {
+	name: 'watch',
+	create: create
 };

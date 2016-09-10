@@ -1,4 +1,4 @@
-﻿module.exports = (options) => {
+﻿function create(options) {
 	const clean = {};
 
 	if (options.nodeServer) {
@@ -15,4 +15,9 @@
 	}
 
 	return clean;
+}
+
+module.exports = {
+	name: 'clean',
+	create: create
 };

@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const uglify = {};
 
 	if (options.nodeServer) {
@@ -55,4 +55,9 @@ module.exports = (options) => {
 	}
 
 	return uglify;
+}
+
+module.exports = {
+	name: 'uglify',
+	create: create
 };

@@ -1,4 +1,6 @@
-module.exports = (options) => {
+/* eslint max-statements: "off" */
+
+function create(options) {
 	const aliases = {
 		lint: {
 			description: 'Lint files in the project.',
@@ -110,4 +112,9 @@ module.exports = (options) => {
 	}
 
 	return aliases;
+}
+
+module.exports = {
+	name: 'aliases',
+	create: create
 };

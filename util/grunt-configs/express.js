@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const express = {};
 
 	if (options.nodeServer) {
@@ -10,4 +10,9 @@ module.exports = (options) => {
 	}
 
 	return express;
+}
+
+module.exports = {
+	name: 'express',
+	create: create
 };

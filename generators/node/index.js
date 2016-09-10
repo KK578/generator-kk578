@@ -25,6 +25,7 @@ const generator = generators.Base.extend({
 
 		util.gruntConfigs.initialise(this.options, (err, configs) => {
 			this.gruntConfigs = util.gruntConfigs.stringify(configs);
+			done();
 		});
 	},
 	composition() {

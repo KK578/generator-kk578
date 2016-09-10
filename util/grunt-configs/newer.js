@@ -1,4 +1,4 @@
-﻿module.exports = (options) => {
+﻿function create(options) {
 	const newer = {};
 
 	if (options.nodeServer) {
@@ -8,4 +8,9 @@
 	}
 
 	return newer;
+}
+
+module.exports = {
+	name: 'newer',
+	create: create
 };
