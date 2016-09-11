@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const minifyPolymerCss = {};
 
 	if (options.polymerApp) {
@@ -19,4 +19,9 @@ module.exports = (options) => {
 	}
 
 	return minifyPolymerCss;
+}
+
+module.exports = {
+	name: 'minifyPolymerCSS',
+	create: create
 };

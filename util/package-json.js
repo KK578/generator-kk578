@@ -38,6 +38,7 @@ function create(options) {
 
 		Object.assign(packageJson.devDependencies, {
 			'browser-sync': '^2.14.0',
+			'grunt-contrib-clean': '^1.0.0',
 			'grunt-contrib-copy': '^1.0.0',
 			'grunt-contrib-uglify': '^2.0.0',
 			'grunt-contrib-watch': '^1.0.0',

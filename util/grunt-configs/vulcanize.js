@@ -1,6 +1,6 @@
 const bower = 'build/public/bower-components';
 
-module.exports = (options) => {
+function create(options) {
 	const vulcanize = {};
 
 	if (options.polymerApp) {
@@ -62,4 +62,9 @@ module.exports = (options) => {
 	}
 
 	return vulcanize;
+}
+
+module.exports = {
+	name: 'vulcanize',
+	create: create
 };

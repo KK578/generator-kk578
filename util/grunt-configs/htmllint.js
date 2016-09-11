@@ -1,4 +1,4 @@
-﻿module.exports = (options) => {
+﻿function create(options) {
 	const htmllint = {};
 
 	if (options.polymerApp) {
@@ -30,4 +30,9 @@
 	}
 
 	return htmllint;
+}
+
+module.exports = {
+	name: 'htmllint',
+	create: create
 };

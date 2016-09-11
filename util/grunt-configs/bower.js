@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const bower = {};
 
 	if (options.polymerApp) {
@@ -20,4 +20,9 @@ module.exports = (options) => {
 	}
 
 	return bower;
+}
+
+module.exports = {
+	name: 'bower',
+	create: create
 };

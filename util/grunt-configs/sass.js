@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const sass = {};
 
 	if (options.polymerApp) {
@@ -28,4 +28,9 @@ module.exports = (options) => {
 	}
 
 	return sass;
+}
+
+module.exports = {
+	name: 'sass',
+	create: create
 };

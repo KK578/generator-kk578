@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const eslint = {
 		options: {
 			format: 'node_modules/eslint-formatter-pretty'
@@ -18,19 +18,39 @@ module.exports = (options) => {
 
 	if (options.nodeServer) {
 		eslint.server = {
-			files: 'server/**/*.js'
+			files: [
+				{
+					expand: true,
+					src: 'server/**/*.js'
+				}
+			]
 		};
 
 		if (options.polymerApp) {
 			eslint.components = {
-				files: ['public/custom-components/**/*.js']
+				files: [
+					{
+						expand: true,
+						src: 'public/custom-components/**/*.js'
+					}
+				]
 			};
 
 			eslint.views = {
-				src: ['public/scripts/**/*.js']
+				files: [
+					{
+						expand: true,
+						src: ['public/scripts/**/*.js']
+					}
+				]
 			};
 		}
 	}
 
 	return eslint;
+}
+
+module.exports = {
+	name: 'eslint',
+	create: create
 };

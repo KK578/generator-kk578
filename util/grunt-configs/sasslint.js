@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const sasslint = {};
 
 	if (options.polymerApp) {
@@ -29,4 +29,9 @@ module.exports = (options) => {
 	}
 
 	return sasslint;
+}
+
+module.exports = {
+	name: 'sasslint',
+	create: create
 };

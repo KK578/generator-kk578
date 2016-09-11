@@ -75,6 +75,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 	describe('Grunt', () => {
 		it('should generate additional grunt configs for node-server', () => {
 			assert.file([
+				'grunt/clean.js',
 				'grunt/copy.js',
 				'grunt/express.js',
 				'grunt/newer.js',
@@ -86,6 +87,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 		it('should add additional tasks specific to node-server', () => {
 			assert.fileContent('grunt/aliases.js', /serve/);
 			assert.fileContent('grunt/aliases.js', /build:server/);
+			assert.fileContent('grunt/clean.js', /build/);
 			assert.fileContent('grunt/copy.js', /server/);
 			assert.fileContent('grunt/eslint.js', /server/);
 			assert.fileContent('grunt/watch.js', /server/);
@@ -113,6 +115,7 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 
 		it('should not add tasks specific to polymer-app for Bower', () => {
 			assert.noFileContent('grunt/aliases.js', /build:bower/);
+			assert.noFileContent('grunt/clean.js', /bower/);
 			assert.noFileContent('grunt/uglify.js', /bower/);
 			assert.noFileContent('grunt/watch.js', /bower/);
 		});

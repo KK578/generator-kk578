@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const copy = {};
 
 	if (options.nodeServer) {
@@ -10,4 +10,9 @@ module.exports = (options) => {
 	}
 
 	return copy;
+}
+
+module.exports = {
+	name: 'copy',
+	create: create
 };

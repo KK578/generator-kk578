@@ -1,30 +1,24 @@
 const stringifyObject = require('stringify-object');
+const fs = require('fs');
+const path = require('path');
 
-function initialise(options) {
+function initialise(options, callback) {
 	const grunt = {};
+	const configsDir = path.join(__dirname, 'grunt-configs/');
 
-	// Node
-	grunt.aliases = require('./grunt-configs/aliases.js')(options);
-	grunt.eslint = require('./grunt-configs/eslint.js')(options);
+	fs.readdir(configsDir, (err, files) => {
+		if (err) {
+			return callback(err);
+		}
 
-	// Node Server
-	grunt.copy = require('./grunt-configs/copy.js')(options);
-	grunt.express = require('./grunt-configs/express.js')(options);
-	grunt.newer = require('./grunt-configs/newer.js')(options);
-	grunt.uglify = require('./grunt-configs/uglify.js')(options);
-	grunt.watch = require('./grunt-configs/watch.js')(options);
+		files.map((c) => {
+			const config = require(path.join(configsDir, c));
 
-	// Polymer App
-	grunt.babel = require('./grunt-configs/babel.js')(options);
-	grunt.bower = require('./grunt-configs/bower.js')(options);
-	grunt.htmllint = require('./grunt-configs/htmllint.js')(options);
-	grunt.minifyPolymer = require('./grunt-configs/minify-polymer.js')(options);
-	grunt.minifyPolymerCSS = require('./grunt-configs/minify-polymer-css.js')(options);
-	grunt.sass = require('./grunt-configs/sass.js')(options);
-	grunt.sasslint = require('./grunt-configs/sasslint.js')(options);
-	grunt.vulcanize = require('./grunt-configs/vulcanize.js')(options);
+			grunt[config.name] = config.create(options);
+		});
 
-	return grunt;
+		callback(null, grunt);
+	});
 }
 
 function stringify(configs) {

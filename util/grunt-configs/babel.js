@@ -1,4 +1,4 @@
-module.exports = (options) => {
+function create(options) {
 	const babel = {};
 
 	if (options.polymerApp) {
@@ -38,4 +38,9 @@ module.exports = (options) => {
 	}
 
 	return babel;
+}
+
+module.exports = {
+	name: 'babel',
+	create: create
 };

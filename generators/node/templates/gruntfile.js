@@ -9,7 +9,9 @@ function initLoadGruntConfig(grunt) {
 	const options = {
 		jitGrunt: {
 			staticMappings: {
+				bower: 'grunt-bower-task',
 				mochaTest: 'grunt-mocha-test',
+				minifyPolymerCSS: 'grunt-minify-polymer',
 				express: 'grunt-express-server'
 			}
 		}

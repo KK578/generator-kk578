@@ -52,7 +52,6 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('bower.json', /"polymer": "Polymer\/polymer.*"/);
 			assert.fileContent('bower.json',
 				/"paper-elements": "PolymerElements\/paper-elements.*"/);
-			assert.fileContent('bower.json', /"lodash"/);
 		});
 
 		it('should have basic polymer devDependencies', () => {
@@ -115,6 +114,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/aliases.js', /build:bower/);
 			assert.fileContent('grunt/bower.js', /development/);
 			assert.fileContent('grunt/bower.js', /production/);
+			assert.fileContent('grunt/clean.js', /bower/);
 			assert.fileContent('grunt/minifyPolymer.js', /bower/);
 			assert.fileContent('grunt/minifyPolymerCSS.js', /bower/);
 			assert.fileContent('grunt/uglify.js', /bower/);
@@ -147,6 +147,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 
 		it('should add new tasks for production build', () => {
 			assert.fileContent('grunt/babel.js', /production/);
+			assert.fileContent('grunt/clean.js', /production/);
 			assert.fileContent('grunt/minifyPolymer.js', /production/);
 			assert.fileContent('grunt/vulcanize.js', /[^(splash\-)]elements/);
 			assert.fileContent('grunt/vulcanize.js', /splash-elements/);
