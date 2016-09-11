@@ -1,4 +1,4 @@
-﻿function initTimeGrunt(grunt) {
+function initTimeGrunt(grunt) {
 	const timeGrunt = require('time-grunt');
 
 	timeGrunt(grunt);
@@ -9,7 +9,8 @@ function initLoadGruntConfig(grunt) {
 	const options = {
 		jitGrunt: {
 			staticMappings: {
-				mochaTest: 'grunt-mocha-test'
+				mochaTest: 'grunt-mocha-test',
+				sasslint: 'grunt-sass-lint'
 			}
 		}
 	};

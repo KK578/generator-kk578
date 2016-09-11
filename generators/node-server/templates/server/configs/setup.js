@@ -1,4 +1,4 @@
-﻿const ejs = require('ejs');
+const ejs = require('ejs');
 const compression = require('compression');
 const path = require('path');
 

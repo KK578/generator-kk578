@@ -1,4 +1,4 @@
-﻿@import '../../stylesheets/partials/_layouts.scss';
+@import '../../stylesheets/partials/_layouts.scss';
 @import '../../stylesheets/partials/_mixins.scss';
 @import '../../stylesheets/partials/_theme.scss';
 
@@ -9,8 +9,8 @@ $transition-settings: 0.3s ease-out;
 	@include layout-vertical;
 	@include layout-center;
 	@include layout-center-justified;
-	display: block;
 	background-color: var($theme-loading-background);
+	display: block;
 }
 
 #card {
@@ -18,9 +18,9 @@ $transition-settings: 0.3s ease-out;
 	@include layout-vertical;
 	@include layout-center;
 	@include border-radius(8px);
-	background-color: rgba(0, 0, 0, 0);
-	padding: 40px;
+	background-color: $transparent;
 	margin: 0 12px;
+	padding: 40px;
 
 	&.loading {
 		background-color: $white-primary;
@@ -28,7 +28,7 @@ $transition-settings: 0.3s ease-out;
 
 	#title {
 		@include transition(color $transition-settings);
-		color: rgba(0, 0, 0, 0);
+		color: $transparent;
 		font-size: 24px;
 		font-weight: 500;
 		line-height: 28px;
@@ -44,8 +44,8 @@ $transition-settings: 0.3s ease-out;
 #spinner {
 	@include transition(height $transition-settings, width $transition-settings, margin $transition-settings);
 	height: 28px;
-	width: 28px;
 	margin: 1em 0 0.5em;
+	width: 28px;
 
 	&.minimised {
 		height: 0;

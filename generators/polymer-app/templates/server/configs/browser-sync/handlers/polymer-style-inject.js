@@ -1,4 +1,4 @@
-﻿const browserSync = require('browser-sync');
+const browserSync = require('browser-sync');
 const fs = require('fs');
 
 function handleCustomElementCss(event, file) {

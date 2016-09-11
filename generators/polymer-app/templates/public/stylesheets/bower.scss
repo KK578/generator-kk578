@@ -1,47 +1,51 @@
-﻿@import 'partials/_layouts.scss';
+@import 'partials/_layouts.scss';
 @import 'partials/_mixins.scss';
 @import 'partials/_theme.scss';
 
 $transition-settings: 0.3s ease-out;
 
-html, body {
-    @include layout-fullbleed;
-    @include user-select(none);
-    /* Text */
-    font-family: 'Roboto', 'Noto', sans-serif;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    /* Remove blue colouring on Android when tapping an item */
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+html,
+body {
+	@include layout-fullbleed;
+	@include user-select(none);
+	-webkit-font-smoothing: antialiased;
+	/* Remove blue colouring on Android when tapping an item */
+	-webkit-tap-highlight-color: $transparent;
+	font-family: 'Roboto', 'Noto', sans-serif;
+	text-rendering: optimizeLegibility;
 }
 
 paper-header-panel {
-    background-color: $theme-background-rgb;
+	background-color: $theme-background-rgb;
 }
 
-paper-toolbar.paper-toolbar-0 {
-    background-color: $theme-primary-rgb;
+paper-toolbar {
+	.paper-toolbar-0 {
+		background-color: $theme-primary-rgb;
+	}
 }
 
-paper-item.paper-item-0 {
-    @include transition(background-color $transition-settings, color $transition-settings);
-    position: relative;
-    min-height: 28px;
+paper-item {
+	&.paper-item-0 {
+		@include transition(background-color $transition-settings, color $transition-settings);
+		min-height: 28px;
+		position: relative;
 
-    &.iron-selected {
-        background-color: $theme-primary-dark-rgb;
-        color: $white-primary;
-    }
+		&.iron-selected {
+			background-color: $theme-primary-dark-rgb;
+			color: $white-primary;
+		}
+	}
 }
 
 paper-ripple {
-    color: $theme-accent-rgb;
+	color: $theme-accent-rgb;
 }
 
 #component-page {
-    background-color: $theme-background-rgb;
-    border-width: 0 0 0 2px;
-    border-color: $black-divider;
-    height: 100%;
-    width: 100%;
+	background-color: $theme-background-rgb;
+	border-color: $black-divider;
+	border-width: 0 0 0 2px;
+	height: 100%;
+	width: 100%;
 }

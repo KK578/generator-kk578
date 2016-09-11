@@ -1,4 +1,4 @@
-﻿const stringifyObject = require('stringify-object');
+const stringifyObject = require('stringify-object');
 
 function initialise(options) {
 	const grunt = {};
@@ -17,9 +17,11 @@ function initialise(options) {
 	// Polymer App
 	grunt.babel = require('./grunt-configs/babel.js')(options);
 	grunt.bower = require('./grunt-configs/bower.js')(options);
+	grunt.htmllint = require('./grunt-configs/htmllint.js')(options);
 	grunt.minifyPolymer = require('./grunt-configs/minify-polymer.js')(options);
 	grunt.minifyPolymerCSS = require('./grunt-configs/minify-polymer-css.js')(options);
 	grunt.sass = require('./grunt-configs/sass.js')(options);
+	grunt.sasslint = require('./grunt-configs/sasslint.js')(options);
 	grunt.vulcanize = require('./grunt-configs/vulcanize.js')(options);
 
 	return grunt;

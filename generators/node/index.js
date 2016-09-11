@@ -1,4 +1,4 @@
-﻿const generators = require('yeoman-generator');
+const generators = require('yeoman-generator');
 
 const util = require('../../util/util.js');
 const prompts = util.prompts.node;

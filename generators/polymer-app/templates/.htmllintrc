@@ -1,0 +1,26 @@
+{
+	"plugins": [],
+
+	"head-req-title": true,
+	"title-no-dup": true,
+	"href-style": "relative",
+
+	"attr-name-style": "dash",
+	"attr-no-dup": true,
+	"attr-no-unsafe-char": true,
+	"attr-quote-style": "double",
+	"attr-req-value": false,
+
+	"tag-bans": null,
+	"tag-close": true,
+	"tag-name-lowercase": true,
+	"tag-name-match": true,
+
+	"id-class-style": "dash",
+	"class-style": "dash",
+	"class-no-dup": true,
+
+	"indent-style": "tabs",
+	"indent-width": false,
+	"line-end-style": "crlf"
+}

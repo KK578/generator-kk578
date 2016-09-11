@@ -1,4 +1,4 @@
-﻿const prompts = {
+const prompts = {
 	all: [
 		{
 			type: 'input',

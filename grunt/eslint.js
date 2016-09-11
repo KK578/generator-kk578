@@ -1,4 +1,4 @@
-﻿module.exports = {
+module.exports = {
 	options: { format: 'node_modules/eslint-formatter-pretty' },
 	project: {
 		files: [
