@@ -22,6 +22,6 @@ function create(options) {
 }
 
 module.exports = {
-	name: 'minifyPolymerCss',
+	name: 'minifyPolymerCSS',
 	create: create
 };
