@@ -1,4 +1,4 @@
-﻿[BSD-2 License](http://opensource.org/licenses/bsd-license.php)
+[BSD-2 License](http://opensource.org/licenses/bsd-license.php)
 
 generator-kk578
 Copyright (c) 2016, Kevin Kwan (KevinKwan95@googlemail.com).  

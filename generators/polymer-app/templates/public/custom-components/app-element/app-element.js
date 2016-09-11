@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
 	class AppElement {
 		beforeRegister() {
 			this.is = 'app-element';

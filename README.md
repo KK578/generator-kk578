@@ -1,4 +1,4 @@
-﻿# generator-kk578
+# generator-kk578
 
 ## License
 

@@ -1,9 +1,9 @@
-﻿@import '_material_color.scss';
+@import '_material_color.scss';
 
 /****************************/
 /* Theme color declarations */
-$theme-color: indigo;
-$theme-accent-color: blue;
+$theme-color: 'indigo';
+$theme-accent-color: 'blue';
 $theme-color-number: 500;
 $theme-color-light-number: 300;
 $theme-color-dark-number: 700;
@@ -35,3 +35,5 @@ $theme-primary-dark-rgb: material-color($theme-color, $theme-color-dark-number);
 $theme-accent-rgb: material-color($theme-accent-color, $theme-accent-color-number);
 $theme-background-rgb: material-color($theme-color, 50);
 $theme-loading-background-rgb: material-color($theme-color, 500);
+
+$transparent: rgba(0, 0, 0, 0);

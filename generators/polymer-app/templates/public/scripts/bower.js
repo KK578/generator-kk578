@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
 	const template = document.getElementById('template');
 
 	function setupTemplate() {

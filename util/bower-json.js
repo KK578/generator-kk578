@@ -1,4 +1,4 @@
-﻿function create(options) {
+function create(options) {
 	const bowerJson = {
 		name: options.appName,
 		version: '0.0.0',

@@ -33,6 +33,8 @@ function create(options) {
 			watch.components = {
 				files: ['public/custom-components/**/*'],
 				tasks: [
+					'htmllint:components',
+					'sasslint:components',
 					'eslint:components',
 					'build:components'
 				]
@@ -40,20 +42,25 @@ function create(options) {
 
 			watch['sass-partials'] = {
 				files: ['public/stylesheets/partials/*.scss'],
-				tasks: ['sass']
-			},
+				tasks: [
+					'sasslint',
+					'sass'
+				]
+			};
 
-				watch.views = {
-					files: [
-						'public/*.html',
-						'public/stylesheets/*.scss',
-						'public/scripts/**/*.js'
-					],
-					tasks: [
-						'eslint:views',
-						'build:views'
-					]
-				};
+			watch.views = {
+				files: [
+					'public/*.html',
+					'public/stylesheets/*.scss',
+					'public/scripts/**/*.js'
+				],
+				tasks: [
+					'htmllint:views',
+					'sasslint:views',
+					'eslint:views',
+					'build:views'
+				]
+			};
 		}
 	}
 

@@ -1,4 +1,4 @@
-﻿const bower = 'build/public/bower-components';
+const bower = 'build/public/bower-components';
 
 function create(options) {
 	const vulcanize = {};

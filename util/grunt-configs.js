@@ -1,4 +1,4 @@
-﻿const stringifyObject = require('stringify-object');
+const stringifyObject = require('stringify-object');
 const fs = require('fs');
 const path = require('path');
 

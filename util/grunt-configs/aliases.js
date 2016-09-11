@@ -66,6 +66,8 @@ function create(options) {
 		};
 
 		if (options.polymerApp) {
+			aliases.lint.tasks.push('htmllint', 'sasslint');
+
 			aliases['build:all'].tasks.push(
 				'build:bower',
 				'build:components',

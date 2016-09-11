@@ -1,4 +1,4 @@
-﻿const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 const path = require('path');
 
 // TODO: Add checks that environment had all required variables.

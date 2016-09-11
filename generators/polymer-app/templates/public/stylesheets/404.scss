@@ -1,26 +1,27 @@
-﻿@import 'partials/_layouts.scss';
+@import 'partials/_layouts.scss';
 @import 'partials/_mixins.scss';
 @import 'partials/_theme.scss';
 
-body#404 {
-	@include layout-fullbleed;
-	@include layout;
-	@include layout-center;
-	@include layout-center-justified;
-    font-family: 'Roboto', 'Noto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+body {
+	&.error-404 {
+		@include layout-fullbleed;
+		@include layout;
+		@include layout-center;
+		@include layout-center-justified;
+		-webkit-font-smoothing: antialiased;
+		background-color: $theme-background-rgb;
+		font-family: 'Roboto', 'Noto', sans-serif;
+		text-align: center;
+		text-rendering: optimizeLegibility;
 
-	background-color: $theme-background-rgb;
-	text-align: center;
+		h1 {
+			color: $theme-primary-rgb;
+			font-size: 2em;
+			margin: 0;
+		}
 
-	h1 {
-		color: $theme-primary-rgb;
-		font-size: 2em;
-		margin: 0;
-	}
-
-	p {
-		color: $theme-primary-dark-rgb;
+		p {
+			color: $theme-primary-dark-rgb;
+		}
 	}
 }

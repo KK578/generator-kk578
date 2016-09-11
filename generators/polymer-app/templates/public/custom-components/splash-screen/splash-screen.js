@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
 	class SplashScreen {
 		get behaviors() {
 			return [Polymer.NeonAnimationRunnerBehavior];

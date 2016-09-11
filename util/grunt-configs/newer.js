@@ -1,4 +1,4 @@
-﻿function create(options) {
+function create(options) {
 	const newer = {};
 
 	if (options.nodeServer) {

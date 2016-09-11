@@ -1,10 +1,10 @@
-﻿/*
+/*
 	SCSS Mixin
 	Copyright (c) 2015 Kevin Kwan.
 
 	Color Values
-    Copyright (c) 2015 Google. All rights reserved.
-    http://www.google.co.uk/design/spec/style/color.html
+	Copyright (c) 2015 Google. All rights reserved.
+	http://www.google.co.uk/design/spec/style/color.html
 */
 
 $material-red: #FFEBEE #FFCDD2 #EF9A9A #E57373 #EF5350 #F44336 #E53935 #D32F2F #C62828 #B71C1C #FF8A80 #FF5252 #FF1744 #D50000;
@@ -38,7 +38,7 @@ $white-disabled: rgba(255, 255, 255, 0.30);
 $white-divider: rgba(255, 255, 255, 0.12);
 
 @function material-color($color, $number) {
-    @if ($color == red) { @return get-material-color($material-red, $number); }
+	@if ($color == red) { @return get-material-color($material-red, $number); }
 	@else if ($color == pink) { @return get-material-color($material-pink, $number); }
 	@else if ($color == purple) { @return get-material-color($material-purple, $number); }
 	@else if ($color == deep-purple) { @return get-material-color($material-deep-purple, $number); }
@@ -60,21 +60,21 @@ $white-divider: rgba(255, 255, 255, 0.12);
 }
 
 @function get-material-color($list, $number) {
-    @if ($number == 50) { @return nth($list, 1); }
-    @else if ($number == 100) { @return nth($list, 2); }
-    @else if ($number == 200) { @return nth($list, 3); }
-    @else if ($number == 300) { @return nth($list, 4); }
-    @else if ($number == 400) { @return nth($list, 5); }
-    @else if ($number == 500) { @return nth($list, 6); }
-    @else if ($number == 600) { @return nth($list, 7); }
-    @else if ($number == 700) { @return nth($list, 8); }
-    @else if ($number == 800) { @return nth($list, 9); }
-    @else if ($number == 900) { @return nth($list, 10); }
-    @else if ($number == A100) { @return nth($list, 11); }
-    @else if ($number == A200) { @return nth($list, 12); }
-    @else if ($number == A400) { @return nth($list, 13); }
-    @else if ($number == A700) { @return nth($list, 14); }
-    @else { @return nth($list, 6); }
+	@if ($number == 50) { @return nth($list, 1); }
+	@else if ($number == 100) { @return nth($list, 2); }
+	@else if ($number == 200) { @return nth($list, 3); }
+	@else if ($number == 300) { @return nth($list, 4); }
+	@else if ($number == 400) { @return nth($list, 5); }
+	@else if ($number == 500) { @return nth($list, 6); }
+	@else if ($number == 600) { @return nth($list, 7); }
+	@else if ($number == 700) { @return nth($list, 8); }
+	@else if ($number == 800) { @return nth($list, 9); }
+	@else if ($number == 900) { @return nth($list, 10); }
+	@else if ($number == A100) { @return nth($list, 11); }
+	@else if ($number == A200) { @return nth($list, 12); }
+	@else if ($number == A400) { @return nth($list, 13); }
+	@else if ($number == A700) { @return nth($list, 14); }
+	@else { @return nth($list, 6); }
 }
 
 @function get-color-var-name($color, $number) {

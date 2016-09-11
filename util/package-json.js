@@ -1,4 +1,4 @@
-﻿const sortObject = require('sort-object-keys');
+const sortObject = require('sort-object-keys');
 
 function create(options) {
 	const packageJson = {
@@ -51,8 +51,10 @@ function create(options) {
 				'glob': '^7.0.6',
 				'grunt-babel': '^6.0.0',
 				'grunt-bower-task': '^0.4.0',
+				'grunt-htmllint': 'KK578/grunt-htmllint',
 				'grunt-minify-polymer': '^2.1.1',
 				'grunt-sass': '^1.2.1',
+				'grunt-sass-lint': 'KK578/grunt-sass-lint',
 				'grunt-vulcanize': '^1.0.0'
 			});
 		}
