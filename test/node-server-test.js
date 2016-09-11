@@ -160,34 +160,4 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 			]);
 		});
 	});
-
-	describe('Tests', () => {
-		it('should generate the test suite', () => {
-			assert.file([
-				'test/development.js',
-				'test/production.js'
-			]);
-		});
-
-		it('should generate helper functions', () => {
-			assert.file([
-				'test/util/util.js',
-				'test/util/setup.js'
-			]);
-		});
-
-		it('should generate development mode tests', () => {
-			assert.file([
-				'test/development/.env',
-				'test/development/route-404-dev.js'
-			]);
-		});
-
-		it('should generate production mode tests', () => {
-			assert.file([
-				'test/production/.env',
-				'test/production/route-static.js'
-			]);
-		});
-	});
 });

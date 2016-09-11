@@ -94,6 +94,34 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'server/routes/wct.dev.js'
 			]);
 		});
+
+		describe('Tests', () => {
+			it('should generate the test suite', () => {
+				assert.file([
+					'test/development.js',
+					'test/production.js'
+				]);
+			});
+
+			it('should generate helper functions', () => {
+				assert.file([
+					'test/util/util.js',
+					'test/util/setup.js'
+				]);
+			});
+
+			it('should generate development mode tests', () => {
+				assert.file([
+					'test/development/route-404-dev.js'
+				]);
+			});
+
+			it('should generate production mode tests', () => {
+				assert.file([
+					'test/production/route-static.js'
+				]);
+			});
+		});
 	});
 
 	describe('Grunt', () => {
