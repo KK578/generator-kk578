@@ -71,6 +71,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('package.json', /"grunt-bower-task"/);
 			assert.fileContent('package.json', /"grunt-htmllint"/);
 			assert.fileContent('package.json', /"grunt-minify-polymer"/);
+			assert.fileContent('package.json', /"grunt-mocha-test"/);
 			assert.fileContent('package.json', /"grunt-sass"/);
 			assert.fileContent('package.json', /"grunt-sass-lint"/);
 			assert.fileContent('package.json', /"grunt-vulcanize"/);
@@ -132,6 +133,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'grunt/htmllint.js',
 				'grunt/minifyPolymer.js',
 				'grunt/minifyPolymerCSS.js',
+				'grunt/mochaTest.js',
 				'grunt/sass.js',
 				'grunt/sasslint.js',
 				'grunt/vulcanize.js'
@@ -192,6 +194,14 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/watch.js', /'sasslint'/);
 			assert.fileContent('grunt/watch.js', /sasslint:views/);
 			assert.fileContent('grunt/watch.js', /sasslint:components/);
+		});
+
+		it('should add tasks for testing the server', () => {
+			assert.fileContent('grunt/aliases.js', /test/);
+			assert.fileContent('grunt/aliases.js', /'build:test'/);
+			assert.fileContent('grunt/copy.js', /test/);
+			assert.fileContent('grunt/clean.js', /test/);
+			assert.fileContent('grunt/mochaTest.js', /test/);
 		});
 	});
 
