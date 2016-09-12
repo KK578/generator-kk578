@@ -61,8 +61,7 @@
 				request(server)
 					.get('/bower/paper-fake-material/')
 					.end((err, res) => {
-						expect(res.status).to.equal(301);
-						console.log(res.text);
+						expect(res.status).to.equal(200);
 						expect(res.text).to.match(/Fake Paper Material Fixture/);
 
 						done();
