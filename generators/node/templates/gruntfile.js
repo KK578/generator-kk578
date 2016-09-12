@@ -10,9 +10,10 @@ function initLoadGruntConfig(grunt) {
 		jitGrunt: {
 			staticMappings: {
 				bower: 'grunt-bower-task',
-				mochaTest: 'grunt-mocha-test',
+				express: 'grunt-express-server',
 				minifyPolymerCSS: 'grunt-minify-polymer',
-				express: 'grunt-express-server'
+				mochaTest: 'grunt-mocha-test',
+				sasslint: 'grunt-sass-lint'
 			}
 		}
 	};

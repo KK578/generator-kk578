@@ -38,25 +38,25 @@ $white-disabled: rgba(255, 255, 255, 0.30);
 $white-divider: rgba(255, 255, 255, 0.12);
 
 @function material-color($color, $number) {
-	@if ($color == red) { @return get-material-color($material-red, $number); }
-	@else if ($color == pink) { @return get-material-color($material-pink, $number); }
-	@else if ($color == purple) { @return get-material-color($material-purple, $number); }
-	@else if ($color == deep-purple) { @return get-material-color($material-deep-purple, $number); }
-	@else if ($color == indigo) { @return get-material-color($material-indigo, $number); }
-	@else if ($color == blue) { @return get-material-color($material-blue, $number); }
-	@else if ($color == light-blue) { @return get-material-color($material-light-blue, $number); }
-	@else if ($color == cyan) { @return get-material-color($material-cyan, $number); }
-	@else if ($color == teal) { @return get-material-color($material-teal, $number); }
-	@else if ($color == green) { @return get-material-color($material-green, $number); }
-	@else if ($color == light-green) { @return get-material-color($material-light-green, $number); }
-	@else if ($color == lime) { @return get-material-color($material-lime, $number); }
-	@else if ($color == yellow) { @return get-material-color($material-yellow, $number); }
-	@else if ($color == amber) { @return get-material-color($material-amber, $number); }
-	@else if ($color == orange) { @return get-material-color($material-orange, $number); }
-	@else if ($color == deep-orange) { @return get-material-color($material-deep-orange, $number); }
-	@else if ($color == brown) { @return get-material-color($material-brown, $number); }
-	@else if ($color == grey) { @return get-material-color($material-grey, $number); }
-	@else if ($color == blue-grey) { @return get-material-color($material-blue-grey, $number); }
+	@if ($color == 'red') { @return get-material-color($material-red, $number); }
+	@else if ($color == 'pink') { @return get-material-color($material-pink, $number); }
+	@else if ($color == 'purple') { @return get-material-color($material-purple, $number); }
+	@else if ($color == 'deep-purple') { @return get-material-color($material-deep-purple, $number); }
+	@else if ($color == 'indigo') { @return get-material-color($material-indigo, $number); }
+	@else if ($color == 'blue') { @return get-material-color($material-blue, $number); }
+	@else if ($color == 'light-blue') { @return get-material-color($material-light-blue, $number); }
+	@else if ($color == 'cyan') { @return get-material-color($material-cyan, $number); }
+	@else if ($color == 'teal') { @return get-material-color($material-teal, $number); }
+	@else if ($color == 'green') { @return get-material-color($material-green, $number); }
+	@else if ($color == 'light-green') { @return get-material-color($material-light-green, $number); }
+	@else if ($color == 'lime') { @return get-material-color($material-lime, $number); }
+	@else if ($color == 'yellow') { @return get-material-color($material-yellow, $number); }
+	@else if ($color == 'amber') { @return get-material-color($material-amber, $number); }
+	@else if ($color == 'orange') { @return get-material-color($material-orange, $number); }
+	@else if ($color == 'deep-orange') { @return get-material-color($material-deep-orange, $number); }
+	@else if ($color == 'brown') { @return get-material-color($material-brown, $number); }
+	@else if ($color == 'grey') { @return get-material-color($material-grey, $number); }
+	@else if ($color == 'blue-grey') { @return get-material-color($material-blue-grey, $number); }
 }
 
 @function get-material-color($list, $number) {
