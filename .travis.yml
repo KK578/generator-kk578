@@ -12,5 +12,6 @@ before_script:
   - grunt lint
 script:
   - grunt test
-  - cd test/tmp/polymer-app/ && npm install
+  - cd test/tmp/polymer-app/ && echo "Still just testing"
+after_script:
   - pwd
