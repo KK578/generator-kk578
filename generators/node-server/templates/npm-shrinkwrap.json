@@ -5,29 +5,7 @@
     "uglify-js": {
       "version": "2.7.3",
       "from": "mishoo/UglifyJS2#harmony",
-      "resolved": "git://github.com/mishoo/UglifyJS2.git#67461666dc3ba1cd75d067418092de145c687587",
-      "dependencies": {
-        "async": {
-          "version": "0.2.10",
-          "from": "async@>=0.2.6 <0.3.0",
-          "resolved": "https://registry.npmjs.org/async/-/async-0.2.10.tgz"
-        },
-        "cliui": {
-          "version": "2.1.0",
-          "from": "cliui@>=2.1.0 <3.0.0",
-          "resolved": "https://registry.npmjs.org/cliui/-/cliui-2.1.0.tgz"
-        },
-        "window-size": {
-          "version": "0.1.0",
-          "from": "window-size@0.1.0",
-          "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.0.tgz"
-        },
-        "yargs": {
-          "version": "3.10.0",
-          "from": "yargs@>=3.10.0 <3.11.0",
-          "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.10.0.tgz"
-        }
-      }
+      "resolved": "git://github.com/mishoo/UglifyJS2.git#67461666dc3ba1cd75d067418092de145c687587"
     }
   }
 }

@@ -5,6 +5,9 @@ node_js:
 cache:
   directories:
     - node_modules
+    - test/node_modules
+before_install:
+  - if [[ `npm -v` != 3* ]]; then npm install -g npm@3; fi
 install:
   - npm install
   - npm install -g grunt-cli
@@ -12,3 +15,7 @@ before_script:
   - grunt lint
 script:
   - grunt test
+  - if [ -d test/node_modules ]; then mv test/node_modules test/tmp/polymer-app/node_modules; fi
+  - cd test/tmp/polymer-app/ && npm install && grunt test
+before_cache:
+  - mv node_modules ../../node_modules
