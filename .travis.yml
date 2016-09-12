@@ -12,3 +12,5 @@ before_script:
   - grunt lint
 script:
   - grunt test
+  - cd test/tmp/polymer-app/ && npm install
+  - pwd
