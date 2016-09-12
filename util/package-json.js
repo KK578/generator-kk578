@@ -55,9 +55,11 @@ function create(options) {
 				'grunt-bower-task': '^0.4.0',
 				'grunt-htmllint': 'KK578/grunt-htmllint',
 				'grunt-minify-polymer': '^2.1.1',
+				'grunt-mocha-test': '^0.12.7',
 				'grunt-sass': '^1.2.1',
 				'grunt-sass-lint': 'KK578/grunt-sass-lint',
-				'grunt-vulcanize': '^1.0.0'
+				'grunt-vulcanize': '^1.0.0',
+				'mocha': '^3.0.0'
 			});
 		}
 	}

@@ -11,6 +11,8 @@
 				'build/public/custom-components/',
 				'build/public/stylesheets/'
 			];
+
+			clean.test = ['test/tmp/**/*']
 		}
 	}
 
