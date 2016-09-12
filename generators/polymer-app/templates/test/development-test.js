@@ -7,11 +7,11 @@ function importTest(path) {
 }
 
 describe('Common', () => {
-	importTest('./production/route-static.js');
+	importTest('./production/route-static-test.js');
 });
 
 describe('Development', () => {
-	importTest('./development/route-404-dev.js');
-	importTest('./development/bower-dev.js');
-	importTest('./development/components-dev.js');
+	importTest('./development/route-404-test.js');
+	importTest('./development/route-bower-test.js');
+	importTest('./development/route-components-test.js');
 });
