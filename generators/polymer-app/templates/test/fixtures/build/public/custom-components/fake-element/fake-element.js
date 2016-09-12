@@ -1,1 +1,1 @@
-﻿const x = (y) => { return y ^ 2 };
+﻿const x = (y) => { return y * y };

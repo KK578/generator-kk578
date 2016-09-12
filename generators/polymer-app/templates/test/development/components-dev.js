@@ -41,6 +41,7 @@
 					.get('/custom-components/fake-element/fake-element.html')
 					.end((err, res) => {
 						expect(res.text).to.match(/SomeCSS{display:block}/);
+						expect(res.text).to.match(/<template><style>.*?<\/style>/);
 
 						done();
 					});
@@ -84,7 +85,7 @@
 				request(server)
 					.get('/custom-components/fake-element/fake-element.js')
 					.end((err, res) => {
-						expect(res.text).to.equal('const x = (y) => { return y^2 };');
+						expect(res.text).to.match(new RegExp(/const x = \(y\) => { return y \* y };/));
 
 						done();
 					});
