@@ -97,28 +97,35 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 
 		describe('Tests', () => {
 			it('should generate the test suite', () => {
-				assert.file([
-					'test/development.js',
-					'test/production.js'
-				]);
+				assert.file('test/development-test.js');
+				//assert.file('test/production-test.js');
 			});
 
 			it('should generate helper functions', () => {
+				assert.file('test/util.js');
+			});
+
+			it('should generate test fixtures', () => {
 				assert.file([
-					'test/util/util.js',
-					'test/util/setup.js'
+					'test/fixtures/build/public/custom-components/fake-element/fake-element.css',
+					'test/fixtures/build/public/custom-components/fake-element/fake-element.html',
+					'test/fixtures/build/public/custom-components/fake-element/fake-element.js',
+					'test/fixtures/public/bower-components/paper-fake-material/index.html',
+					'test/fixtures/public/bower-components/paper-no-demo/paper-no-demo.html'
 				]);
 			});
 
 			it('should generate development mode tests', () => {
 				assert.file([
-					'test/development/route-404-dev.js'
+					'test/development/route-404-test.js',
+					'test/development/route-bower-test.js',
+					'test/development/route-components-test.js'
 				]);
 			});
 
 			it('should generate production mode tests', () => {
 				assert.file([
-					'test/production/route-static.js'
+					'test/production/route-static-test.js'
 				]);
 			});
 		});
