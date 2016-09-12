@@ -5,6 +5,7 @@ node_js:
 cache:
   directories:
     - node_modules
+    - test/node_modules
 install:
   - npm install
   - npm install -g grunt-cli
@@ -12,6 +13,7 @@ before_script:
   - grunt lint
 script:
   - grunt test
-  - cd test/tmp/polymer-app/ && echo "Still just testing"
+  - if [ -d test/node_modules ]; then mv test/node_modules test/tmp/polymer-app/node_modules; fi
+  - cd test/tmp/polymer-app/ && npm install && grunt test
 after_script:
-  - pwd
+  - mv node_modules ../../node_modules
