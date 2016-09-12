@@ -1,6 +1,6 @@
 ﻿process.env.NODE_ENV = 'development';
 
-const util = require('./util/util.js');
+const util = require('./util.js');
 
 function importTest(path) {
 	require(path)(util);

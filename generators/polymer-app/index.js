@@ -67,6 +67,19 @@ const generator = generators.Base.extend({
 		this.copy('public/scripts/bower.js');
 		this.copy('public/scripts/es6-support.js');
 		this.copy('public/scripts/load.js');
+
+		this.copy('test/util.js');
+		this.copy('test/development-test.js');
+		this.copy('test/development/route-404-test.js');
+		this.copy('test/development/route-bower-test.js');
+		this.copy('test/development/route-components-test.js');
+		this.copy('test/production/route-static-test.js');
+
+		this.copy('test/fixtures/build/public/custom-components/fake-element/fake-element.css');
+		this.copy('test/fixtures/build/public/custom-components/fake-element/fake-element.html');
+		this.copy('test/fixtures/build/public/custom-components/fake-element/fake-element.js');
+		this.copy('test/fixtures/public/bower-components/paper-fake-material/index.html');
+		this.copy('test/fixtures/public/bower-components/paper-no-demo/paper-no-demo.html');
 	}
 });
 
