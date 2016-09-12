@@ -6,6 +6,10 @@ function importTest(path) {
 	require(path)(util);
 }
 
-describe('Development', function () {
+describe('Common', () => {
+	importTest('./production/route-static.js');
+});
+
+describe('Development', () => {
 	importTest('./development/route-404-dev.js');
 });

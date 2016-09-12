@@ -4,11 +4,11 @@
 	const server = util.server;
 
 	describe('404 Stylesheet Redirection', () => {
-		it('should GET "/stylesheets/404.css"', (done) => {
+		it('should not redirect "/stylesheets/404.css"', (done) => {
 			request(server)
 				.get('/stylesheets/404.css')
 				.end((req, res) => {
-					expect(res.status).to.be.equal(200);
+					expect(res.status).to.not.equal(302);
 
 					done();
 				});
