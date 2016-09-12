@@ -35,9 +35,9 @@
 					});
 			});
 
-			it('should contain link for paper-fake-material', (done) => {
+			it('should add link for paper-fake-material on GET "scripts/bower.js"', (done) => {
 				request(server)
-					.get('/bower')
+					.get('/scripts/bower.js')
 					.end((err, res) => {
 						expect(res.text).to.match(/paper-fake-material/);
 
@@ -45,9 +45,9 @@
 					});
 			});
 
-			it('should not contain link for paper-no-demo', (done) => {
+			it('should not add link for paper-no-demo on GET "scripts/bower.js"', (done) => {
 				request(server)
-					.get('/bower')
+					.get('/scripts/bower.js')
 					.end((err, res) => {
 						expect(res.text).to.not.match(/paper-no-demo/);
 
@@ -57,11 +57,12 @@
 		});
 
 		describe('Bower Components Passthrough', () => {
-			it('should GET "/bower/paper-fake-material"', (done) => {
+			it('should GET "/bower/paper-fake-material/"', (done) => {
 				request(server)
-					.get('/bower/paper-fake-material')
+					.get('/bower/paper-fake-material/')
 					.end((err, res) => {
-						expect(res.status).to.equal(200);
+						expect(res.status).to.equal(301);
+						console.log(res.text);
 						expect(res.text).to.match(/Fake Paper Material Fixture/);
 
 						done();
