@@ -13,7 +13,7 @@ function create(options) {
 		devDependencies: {
 			'eslint-formatter-pretty': '^0.2.2',
 			'grunt': '^1.0.1',
-			'grunt-eslint': '^19.0.0',
+			'grunt-eslint': 'KK578/grunt-eslint',
 			'jit-grunt': '^0.10.0',
 			'load-grunt-config': '^0.19.2',
 			'time-grunt': '^1.4.0'

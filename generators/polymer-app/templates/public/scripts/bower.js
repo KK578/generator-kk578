@@ -35,4 +35,4 @@
 	setupTemplate();
 	window.addEventListener('hashchange', onHashChange);
 	onHashChange();
-});
+})();
