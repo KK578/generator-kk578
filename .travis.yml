@@ -17,5 +17,5 @@ script:
   - grunt test
   - if [ -d test/node_modules ]; then mv test/node_modules test/tmp/polymer-app/node_modules; fi
   - cd test/tmp/polymer-app/ && npm install && grunt test
-after_script:
+before_cache:
   - mv node_modules ../../node_modules
