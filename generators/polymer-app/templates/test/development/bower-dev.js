@@ -17,7 +17,7 @@
 						done();
 					}
 					else {
-						done(new Error("bower-components is not a directory."));
+						done(new Error('bower-components is not a directory.'));
 					}
 
 				}

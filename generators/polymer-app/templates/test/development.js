@@ -13,4 +13,5 @@ describe('Common', () => {
 describe('Development', () => {
 	importTest('./development/route-404-dev.js');
 	importTest('./development/bower-dev.js');
+	importTest('./development/components-dev.js');
 });
