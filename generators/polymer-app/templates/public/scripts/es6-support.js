@@ -1,5 +1,5 @@
 /* eslint no-var: "off", prefer-template: "off" */
-(function () {
+{
 	function supportsEs6() {
 		try {
 			// Attempt to evaluate an arrow function definition.
@@ -23,4 +23,4 @@
 
 	script.src = 'scripts/' + target;
 	document.head.appendChild(script);
-})();
+}

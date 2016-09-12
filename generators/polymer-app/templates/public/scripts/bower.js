@@ -1,4 +1,4 @@
-(function () {
+{
 	const template = document.getElementById('template');
 
 	function setupTemplate() {
@@ -35,4 +35,4 @@
 	setupTemplate();
 	window.addEventListener('hashchange', onHashChange);
 	onHashChange();
-})();
+}

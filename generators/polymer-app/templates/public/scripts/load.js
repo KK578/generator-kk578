@@ -1,4 +1,4 @@
-(function () {
+{
 	function finishPreload() {
 		document.querySelector('splash-screen').classList.remove('start-up');
 	}
@@ -31,4 +31,4 @@
 	}
 
 	checkNativeWebComponents();
-})();
+}
