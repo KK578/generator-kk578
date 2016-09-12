@@ -84,6 +84,14 @@ function create(options) {
 				'clean:production'
 			);
 
+			aliases['build:test'] = {
+				description: 'Build task for server tests',
+				tasks: [
+					'build:all',
+					'newer:copy:test'
+				]
+			}
+
 			aliases['build:bower'] = {
 				description: 'Build task for bower components',
 				tasks: [

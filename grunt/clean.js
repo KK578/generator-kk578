@@ -1,3 +1,3 @@
 module.exports = {
-	test: { src: 'test/tmp/' }
+	test: ['test/tmp/**/*']
 };
