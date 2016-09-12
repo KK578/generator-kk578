@@ -41,7 +41,7 @@
 					.get('/custom-components/fake-element/fake-element.html')
 					.end((err, res) => {
 						expect(res.text).to.match(/SomeCSS{display:block}/);
-						expect(res.text).to.match(/<template><style>.*?<\/style>/);
+						expect(res.text).to.match(/<template><style>[\s\S]*?<\/style>/);
 
 						done();
 					});

@@ -20,7 +20,7 @@ router.get('/custom-components/:component/*.html', (req, res) => {
 			}
 
 			// Find the style tag that references the component's css.
-			const stampLocation = new RegExp(`<template><link.*href=".*?${element}.css.*?".*?\/?>)`);
+			const stampLocation = new RegExp(`<template><link.*href=".*?${element}.css.*?".*?\/?>`);
 			const taggedCss = `<template><style>${css}</style>`;
 
 			res.send(html.replace(stampLocation, taggedCss));
