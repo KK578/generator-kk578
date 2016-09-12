@@ -92,6 +92,14 @@ function create(options) {
 				]
 			}
 
+			aliases.test = {
+				description: 'Build and test project',
+				tasks: [
+					'build:test',
+					'mochaTest:all'
+				]
+			};
+
 			aliases['build:bower'] = {
 				description: 'Build task for bower components',
 				tasks: [
