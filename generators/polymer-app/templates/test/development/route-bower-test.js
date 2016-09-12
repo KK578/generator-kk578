@@ -8,18 +8,16 @@
 	describe('Bower Development Route', () => {
 		before((done) => {
 			const bowerDir = path.join(__dirname, '../tmp/public/bower-components/');
+
 			fs.stat(bowerDir, (err, stats) => {
 				if (err) {
 					done(err);
 				}
+				else if (stats.isDirectory()) {
+					done();
+				}
 				else {
-					if (stats.isDirectory()) {
-						done();
-					}
-					else {
-						done(new Error('bower-components is not a directory.'));
-					}
-
+					done(new Error('bower-components is not a directory.'));
 				}
 			});
 		});

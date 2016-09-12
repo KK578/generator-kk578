@@ -7,20 +7,18 @@
 
 	describe('Custom Component Development Route', () => {
 		before((done) => {
-			const bowerDir = path.join(__dirname, '../tmp/build/public/custom-components/fake-element/');
+			const bowerDir = path.join(__dirname,
+				'../tmp/build/public/custom-components/fake-element/');
 
 			fs.stat(bowerDir, (err, stats) => {
 				if (err) {
 					done(err);
 				}
+				else if (stats.isDirectory()) {
+					done();
+				}
 				else {
-					if (stats.isDirectory()) {
-						done();
-					}
-					else {
-						done(new Error('custom-components/fake-element is not a directory.'));
-					}
-
+					done(new Error('custom-components/fake-element is not a directory.'));
 				}
 			});
 		});
@@ -85,7 +83,7 @@
 				request(server)
 					.get('/custom-components/fake-element/fake-element.js')
 					.end((err, res) => {
-						expect(res.text).to.match(new RegExp(/const x = \(y\) => { return y \* y };/));
+						expect(res.text).to.match(/const x = \(y\) => { return y \* y };/);
 
 						done();
 					});
@@ -93,6 +91,5 @@
 
 			it('could transpile to ES5 on request');
 		});
-
 	});
 };

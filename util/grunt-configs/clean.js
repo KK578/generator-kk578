@@ -12,7 +12,7 @@
 				'build/public/stylesheets/'
 			];
 
-			clean.test = ['test/tmp/**/*']
+			clean.test = ['test/tmp/**/*'];
 		}
 	}
 

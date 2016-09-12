@@ -90,7 +90,7 @@ function create(options) {
 					'build:all',
 					'newer:copy:test'
 				]
-			}
+			};
 
 			aliases.test = {
 				description: 'Build and test project',

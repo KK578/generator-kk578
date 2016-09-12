@@ -7,7 +7,8 @@ const router = express.Router();
 // Stamp css content into html during development.
 router.get('/custom-components/:component/*.html', (req, res) => {
 	const element = req.params.component;
-	const elementPath = path.join(__dirname, `../../public/custom-components/${element}/${element}`);
+	const elementPath = path.join(__dirname,
+		`../../public/custom-components/${element}/${element}`);
 
 	fs.readFile(`${elementPath}.html`, 'utf-8', (err, html) => {
 		if (err) {
