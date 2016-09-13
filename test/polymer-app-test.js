@@ -32,7 +32,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 	});
 
 	it('should not copy files from development', () => {
-		assert.noFile(['build/', 'node_modules/']);
+		assert.noFile(['build/', 'node_modules/', 'bower-components/']);
 	});
 
 	describe('Bower', () => {

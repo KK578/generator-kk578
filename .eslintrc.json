@@ -42,7 +42,7 @@
     "linebreak-style": [ "warn", "windows" ],
     "lines-around-comment": [ "error", { "beforeBlockComment": true, "allowBlockStart": true } ],
     "max-depth": "warn",
-    "max-len": ["error", { "code": 100, "tabWidth": 4, "ignoreUrls": true }],
+    "max-len": ["error", { "code": 100, "tabWidth": 4, "ignoreUrls": true, "ignoreStrings": true, "ignoreTemplateLiterals": true }],
     "max-statements-per-line": ["warn", { "max": 1 }],
     "max-statements": [ "warn", { "max": 15 }],
     "new-cap": [ "error", { "capIsNewExceptions": ["Router", "Polymer"] }],
