@@ -45,11 +45,13 @@ describe('yo kk578:node-server MyNodeServerProject', () => {
 
 		it('should generate extra devDependencies to package.json', () => {
 			assert.fileContent('package.json', /"browser-sync"/);
+			assert.fileContent('package.json', /"chai"/);
 			assert.fileContent('package.json', /"grunt-contrib-copy"/);
 			assert.fileContent('package.json', /"grunt-contrib-watch"/);
 			assert.fileContent('package.json', /"grunt-contrib-uglify"/);
 			assert.fileContent('package.json', /"grunt-express-server"/);
 			assert.fileContent('package.json', /"grunt-newer"/);
+			assert.fileContent('package.json', /"supertest"/);
 		});
 
 		it('should generate npm-shrinkwrap for uglify-js', () => {

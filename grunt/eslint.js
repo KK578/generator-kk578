@@ -49,7 +49,9 @@ module.exports = {
 				cwd: 'generators/polymer-app/templates',
 				src: [
 					'server/**/*.js',
-					'public/**/*.js'
+					'public/**/*.js',
+					'test/**/*.js',
+					'!test/fixtures/**/*'
 				]
 			}
 		]

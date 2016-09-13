@@ -38,12 +38,14 @@ function create(options) {
 
 		Object.assign(packageJson.devDependencies, {
 			'browser-sync': '^2.14.0',
+			'chai': '^3.5.0',
 			'grunt-contrib-clean': '^1.0.0',
 			'grunt-contrib-copy': '^1.0.0',
 			'grunt-contrib-uglify': '^2.0.0',
 			'grunt-contrib-watch': '^1.0.0',
 			'grunt-express-server': 'KK578/grunt-express-server',
-			'grunt-newer': '^1.2.0'
+			'grunt-newer': '^1.2.0',
+			'supertest': '^2.0.0'
 		});
 
 		if (options.polymerApp) {
@@ -53,9 +55,11 @@ function create(options) {
 				'grunt-bower-task': '^0.4.0',
 				'grunt-htmllint': 'KK578/grunt-htmllint',
 				'grunt-minify-polymer': '^2.1.1',
+				'grunt-mocha-test': '^0.12.7',
 				'grunt-sass': '^1.2.1',
 				'grunt-sass-lint': 'KK578/grunt-sass-lint',
-				'grunt-vulcanize': '^1.0.0'
+				'grunt-vulcanize': '^1.0.0',
+				'mocha': '^3.0.0'
 			});
 		}
 	}

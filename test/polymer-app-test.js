@@ -71,6 +71,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('package.json', /"grunt-bower-task"/);
 			assert.fileContent('package.json', /"grunt-htmllint"/);
 			assert.fileContent('package.json', /"grunt-minify-polymer"/);
+			assert.fileContent('package.json', /"grunt-mocha-test"/);
 			assert.fileContent('package.json', /"grunt-sass"/);
 			assert.fileContent('package.json', /"grunt-sass-lint"/);
 			assert.fileContent('package.json', /"grunt-vulcanize"/);
@@ -94,6 +95,41 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'server/routes/wct.dev.js'
 			]);
 		});
+
+		describe('Tests', () => {
+			it('should generate the test suite', () => {
+				assert.file('test/development-test.js');
+				//assert.file('test/production-test.js');
+			});
+
+			it('should generate helper functions', () => {
+				assert.file('test/util.js');
+			});
+
+			it('should generate test fixtures', () => {
+				assert.file([
+					'test/fixtures/build/public/custom-components/fake-element/fake-element.css',
+					'test/fixtures/build/public/custom-components/fake-element/fake-element.html',
+					'test/fixtures/build/public/custom-components/fake-element/fake-element.js',
+					'test/fixtures/public/bower-components/paper-fake-material/index.html',
+					'test/fixtures/public/bower-components/paper-no-demo/paper-no-demo.html'
+				]);
+			});
+
+			it('should generate development mode tests', () => {
+				assert.file([
+					'test/development/route-404-test.js',
+					'test/development/route-bower-test.js',
+					'test/development/route-components-test.js'
+				]);
+			});
+
+			it('should generate production mode tests', () => {
+				assert.file([
+					'test/production/route-static-test.js'
+				]);
+			});
+		});
 	});
 
 	describe('Grunt', () => {
@@ -104,6 +140,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 				'grunt/htmllint.js',
 				'grunt/minifyPolymer.js',
 				'grunt/minifyPolymerCSS.js',
+				'grunt/mochaTest.js',
 				'grunt/sass.js',
 				'grunt/sasslint.js',
 				'grunt/vulcanize.js'
@@ -164,6 +201,14 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/watch.js', /'sasslint'/);
 			assert.fileContent('grunt/watch.js', /sasslint:views/);
 			assert.fileContent('grunt/watch.js', /sasslint:components/);
+		});
+
+		it('should add tasks for testing the server', () => {
+			assert.fileContent('grunt/aliases.js', /test/);
+			assert.fileContent('grunt/aliases.js', /'build:test'/);
+			assert.fileContent('grunt/copy.js', /test/);
+			assert.fileContent('grunt/clean.js', /test/);
+			assert.fileContent('grunt/mochaTest.js', /test/);
 		});
 	});
 
