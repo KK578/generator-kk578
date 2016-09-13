@@ -105,7 +105,8 @@ function create(options) {
 				tasks: [
 					'newer:minifyPolymer:bower',
 					'newer:minifyPolymerCSS:bower',
-					'newer:uglify:bower'
+					'newer:uglify:bower',
+					'newer:copy:bower'
 				]
 			};
 
