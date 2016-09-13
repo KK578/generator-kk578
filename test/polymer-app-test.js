@@ -152,6 +152,7 @@ describe('yo kk578:polymer-app MyPolymerAppProject', () => {
 			assert.fileContent('grunt/bower.js', /development/);
 			assert.fileContent('grunt/bower.js', /production/);
 			assert.fileContent('grunt/clean.js', /bower/);
+			assert.fileContent('grunt/copy.js', /bower/);
 			assert.fileContent('grunt/minifyPolymer.js', /bower/);
 			assert.fileContent('grunt/minifyPolymerCSS.js', /bower/);
 			assert.fileContent('grunt/uglify.js', /bower/);
