@@ -23,6 +23,22 @@ function create(options) {
 				}
 			]
 		};
+
+		if (options.polymerApp) {
+			copy.bower = {
+				files: [
+					{
+						expand: true,
+						cwd: 'public/bower-components/',
+						src: [
+							'**/*.min.js',
+							'!**/{demo,demos,docs,explainer,node_modules,test,tests}/**/*'
+						],
+						dest: 'build/public/bower-components/'
+					}
+				]
+			};
+		}
 	}
 
 	return copy;
