@@ -25,7 +25,7 @@ function handleCustomElementCss(event, file) {
 }
 
 const watch = {
-	match: ['public/custom-components/**/*.css'],
+	match: ['build/public/custom-components/**/*.css'],
 	fn: handleCustomElementCss
 };
 

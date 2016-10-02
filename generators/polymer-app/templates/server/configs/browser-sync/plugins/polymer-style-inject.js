@@ -11,10 +11,18 @@ window.addEventListener('load', function () {
 		// Find the style tag describing the element's style.
 		var styleTag = document.querySelector('style[scope="' + element + '"');
 
+		// NOTE: Polymer v1.3~ appears to sometimes name the element 'element-name-0' sometimes.
+		if (!styleTag) {
+			styleTag = document.querySelector('style[scope="' + element + '-0"');
+		}
+
 		if (styleTag) {
 			// Update style if applicable.
 			styleTag.innerHTML = style;
 			console.log(element + ' style updated.');
+		}
+		else {
+			console.error('Failed to update style for "' + element + '"');
 		}
 	}
 
@@ -22,7 +30,7 @@ window.addEventListener('load', function () {
 		if (window.___browserSync___) {
 			// On finding browserSync, attach the listener and cleanup the interval.
 			window.___browserSync___.socket.on('custom-component-css', reloadComponentStyle);
-			console.log('Component Style update ready.');
+			console.log('Polymer Style Injector ready.');
 			clearInterval(handle);
 		}
 	}
