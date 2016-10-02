@@ -49,8 +49,8 @@ function loadHandlers(callback) {
 			}));
 		});
 
-		// Return list of files with special handlers at top of list to ensure custom handlers are run.
-		// All other files are included afterwards.
+		// Return list of files with special handlers at top of list to ensure custom handlers are
+		// run. All other files are included afterwards.
 		callback(null, watchedFiles.concat(otherFiles));
 	});
 }
