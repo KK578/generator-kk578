@@ -35,22 +35,23 @@ function loadHandlers(callback) {
 			return callback(err);
 		}
 
-		// TODO: Confirm path, watch either source or build files.
-		let otherFiles = ['public/**/*.{html,css,js}'];
+		let otherFiles = ['build/public/**/*.{html,css,js}'];
 		const watchedFiles = [];
 
 		files.map((file) => {
 			const handler = require(path.join(__dirname, 'browser-sync/handlers', file));
 
 			watchedFiles.push(handler);
+
+			// Add the specially handled files to an ignored list.
 			otherFiles = otherFiles.concat(handler.match.map((s) => {
 				return `!${s}`;
 			}));
 		});
 
-		watchedFiles.push(otherFiles);
-
-		callback(null, watchedFiles);
+		// Return list of files with special handlers at top of list to ensure custom handlers are run.
+		// All other files are included afterwards.
+		callback(null, watchedFiles.concat(otherFiles));
 	});
 }
 
@@ -76,8 +77,9 @@ module.exports = (server) => {
 		];
 
 		bs.use({
-			// TODO: Check if this is required by browser-sync.
-			//plugin: function (opts, bs) { },
+			plugin: function () {
+				return true;
+			},
 			hooks: {
 				'client:events': function () {
 					// TODO: Load this from plugins.
